@@ -1,0 +1,2527 @@
+<!doctype html><html lang=\"fr\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>CitronVerse — Catalogue des samples</title><style>body{font-family:system-ui;background:#111;color:#eee;margin:0}main{max-width:900px;margin:auto;padding:32px}h1{color:#ffd84d}input{width:100%;box-sizing:border-box;padding:14px;border-radius:10px;border:1px solid #444;background:#1d1d1d;color:#fff;font-size:16px}.s{display:flex;gap:12px;align-items:center;padding:12px 4px;border-bottom:1px solid #292929}.n{flex:1;font-weight:700}.c{color:#999;font-size:13px}button{padding:8px 12px;border:0;border-radius:8px;cursor:pointer}#count{color:#aaa;margin:12px 0}</style></head><body><main><h1>🍋 Joue un sample !</h1><p>Recherche un sample puis copie exactement son nom dans la récompense Twitch.</p><input id=\"q\" placeholder=\"Rechercher un sample…\" autofocus><div id=\"count\"></div><div id=\"list\"></div></main><script>const SAMPLES=[
+  {
+    "id": "4D93D29597E23E40",
+    "name": "1 \u20AC",
+    "category": "Page 1 (actuelle) / Samples / GT Gabi"
+  },
+  {
+    "id": "DE2BD35E103880F0",
+    "name": "2 buts",
+    "category": "Page 1 (actuelle) / Samples / D\u00EEner de cons"
+  },
+  {
+    "id": "C51BB110EFAD1029",
+    "name": "2 cons",
+    "category": "Page 1 (actuelle) / Samples / Mocky"
+  },
+  {
+    "id": "C70A4910242E05AA",
+    "name": "A",
+    "category": "Page 1 (actuelle) / Samples / Jeux vid\u00E9o / Dark Souls"
+  },
+  {
+    "id": "83CE75DE5992C123",
+    "name": "Abruti",
+    "category": "Page 1 (actuelle) / Samples / Mocky"
+  },
+  {
+    "id": "E25F493D27AF167E",
+    "name": "Accord\u00E9on",
+    "category": "Page 1 (actuelle) / Samples / Musique"
+  },
+  {
+    "id": "AE65EF05DCFDE91E",
+    "name": "Ah !",
+    "category": "Page 1 (actuelle) / Samples / Discord / Alex"
+  },
+  {
+    "id": "F3FB1DF00F2C1014",
+    "name": "Ah !",
+    "category": "Page 1 (actuelle) / Samples / Pop Culture"
+  },
+  {
+    "id": "7B9200AD47F4F4AA",
+    "name": "Ah oui !",
+    "category": "Page 1 (actuelle) / Samples / P\u00E8re No\u00EBl"
+  },
+  {
+    "id": "A58881F3ECC5139A",
+    "name": "Aimez \u00E7a",
+    "category": "Page 1 (actuelle) / Samples / Hedge"
+  },
+  {
+    "id": "87F4545F0025895E",
+    "name": "Alala",
+    "category": "Page 1 (actuelle) / Samples / Discord / Yaki"
+  },
+  {
+    "id": "7DF16DAD16B1F0A8",
+    "name": "Allo",
+    "category": "Page 1 (actuelle) / Samples / Mocky"
+  },
+  {
+    "id": "A39B32542F874DDF",
+    "name": "Alors",
+    "category": "Page 1 (actuelle) / Samples / P\u00E8re No\u00EBl"
+  },
+  {
+    "id": "220024220DBD3FA4",
+    "name": "Ambiance",
+    "category": "Page 1 (actuelle) / Samples / Bigard"
+  },
+  {
+    "id": "82A67197C66A3D12",
+    "name": "Am\u00E9ricaine",
+    "category": "Page 1 (actuelle) / Samples / Strip Tease"
+  },
+  {
+    "id": "3CF7075B702649D9",
+    "name": "Anglais",
+    "category": "Page 1 (actuelle) / Samples / GT Gabi"
+  },
+  {
+    "id": "A7D044E9DF581767",
+    "name": "Animation",
+    "category": "Page 1 (actuelle) / Samples / P\u00E8re No\u00EBl"
+  },
+  {
+    "id": "B3AAF9BE3211D855",
+    "name": "Antis\u00E9mite",
+    "category": "Page 1 (actuelle) / Samples / Dieudo"
+  },
+  {
+    "id": "87756E85772A5395",
+    "name": "App\u00E9tit",
+    "category": "Page 1 (actuelle) / Samples / Visiteurs"
+  },
+  {
+    "id": "5CB2A42869C6821F",
+    "name": "Arabes",
+    "category": "Page 1 (actuelle) / Samples / YT Game"
+  },
+  {
+    "id": "7D04681BD8FE74FD",
+    "name": "Argh 1",
+    "category": "Page 1 (actuelle) / Samples / Discord / Yaki"
+  },
+  {
+    "id": "D13E211F8B7888A1",
+    "name": "Argh 2",
+    "category": "Page 1 (actuelle) / Samples / Discord / Yaki"
+  },
+  {
+    "id": "EA3950A315795E22",
+    "name": "Argh 3",
+    "category": "Page 1 (actuelle) / Samples / Discord / Yaki"
+  },
+  {
+    "id": "3A00731BE8B2018B",
+    "name": "Arr\u00EAter",
+    "category": "Page 1 (actuelle) / Samples / Poli- tique"
+  },
+  {
+    "id": "FCC85B7860DE3DB5",
+    "name": "Artiste",
+    "category": "Page 1 (actuelle) / Samples / P\u00E8re No\u00EBl"
+  },
+  {
+    "id": "24F044D95CCABCDD",
+    "name": "Asperges",
+    "category": "Page 1 (actuelle) / Samples / Dumas"
+  },
+  {
+    "id": "0190133ED824C165",
+    "name": "Attente",
+    "category": "Page 1 (actuelle) / Samples / Strip Tease"
+  },
+  {
+    "id": "52F3A7370EA25A16",
+    "name": "Au revoir",
+    "category": "Page 1 (actuelle) / Samples / Mocky"
+  },
+  {
+    "id": "D29A8969B78BCD0A",
+    "name": "Au revoir",
+    "category": "Page 1 (actuelle) / Samples / Strip Tease"
+  },
+  {
+    "id": "89F69CDA204511F8",
+    "name": "B",
+    "category": "Page 1 (actuelle) / Samples / Jeux vid\u00E9o / Dark Souls"
+  },
+  {
+    "id": "541901A86C97E732",
+    "name": "Baille",
+    "category": "Page 1 (actuelle) / Samples / Dieudo"
+  },
+  {
+    "id": "0C515CF940D2982F",
+    "name": "Baisodrome",
+    "category": "Page 1 (actuelle) / Samples / D\u00EEner de cons"
+  },
+  {
+    "id": "90C0E55D3798171A",
+    "name": "Balles",
+    "category": "Page 1 (actuelle) / Samples / Classe Am\u00E9ricaine"
+  },
+  {
+    "id": "25F025BD7D201F1D",
+    "name": "Bapt\u00EAme du feu",
+    "category": "Page 1 (actuelle) / Samples / GT Gabi"
+  },
+  {
+    "id": "B11309BBA5F42482",
+    "name": "Barbie 0",
+    "category": "Page 1 (actuelle) / Samples / Musique"
+  },
+  {
+    "id": "D2EFBE18541B19FC",
+    "name": "Barbie 1",
+    "category": "Page 1 (actuelle) / Samples / Musique"
+  },
+  {
+    "id": "292030656B328E8F",
+    "name": "Barbie 2",
+    "category": "Page 1 (actuelle) / Samples / Musique"
+  },
+  {
+    "id": "D3789936B8C5AD0E",
+    "name": "Barbie 3",
+    "category": "Page 1 (actuelle) / Samples / Musique"
+  },
+  {
+    "id": "480F41746BA0727B",
+    "name": "Barbie End",
+    "category": "Page 1 (actuelle) / Samples / Musique"
+  },
+  {
+    "id": "C4783D71F18AAC9E",
+    "name": "Bayard",
+    "category": "Page 1 (actuelle) / Samples / Soral"
+  },
+  {
+    "id": "D874B03257A4D6AC",
+    "name": "Besoin de moi",
+    "category": "Page 1 (actuelle) / Samples / D\u00EEner de cons"
+  },
+  {
+    "id": "0072D5DE022DB3A8",
+    "name": "Bibelot",
+    "category": "Page 1 (actuelle) / Samples / D\u00EEner de cons"
+  },
+  {
+    "id": "9001E258DACB4D83",
+    "name": "Bien bien bien",
+    "category": "Page 1 (actuelle) / Samples / YT Game"
+  },
+  {
+    "id": "415715755B521C21",
+    "name": "Bien s\u0027passer",
+    "category": "Page 1 (actuelle) / Samples / YT Game"
+  },
+  {
+    "id": "65ACC2FDD55CAB5F",
+    "name": "Bient\u00F4t",
+    "category": "Page 1 (actuelle) / Samples / Mocky"
+  },
+  {
+    "id": "4F4F368EA58E91DA",
+    "name": "Bip bip",
+    "category": "Page 1 (actuelle) / Samples / Pop Culture"
+  },
+  {
+    "id": "3BD38C1AFCF69F58",
+    "name": "Bite",
+    "category": "Page 1 (actuelle) / Samples / Soral"
+  },
+  {
+    "id": "518B207789E3FF8A",
+    "name": "Bite",
+    "category": "Page 1 (actuelle) / Samples / Discord / Julien"
+  },
+  {
+    "id": "ECDD0BF60C5C4132",
+    "name": "Bite",
+    "category": "Page 1 (actuelle) / Samples / Pop Culture"
+  },
+  {
+    "id": "B558A04666A5554C",
+    "name": "Bite taureau",
+    "category": "Page 1 (actuelle) / Samples / Gotoh wan"
+  },
+  {
+    "id": "7A02EBAB6EA3A694",
+    "name": "Black",
+    "category": "Page 1 (actuelle) / Samples / Soral"
+  },
+  {
+    "id": "FEF9DB2E00B71481",
+    "name": "Blanchir",
+    "category": "Page 1 (actuelle) / Samples / Hooper"
+  },
+  {
+    "id": "7DF0FDEA41EB903D",
+    "name": "Bloquer la ligne",
+    "category": "Page 1 (actuelle) / Samples / P\u00E8re No\u00EBl"
+  },
+  {
+    "id": "15717C982949D19B",
+    "name": "Bluffeur",
+    "category": "Page 1 (actuelle) / Samples / Poli- tique"
+  },
+  {
+    "id": "CC13A7B66DE9BACE",
+    "name": "Bol",
+    "category": "Page 1 (actuelle) / Samples / YT Game"
+  },
+  {
+    "id": "E13877555D74838F",
+    "name": "Bolch\u00E9viks",
+    "category": "Page 1 (actuelle) / Samples / Poli- tique"
+  },
+  {
+    "id": "7654972B739860F5",
+    "name": "Bon",
+    "category": "Page 1 (actuelle) / Samples / Dieudo"
+  },
+  {
+    "id": "3DF06749207DA08F",
+    "name": "Bonjour R\u00E9gis",
+    "category": "Page 1 (actuelle) / Samples / Gotoh wan"
+  },
+  {
+    "id": "D219FCE779160D8A",
+    "name": "Bonne soir\u00E9e",
+    "category": "Page 1 (actuelle) / Samples / D\u00EEner de cons"
+  },
+  {
+    "id": "C63CF6F24242D710",
+    "name": "Bordel j\u0027ai le droit",
+    "category": "Page 1 (actuelle) / Samples / YT Game"
+  },
+  {
+    "id": "E2F05705015768A9",
+    "name": "Botter des culs",
+    "category": "Page 1 (actuelle) / Samples / Jeux vid\u00E9o"
+  },
+  {
+    "id": "2F7180BDA4D3E31C",
+    "name": "Bottes",
+    "category": "Page 1 (actuelle) / Samples / Mocky"
+  },
+  {
+    "id": "6826D5BE02AA64EB",
+    "name": "Boucher",
+    "category": "Page 1 (actuelle) / Samples / Dumas"
+  },
+  {
+    "id": "AAF3C9FCE3742D44",
+    "name": "Boudin",
+    "category": "Page 1 (actuelle) / Samples / Soral"
+  },
+  {
+    "id": "8A7F640B88C0554D",
+    "name": "Bougnoules",
+    "category": "Page 1 (actuelle) / Samples / Dieudo"
+  },
+  {
+    "id": "8A0E8E76C04D2C1A",
+    "name": "Boulette 1",
+    "category": "Page 1 (actuelle) / Samples / D\u00EEner de cons"
+  },
+  {
+    "id": "8B2AD6537D19AF11",
+    "name": "Boulette 2",
+    "category": "Page 1 (actuelle) / Samples / D\u00EEner de cons"
+  },
+  {
+    "id": "821893CC042B8D47",
+    "name": "Bouquin mauvais",
+    "category": "Page 1 (actuelle) / Samples / D\u00EEner de cons"
+  },
+  {
+    "id": "6CB49404D974EA95",
+    "name": "Bourr\u00E9e",
+    "category": "Page 1 (actuelle) / Samples / Bigard"
+  },
+  {
+    "id": "2073E88EE9F4F794",
+    "name": "Bouton 1",
+    "category": "Page 1 (actuelle) / Samples / Strip Tease"
+  },
+  {
+    "id": "1A856D929FDCD7DA",
+    "name": "Bouton 2",
+    "category": "Page 1 (actuelle) / Samples / Strip Tease"
+  },
+  {
+    "id": "2AFED1CC3FAF9E34",
+    "name": "Bouton 3",
+    "category": "Page 1 (actuelle) / Samples / Strip Tease"
+  },
+  {
+    "id": "5E5E9F8908A5BFE8",
+    "name": "Bras",
+    "category": "Page 1 (actuelle) / Samples / Hedge"
+  },
+  {
+    "id": "31476344296AC39C",
+    "name": "Bravo t\u0027es une merde",
+    "category": "Page 1 (actuelle) / Samples / Gotoh wan"
+  },
+  {
+    "id": "0791C0BADBA275D1",
+    "name": "Briefing",
+    "category": "Page 1 (actuelle) / Samples / Strip Tease"
+  },
+  {
+    "id": "4A75B3DC911647B8",
+    "name": "Bronzage",
+    "category": "Page 1 (actuelle) / Samples / Discord / Anto"
+  },
+  {
+    "id": "ACDAD1E28EDB55D6",
+    "name": "Bruit et odeur",
+    "category": "Page 1 (actuelle) / Samples / Poli- tique"
+  },
+  {
+    "id": "9C81E70F2B5201CA",
+    "name": "Brute force",
+    "category": "Page 1 (actuelle) / Samples / Discord / Alex"
+  },
+  {
+    "id": "866183BA766FCD87",
+    "name": "Bye bye",
+    "category": "Page 1 (actuelle) / Samples / GT Gabi"
+  },
+  {
+    "id": "73B2CA57CDC803E4",
+    "name": "C",
+    "category": "Page 1 (actuelle) / Samples / Jeux vid\u00E9o / Dark Souls"
+  },
+  {
+    "id": "0249377C6BF2389D",
+    "name": "C\u0027est fini oui !",
+    "category": "Page 1 (actuelle) / Samples / D\u00EEner de cons"
+  },
+  {
+    "id": "4449B676BBBEF990",
+    "name": "C\u0027est moi",
+    "category": "Page 1 (actuelle) / Samples / Pop Culture"
+  },
+  {
+    "id": "67F538B624932FE2",
+    "name": "\u00C7a part",
+    "category": "Page 1 (actuelle) / Samples / Bigard"
+  },
+  {
+    "id": "993EC878560C118A",
+    "name": "\u00C7a va",
+    "category": "Page 1 (actuelle) / Samples / Discord / Alex"
+  },
+  {
+    "id": "D8343972074FE762",
+    "name": "\u00C7a vous va",
+    "category": "Page 1 (actuelle) / Samples / Discord / Gilles"
+  },
+  {
+    "id": "C67996C135ACBFC8",
+    "name": "Caca",
+    "category": "Page 1 (actuelle) / Samples / YT Game"
+  },
+  {
+    "id": "92E160198C68B5F4",
+    "name": "Caca",
+    "category": "Page 1 (actuelle) / Samples / Gordon Ramsay"
+  },
+  {
+    "id": "3CE69E9F7183100F",
+    "name": "Caca",
+    "category": "Page 1 (actuelle) / Samples / Soral"
+  },
+  {
+    "id": "6CBAEB6126D64AE6",
+    "name": "Caca partout",
+    "category": "Page 1 (actuelle) / Samples / Hooper"
+  },
+  {
+    "id": "C80447F51CA91477",
+    "name": "Cach\u00E9",
+    "category": "Page 1 (actuelle) / Samples / Discord / Alex"
+  },
+  {
+    "id": "C7777F36C4D504C3",
+    "name": "Cadavre",
+    "category": "Page 1 (actuelle) / Samples / Gotoh wan"
+  },
+  {
+    "id": "6C2DFE869BC34070",
+    "name": "C\u00E2pres",
+    "category": "Page 1 (actuelle) / Samples / Dumas"
+  },
+  {
+    "id": "2707E8645FEC8BAF",
+    "name": "Casse-toi",
+    "category": "Page 1 (actuelle) / Samples / Classe Am\u00E9ricaine"
+  },
+  {
+    "id": "36D10635C1466066",
+    "name": "Caviar",
+    "category": "Page 1 (actuelle) / Samples / Gordon Ramsay"
+  },
+  {
+    "id": "29273D61674DEEB0",
+    "name": "Cerveau",
+    "category": "Page 1 (actuelle) / Samples / Soral"
+  },
+  {
+    "id": "CAB6A0A6EB5B09DF",
+    "name": "Champion du monde",
+    "category": "Page 1 (actuelle) / Samples / D\u00EEner de cons"
+  },
+  {
+    "id": "0DBC0242851D3096",
+    "name": "Chat",
+    "category": "Page 1 (actuelle) / Samples / Discord / Julien"
+  },
+  {
+    "id": "EADE368C23B4B738",
+    "name": "Chauffera",
+    "category": "Page 1 (actuelle) / Samples / Classe Am\u00E9ricaine"
+  },
+  {
+    "id": "7BCD711C86089EED",
+    "name": "Checkpoints",
+    "category": "Page 1 (actuelle) / Samples / Discord / Julien"
+  },
+  {
+    "id": "556FA6652C353EBC",
+    "name": "Ch\u00E8vre",
+    "category": "Page 1 (actuelle) / Samples / Gordon Ramsay"
+  },
+  {
+    "id": "D003C1DE8E04E13D",
+    "name": "Chiant",
+    "category": "Page 1 (actuelle) / Samples / Mocky"
+  },
+  {
+    "id": "6754DAC5B67E1BED",
+    "name": "Chiasse",
+    "category": "Page 1 (actuelle) / Samples / Gordon Ramsay"
+  },
+  {
+    "id": "C1796BC1CDD71653",
+    "name": "Chier",
+    "category": "Page 1 (actuelle) / Samples / Jeux vid\u00E9o"
+  },
+  {
+    "id": "8CB7636CDD1EF730",
+    "name": "Chips 1",
+    "category": "Page 1 (actuelle) / Samples / Classe Am\u00E9ricaine"
+  },
+  {
+    "id": "9D520121D0BFDEFC",
+    "name": "Chips 2",
+    "category": "Page 1 (actuelle) / Samples / Classe Am\u00E9ricaine"
+  },
+  {
+    "id": "45072724AF19CB15",
+    "name": "Chips 3",
+    "category": "Page 1 (actuelle) / Samples / Classe Am\u00E9ricaine"
+  },
+  {
+    "id": "82755EA05066ACF0",
+    "name": "Choses \u00E0 dire",
+    "category": "Page 1 (actuelle) / Samples / Rollin"
+  },
+  {
+    "id": "9D78F136773D7897",
+    "name": "Cigarette",
+    "category": "Page 1 (actuelle) / Samples / GT Gabi"
+  },
+  {
+    "id": "89E2764E2B690C3B",
+    "name": "Citron",
+    "category": "Page 1 (actuelle) / Samples / Rollin"
+  },
+  {
+    "id": "19862E3AE297BD69",
+    "name": "Citrons",
+    "category": "Page 1 (actuelle) / Samples / Hooper"
+  },
+  {
+    "id": "2E71A6AF1227DCE7",
+    "name": "Clac clac clac",
+    "category": "Page 1 (actuelle) / Samples / Dumas"
+  },
+  {
+    "id": "F334CF4D6EE4B102",
+    "name": "Clair",
+    "category": "Page 1 (actuelle) / Samples / YT Game"
+  },
+  {
+    "id": "96B5E28A5A97AB03",
+    "name": "Classe mondiale",
+    "category": "Page 1 (actuelle) / Samples / D\u00EEner de cons"
+  },
+  {
+    "id": "C8AD2159F2BAD8F9",
+    "name": "Cloche",
+    "category": "Page 1 (actuelle) / Samples / Dumas"
+  },
+  {
+    "id": "3D682543AA565A65",
+    "name": "Clown",
+    "category": "Page 1 (actuelle) / Samples / D\u00EEner de cons"
+  },
+  {
+    "id": "FACBF76DACA6A852",
+    "name": "Cochon",
+    "category": "Page 1 (actuelle) / Samples / D\u00EEner de cons"
+  },
+  {
+    "id": "032AC6F7C013ECF0",
+    "name": "Coffre",
+    "category": "Page 1 (actuelle) / Samples / Jeux vid\u00E9o"
+  },
+  {
+    "id": "D18A400950AEF262",
+    "name": "Cognac",
+    "category": "Page 1 (actuelle) / Samples / Dumas"
+  },
+  {
+    "id": "AEB371909CE9C8D7",
+    "name": "Coin",
+    "category": "Page 1 (actuelle) / Samples / Discord"
+  },
+  {
+    "id": "975B051FAA789786",
+    "name": "Comme \u00E7a",
+    "category": "Page 1 (actuelle) / Samples / Dumas"
+  },
+  {
+    "id": "90724A91546ACE70",
+    "name": "Comme une grosse merde",
+    "category": "Page 1 (actuelle) / Samples / Greg"
+  },
+  {
+    "id": "C3ECE1C42F1B1BA9",
+    "name": "Comment tu le dis",
+    "category": "Page 1 (actuelle) / Samples / GT Gabi"
+  },
+  {
+    "id": "A860A60354CB9A84",
+    "name": "Comprend rien",
+    "category": "Page 1 (actuelle) / Samples / Pop Culture / Kaamelott"
+  },
+  {
+    "id": "4FC37EC77B3F3980",
+    "name": "Compris",
+    "category": "Page 1 (actuelle) / Samples / D\u00EEner de cons"
+  },
+  {
+    "id": "BAC09B0FBFEF78A3",
+    "name": "Con",
+    "category": "Page 1 (actuelle) / Samples / D\u00EEner de cons"
+  },
+  {
+    "id": "B400FBEF01B0F553",
+    "name": "Con",
+    "category": "Page 1 (actuelle) / Samples / Hooper"
+  },
+  {
+    "id": "8F4F6A87929DDF11",
+    "name": "Con lui",
+    "category": "Page 1 (actuelle) / Samples / Pop Culture / Kaamelott"
+  },
+  {
+    "id": "4AED0F2A33105537",
+    "name": "Concept",
+    "category": "Page 1 (actuelle) / Samples / Soral"
+  },
+  {
+    "id": "FABF6F94035FFAE5",
+    "name": "Connard",
+    "category": "Page 1 (actuelle) / Samples / Etche- best"
+  },
+  {
+    "id": "CB05F82C53B207C7",
+    "name": "Connard 1",
+    "category": "Page 1 (actuelle) / Samples / D\u00EEner de cons"
+  },
+  {
+    "id": "02DB97BBC339E70D",
+    "name": "Connard 2",
+    "category": "Page 1 (actuelle) / Samples / D\u00EEner de cons"
+  },
+  {
+    "id": "79CEA46E0C9B655D",
+    "name": "Connard chez moi",
+    "category": "Page 1 (actuelle) / Samples / Pop Culture"
+  },
+  {
+    "id": "2C0D98FDEAA21555",
+    "name": "Content",
+    "category": "Page 1 (actuelle) / Samples / GT Gabi"
+  },
+  {
+    "id": "4F7D0601FCF52149",
+    "name": "Contre son camp",
+    "category": "Page 1 (actuelle) / Samples / Pop Culture"
+  },
+  {
+    "id": "A11EACA0AD57FE81",
+    "name": "Cornichons",
+    "category": "Page 1 (actuelle) / Samples / Gotoh wan"
+  },
+  {
+    "id": "B0E59FB410BCCB03",
+    "name": "Coucou",
+    "category": "Page 1 (actuelle) / Samples / Pop Culture"
+  },
+  {
+    "id": "B818B6355A3FE8CA",
+    "name": "Couette",
+    "category": "Page 1 (actuelle) / Samples / D\u00EEner de cons"
+  },
+  {
+    "id": "5AA4F1939AEB5709",
+    "name": "Couille",
+    "category": "Page 1 (actuelle) / Samples / Soral"
+  },
+  {
+    "id": "BC884C34087C5538",
+    "name": "Couille ailes",
+    "category": "Page 1 (actuelle) / Samples / Gotoh wan"
+  },
+  {
+    "id": "469B8268BA7D51A0",
+    "name": "Coup de poing",
+    "category": "Page 1 (actuelle) / Samples / Gotoh wan"
+  },
+  {
+    "id": "AED26C348B027173",
+    "name": "Coupe 2",
+    "category": "Page 1 (actuelle) / Samples / Dumas"
+  },
+  {
+    "id": "7651258B2F02E7AB",
+    "name": "Coupe 4",
+    "category": "Page 1 (actuelle) / Samples / Dumas"
+  },
+  {
+    "id": "E5439724CB5C225E",
+    "name": "Couteau lent",
+    "category": "Page 1 (actuelle) / Samples / Dumas"
+  },
+  {
+    "id": "44A191DF89AB03BE",
+    "name": "Couteau rapide",
+    "category": "Page 1 (actuelle) / Samples / Dumas"
+  },
+  {
+    "id": "1700441CA32309FB",
+    "name": "Cracher",
+    "category": "Page 1 (actuelle) / Samples / Rollin"
+  },
+  {
+    "id": "93643ECD655E69D4",
+    "name": "Crampon",
+    "category": "Page 1 (actuelle) / Samples / Gotoh wan"
+  },
+  {
+    "id": "795000FB1C9A6AE1",
+    "name": "Cri",
+    "category": "Page 1 (actuelle) / Samples / Gotoh wan"
+  },
+  {
+    "id": "C9316601C837798E",
+    "name": "Cri p\u00E9dale",
+    "category": "Page 1 (actuelle) / Samples / Discord / Yaki"
+  },
+  {
+    "id": "341DE9B93A117C60",
+    "name": "Crois pas",
+    "category": "Page 1 (actuelle) / Samples / Pop Culture"
+  },
+  {
+    "id": "5982AA136718B443",
+    "name": "Cul pute",
+    "category": "Page 1 (actuelle) / Samples / Musique"
+  },
+  {
+    "id": "7202F200D9A7D41B",
+    "name": "Culottes",
+    "category": "Page 1 (actuelle) / Samples / Soral"
+  },
+  {
+    "id": "8B250C286031745E",
+    "name": "D",
+    "category": "Page 1 (actuelle) / Samples / Jeux vid\u00E9o / Dark Souls"
+  },
+  {
+    "id": "3C1E5BB0F03901EA",
+    "name": "D\u0027accord",
+    "category": "Page 1 (actuelle) / Samples / Poli- tique"
+  },
+  {
+    "id": "2E720DF33683EF74",
+    "name": "Dans l\u0027cul",
+    "category": "Page 1 (actuelle) / Samples / D\u00EEner de cons"
+  },
+  {
+    "id": "EC19FD36E85B6950",
+    "name": "De la merde",
+    "category": "Page 1 (actuelle) / Samples / Soral"
+  },
+  {
+    "id": "9654C513429592F9",
+    "name": "D\u00E9boutonne",
+    "category": "Page 1 (actuelle) / Samples / Bigard"
+  },
+  {
+    "id": "74946577512DB806",
+    "name": "D\u00E9but",
+    "category": "Page 1 (actuelle) / Samples / D\u00EEner de cons"
+  },
+  {
+    "id": "87C79D9205193BE2",
+    "name": "D\u00E9cide",
+    "category": "Page 1 (actuelle) / Samples / Rollin"
+  },
+  {
+    "id": "9FB13B0F167DD38C",
+    "name": "D\u00E9\u00E7u",
+    "category": "Page 1 (actuelle) / Samples / Pop Culture"
+  },
+  {
+    "id": "FB49D38D5D98A0C2",
+    "name": "D\u00E9gage",
+    "category": "Page 1 (actuelle) / Samples / Fanta"
+  },
+  {
+    "id": "49603745D7D3042F",
+    "name": "D\u00E9g\u00E2ts",
+    "category": "Page 1 (actuelle) / Samples / Discord / Julien"
+  },
+  {
+    "id": "CAEEDDC8D2525678",
+    "name": "D\u00E9g\u00E2ts",
+    "category": "Page 1 (actuelle) / Samples / Discord / Saphire"
+  },
+  {
+    "id": "265E6A31CF638AE0",
+    "name": "D\u00E9g\u00E9n\u00E9r\u00E9",
+    "category": "Page 1 (actuelle) / Samples / Pop Culture"
+  },
+  {
+    "id": "3A9C52381610433B",
+    "name": "Demi-boudins",
+    "category": "Page 1 (actuelle) / Samples / Soral"
+  },
+  {
+    "id": "0C5733F924C4233F",
+    "name": "D\u00E9p\u00EAche",
+    "category": "Page 1 (actuelle) / Samples / Greg"
+  },
+  {
+    "id": "B3DB2C8BB8344DFE",
+    "name": "Descends",
+    "category": "Page 1 (actuelle) / Samples / Poli- tique"
+  },
+  {
+    "id": "DC343E4BA001190B",
+    "name": "D\u00E9truire",
+    "category": "Page 1 (actuelle) / Samples / Greg"
+  },
+  {
+    "id": "E203A16D7541116E",
+    "name": "Deuxi\u00E8me couche",
+    "category": "Page 1 (actuelle) / Samples / P\u00E8re No\u00EBl"
+  },
+  {
+    "id": "82A965DF9BD43C45",
+    "name": "Devinette",
+    "category": "Page 1 (actuelle) / Samples / Rollin"
+  },
+  {
+    "id": "921CD02E9BD3BB68",
+    "name": "Diablerie",
+    "category": "Page 1 (actuelle) / Samples / Visiteurs"
+  },
+  {
+    "id": "CF2B1D516A795559",
+    "name": "Discrimination",
+    "category": "Page 1 (actuelle) / Samples / Classe Am\u00E9ricaine"
+  },
+  {
+    "id": "6A8CD106004F0496",
+    "name": "Discuter",
+    "category": "Page 1 (actuelle) / Samples / Classe Am\u00E9ricaine"
+  },
+  {
+    "id": "EECB6CE1C9DA5F64",
+    "name": "Doigt profond",
+    "category": "Page 1 (actuelle) / Samples / Gotoh wan"
+  },
+  {
+    "id": "3CEC71FDE3D0C73E",
+    "name": "Double 1",
+    "category": "Page 1 (actuelle) / Samples / Jeux vid\u00E9o"
+  },
+  {
+    "id": "A36CA07AC69B1B7B",
+    "name": "Double 2",
+    "category": "Page 1 (actuelle) / Samples / Jeux vid\u00E9o"
+  },
+  {
+    "id": "4A8CF6C6E6D67E5C",
+    "name": "Dou\u00E9",
+    "category": "Page 1 (actuelle) / Samples / D\u00EEner de cons"
+  },
+  {
+    "id": "2B0FD1F9E614BAAB",
+    "name": "Droits",
+    "category": "Page 1 (actuelle) / Samples / D\u00EEner de cons"
+  },
+  {
+    "id": "9FF3E26E36B84C95",
+    "name": "Duel",
+    "category": "Page 1 (actuelle) / Samples / Classe Am\u00E9ricaine"
+  },
+  {
+    "id": "960219B6D4A88E43",
+    "name": "Dun Dun",
+    "category": "Page 1 (actuelle) / Samples / Pop Culture"
+  },
+  {
+    "id": "C1AA3472B44A12CF",
+    "name": "E",
+    "category": "Page 1 (actuelle) / Samples / Jeux vid\u00E9o / Dark Souls"
+  },
+  {
+    "id": "0E1EC201443ED121",
+    "name": "Eau",
+    "category": "Page 1 (actuelle) / Samples / Mocky"
+  },
+  {
+    "id": "17A73455501BD047",
+    "name": "\u00C9chelle",
+    "category": "Page 1 (actuelle) / Samples / Rollin"
+  },
+  {
+    "id": "8480AEFD185DECC5",
+    "name": "\u00C9crit textes",
+    "category": "Page 1 (actuelle) / Samples / Soral"
+  },
+  {
+    "id": "608F05C160B7DBC0",
+    "name": "Eh non",
+    "category": "Page 1 (actuelle) / Samples / Soral"
+  },
+  {
+    "id": "796A1A5DE9653F86",
+    "name": "Eh oui",
+    "category": "Page 1 (actuelle) / Samples / Gotoh wan"
+  },
+  {
+    "id": "C5501CF48F314D7D",
+    "name": "Encul\u00E9",
+    "category": "Page 1 (actuelle) / Samples / Classe Am\u00E9ricaine"
+  },
+  {
+    "id": "5CAA9D5F7DD94E39",
+    "name": "Enfoir\u00E9 Namek",
+    "category": "Page 1 (actuelle) / Samples / Gotoh wan"
+  },
+  {
+    "id": "8C76A21C2B057126",
+    "name": "Envie de jouer",
+    "category": "Page 1 (actuelle) / Samples / Discord / Alex"
+  },
+  {
+    "id": "A1C45B95E7F886C3",
+    "name": "\u00C9vry",
+    "category": "Page 1 (actuelle) / Samples / Poli- tique"
+  },
+  {
+    "id": "83E3075DC45620CC",
+    "name": "Ex Serv",
+    "category": "Page 1 (actuelle) / Samples / YT Game"
+  },
+  {
+    "id": "FD2889BA276AF5C9",
+    "name": "Exploit",
+    "category": "Page 1 (actuelle) / Samples / Visiteurs"
+  },
+  {
+    "id": "4BF5B6809CB51969",
+    "name": "Explosion",
+    "category": "Page 1 (actuelle) / Samples / Jeux vid\u00E9o"
+  },
+  {
+    "id": "52BBE77035E05AAF",
+    "name": "F",
+    "category": "Page 1 (actuelle) / Samples / Jeux vid\u00E9o / Dark Souls"
+  },
+  {
+    "id": "3EFDF886B1CB7041",
+    "name": "F\u00E2ch\u00E9",
+    "category": "Page 1 (actuelle) / Samples / Gotoh wan"
+  },
+  {
+    "id": "2E3A2120684B8F1D",
+    "name": "Facile",
+    "category": "Page 1 (actuelle) / Samples / GT Gabi"
+  },
+  {
+    "id": "0EE9D47DE8FFEC8C",
+    "name": "Fat",
+    "category": "Page 1 (actuelle) / Samples / Hedge"
+  },
+  {
+    "id": "55B7DF533D5C9C83",
+    "name": "Fatigant",
+    "category": "Page 1 (actuelle) / Samples / Discord / Alex"
+  },
+  {
+    "id": "E1CB632246B4405B",
+    "name": "Fatigant intelligent",
+    "category": "Page 1 (actuelle) / Samples / D\u00EEner de cons"
+  },
+  {
+    "id": "2096D6ECCC968268",
+    "name": "Femme",
+    "category": "Page 1 (actuelle) / Samples / Pop Culture"
+  },
+  {
+    "id": "FC66140BC5B5FBBC",
+    "name": "Fils de pute",
+    "category": "Page 1 (actuelle) / Samples / Greg"
+  },
+  {
+    "id": "57DB0D0BF3574551",
+    "name": "Fion pute",
+    "category": "Page 1 (actuelle) / Samples / Discord / Anto"
+  },
+  {
+    "id": "4AD7F9F83D1C6313",
+    "name": "Foldingo",
+    "category": "Page 1 (actuelle) / Samples / Visiteurs"
+  },
+  {
+    "id": "987CA33B78A97A3B",
+    "name": "Fonctionne pas",
+    "category": "Page 1 (actuelle) / Samples / Hedge"
+  },
+  {
+    "id": "826A8BB776B28098",
+    "name": "Forme",
+    "category": "Page 1 (actuelle) / Samples / D\u00EEner de cons"
+  },
+  {
+    "id": "CC8C39AF65970EA1",
+    "name": "Fort",
+    "category": "Page 1 (actuelle) / Samples / Pop Culture / Kaamelott"
+  },
+  {
+    "id": "DBE35F28DA638297",
+    "name": "Fou",
+    "category": "Page 1 (actuelle) / Samples / Poli- tique"
+  },
+  {
+    "id": "DB0D664FCE768981",
+    "name": "Frites",
+    "category": "Page 1 (actuelle) / Samples / Dumas"
+  },
+  {
+    "id": "BD94FB54A2D6E3D0",
+    "name": "Fumez",
+    "category": "Page 1 (actuelle) / Samples / Poli- tique"
+  },
+  {
+    "id": "B0A47DDCC33344AE",
+    "name": "Furonculose",
+    "category": "Page 1 (actuelle) / Samples / Rollin"
+  },
+  {
+    "id": "8D32617FD4809736",
+    "name": "Fut\u00E9",
+    "category": "Page 1 (actuelle) / Samples / Visiteurs"
+  },
+  {
+    "id": "1D6F2866B038AFB3",
+    "name": "Gabi",
+    "category": "Page 1 (actuelle) / Samples / Strip Tease"
+  },
+  {
+    "id": "CFB75538C6424410",
+    "name": "Gar\u00E7onni\u00E8re",
+    "category": "Page 1 (actuelle) / Samples / D\u00EEner de cons"
+  },
+  {
+    "id": "07B969DDA70A228F",
+    "name": "Gaule",
+    "category": "Page 1 (actuelle) / Samples / Discord / Sicou"
+  },
+  {
+    "id": "ED205431B7090A6B",
+    "name": "Gay Bowser",
+    "category": "Page 1 (actuelle) / Samples / Jeux vid\u00E9o"
+  },
+  {
+    "id": "2DDA742A443D113E",
+    "name": "G\u00EAnant",
+    "category": "Page 1 (actuelle) / Samples / Gordon Ramsay"
+  },
+  {
+    "id": "28B92132B83E7791",
+    "name": "Gilet",
+    "category": "Page 1 (actuelle) / Samples / P\u00E8re No\u00EBl"
+  },
+  {
+    "id": "4A2F9F3460CEB156",
+    "name": "Glace 1",
+    "category": "Page 1 (actuelle) / Samples / GT Gabi"
+  },
+  {
+    "id": "135314C79803A3F0",
+    "name": "Glace 2",
+    "category": "Page 1 (actuelle) / Samples / GT Gabi"
+  },
+  {
+    "id": "ECC937AA6B4B11EE",
+    "name": "Godasses",
+    "category": "Page 1 (actuelle) / Samples / Strip Tease"
+  },
+  {
+    "id": "8A13767AA91EC1DE",
+    "name": "Gosses",
+    "category": "Page 1 (actuelle) / Samples / Gordon Ramsay"
+  },
+  {
+    "id": "A6F0A3F2C3E8DCFB",
+    "name": "Gourde",
+    "category": "Page 1 (actuelle) / Samples / Discord / Yaki"
+  },
+  {
+    "id": "2715DEA02CD313DE",
+    "name": "Go\u00FBts de merde",
+    "category": "Page 1 (actuelle) / Samples / Jeux vid\u00E9o"
+  },
+  {
+    "id": "C6275F96A4F88604",
+    "name": "Graphiques",
+    "category": "Page 1 (actuelle) / Samples / GT Gabi"
+  },
+  {
+    "id": "92513BA558075E22",
+    "name": "Grenade",
+    "category": "Page 1 (actuelle) / Samples / Dieudo"
+  },
+  {
+    "id": "9586175D241471C5",
+    "name": "Gros",
+    "category": "Page 1 (actuelle) / Samples / Hedge"
+  },
+  {
+    "id": "BF32D69680A9C725",
+    "name": "Grosse b\u00EAte",
+    "category": "Page 1 (actuelle) / Samples / Visiteurs"
+  },
+  {
+    "id": "3A35EE1B6AD49910",
+    "name": "GTA",
+    "category": "Page 1 (actuelle) / Samples / Jeux vid\u00E9o"
+  },
+  {
+    "id": "53D592828019D099",
+    "name": "Guerre",
+    "category": "Page 1 (actuelle) / Samples / Pop Culture"
+  },
+  {
+    "id": "A3D34C7C0B35F9FA",
+    "name": "Gueule",
+    "category": "Page 1 (actuelle) / Samples / Pop Culture"
+  },
+  {
+    "id": "A6C4CB9BDEDD7FDF",
+    "name": "Handisport",
+    "category": "Page 1 (actuelle) / Samples / Soral"
+  },
+  {
+    "id": "42BA0361355E5E01",
+    "name": "Histoire",
+    "category": "Page 1 (actuelle) / Samples / GT Gabi"
+  },
+  {
+    "id": "70A488C2B153B51D",
+    "name": "Historie",
+    "category": "Page 1 (actuelle) / Samples / GT Gabi"
+  },
+  {
+    "id": "F68802782370EFC3",
+    "name": "Honteux",
+    "category": "Page 1 (actuelle) / Samples / Pop Culture"
+  },
+  {
+    "id": "01B5E19460B87875",
+    "name": "Horreur",
+    "category": "Page 1 (actuelle) / Samples / Poli- tique"
+  },
+  {
+    "id": "2C4200CCA8BA6400",
+    "name": "Huile",
+    "category": "Page 1 (actuelle) / Samples / Soral"
+  },
+  {
+    "id": "D34F6D24F1D45372",
+    "name": "Hu\u00EEtres",
+    "category": "Page 1 (actuelle) / Samples / Rollin"
+  },
+  {
+    "id": "AE91605F850EB789",
+    "name": "Humili\u00E9s",
+    "category": "Page 1 (actuelle) / Samples / YT Game"
+  },
+  {
+    "id": "7A17E228F384C940",
+    "name": "Il est bon",
+    "category": "Page 1 (actuelle) / Samples / Jeux vid\u00E9o"
+  },
+  {
+    "id": "642BE4AF79151F4B",
+    "name": "Il faut l\u0027savoir",
+    "category": "Page 1 (actuelle) / Samples / Soral"
+  },
+  {
+    "id": "1778460B9534EFAE",
+    "name": "Il m\u0027a encul\u00E9",
+    "category": "Page 1 (actuelle) / Samples / Discord / Alex"
+  },
+  {
+    "id": "DEE37DDA1EA1DBA9",
+    "name": "Il s\u0027amuse",
+    "category": "Page 1 (actuelle) / Samples / Gotoh wan"
+  },
+  {
+    "id": "504488084C136224",
+    "name": "Il voit tout",
+    "category": "Page 1 (actuelle) / Samples / D\u00EEner de cons"
+  },
+  {
+    "id": "59E7E43400D59665",
+    "name": "Imaginer",
+    "category": "Page 1 (actuelle) / Samples / D\u00EEner de cons"
+  },
+  {
+    "id": "5D6032D2AE02EEC2",
+    "name": "Immonde",
+    "category": "Page 1 (actuelle) / Samples / Pop Culture"
+  },
+  {
+    "id": "255D698A3EB47C31",
+    "name": "Incision",
+    "category": "Page 1 (actuelle) / Samples / Dumas"
+  },
+  {
+    "id": "D6B19E21B97EA4E5",
+    "name": "Indignit\u00E9",
+    "category": "Page 1 (actuelle) / Samples / Poli- tique"
+  },
+  {
+    "id": "DCA09AA75820C8E9",
+    "name": "Intelligent",
+    "category": "Page 1 (actuelle) / Samples / D\u00EEner de cons"
+  },
+  {
+    "id": "ED8B9BE0FE319EF5",
+    "name": "Int\u00E9resse pas",
+    "category": "Page 1 (actuelle) / Samples / P\u00E8re No\u00EBl"
+  },
+  {
+    "id": "98A5F6908C912775",
+    "name": "Intol\u00E9rable",
+    "category": "Page 1 (actuelle) / Samples / Classe Am\u00E9ricaine"
+  },
+  {
+    "id": "8FB99891C5FC8786",
+    "name": "J\u0027en ai vu",
+    "category": "Page 1 (actuelle) / Samples / Etche- best"
+  },
+  {
+    "id": "A5929CD20D345F2F",
+    "name": "J\u0027invente",
+    "category": "Page 1 (actuelle) / Samples / Rollin"
+  },
+  {
+    "id": "97EA219F3DAD8ECC",
+    "name": "J\u0027le connais pas",
+    "category": "Page 1 (actuelle) / Samples / D\u00EEner de cons"
+  },
+  {
+    "id": "8EA59338B84F73E9",
+    "name": "J\u0027suis une merde",
+    "category": "Page 1 (actuelle) / Samples / Discord / Saphire"
+  },
+  {
+    "id": "56B7933C531F56BF",
+    "name": "Japonais",
+    "category": "Page 1 (actuelle) / Samples / Gotoh wan"
+  },
+  {
+    "id": "C6BE5FC88D5858AC",
+    "name": "Je m\u0027amuse",
+    "category": "Page 1 (actuelle) / Samples / Gotoh wan"
+  },
+  {
+    "id": "6E0A4CFDB003E759",
+    "name": "Je sais pas",
+    "category": "Page 1 (actuelle) / Samples / GT Gabi"
+  },
+  {
+    "id": "43F59B662F998CC6",
+    "name": "Je saute",
+    "category": "Page 1 (actuelle) / Samples / Gotoh wan"
+  },
+  {
+    "id": "CF2E8BAEE46D3D8B",
+    "name": "Je t\u0027encule",
+    "category": "Page 1 (actuelle) / Samples / P\u00E8re No\u00EBl"
+  },
+  {
+    "id": "5AAD4706D2E8408A",
+    "name": "Jeanne",
+    "category": "Page 1 (actuelle) / Samples / Poli- tique"
+  },
+  {
+    "id": "35BB577973880BC7",
+    "name": "Johnny",
+    "category": "Page 1 (actuelle) / Samples / Pop Culture"
+  },
+  {
+    "id": "E377C017427443CB",
+    "name": "Joli",
+    "category": "Page 1 (actuelle) / Samples / D\u00EEner de cons"
+  },
+  {
+    "id": "79626BA96EEFFA58",
+    "name": "Jou\u00E9 ador\u00E9",
+    "category": "Page 1 (actuelle) / Samples / GT Gabi"
+  },
+  {
+    "id": "47FA31C8D520AD3B",
+    "name": "Jou\u00E9 au jeu",
+    "category": "Page 1 (actuelle) / Samples / GT Gabi"
+  },
+  {
+    "id": "1FE3617A725568D1",
+    "name": "Juger",
+    "category": "Page 1 (actuelle) / Samples / Classe Am\u00E9ricaine"
+  },
+  {
+    "id": "833532963A8641F9",
+    "name": "Julien",
+    "category": "Page 1 (actuelle) / Samples / Hooper"
+  },
+  {
+    "id": "DB3797695078EED8",
+    "name": "Juste 1",
+    "category": "Page 1 (actuelle) / Samples / D\u00EEner de cons / Suite"
+  },
+  {
+    "id": "6DD0BCCCF4E44DC4",
+    "name": "Juste 2",
+    "category": "Page 1 (actuelle) / Samples / D\u00EEner de cons / Suite"
+  },
+  {
+    "id": "97386C728E0F12CB",
+    "name": "Juste 3",
+    "category": "Page 1 (actuelle) / Samples / D\u00EEner de cons / Suite"
+  },
+  {
+    "id": "394A0D631D5579E2",
+    "name": "K\u00E9saveudire",
+    "category": "Page 1 (actuelle) / Samples / Strip Tease"
+  },
+  {
+    "id": "94D95D045B678710",
+    "name": "Ketchup",
+    "category": "Page 1 (actuelle) / Samples / Gordon Ramsay"
+  },
+  {
+    "id": "4A868176637BB732",
+    "name": "K\u00E9zav\u00E9f\u00E9",
+    "category": "Page 1 (actuelle) / Samples / Strip Tease"
+  },
+  {
+    "id": "F056D4C54BB44817",
+    "name": "Korogu Merki",
+    "category": "Page 1 (actuelle) / Samples / Jeux vid\u00E9o"
+  },
+  {
+    "id": "274DE4D6F4BF0399",
+    "name": "Kritter DKC2",
+    "category": "Page 1 (actuelle) / Samples / Jeux vid\u00E9o"
+  },
+  {
+    "id": "6DA9F7A11677EB5C",
+    "name": "Krook Chorus",
+    "category": "Page 1 (actuelle) / Samples / Musique"
+  },
+  {
+    "id": "0571D5DD9380EC12",
+    "name": "Laisse passer",
+    "category": "Page 1 (actuelle) / Samples / Gotoh wan"
+  },
+  {
+    "id": "F53C7BC474B8EDC5",
+    "name": "L\u00E9g\u00E8re onctueuse",
+    "category": "Page 1 (actuelle) / Samples / D\u00EEner de cons / Suite"
+  },
+  {
+    "id": "ECA03B561D47D214",
+    "name": "L\u00E8ve-toi",
+    "category": "Page 1 (actuelle) / Samples / Gotoh wan"
+  },
+  {
+    "id": "AC13D3C42F96FED4",
+    "name": "Long",
+    "category": "Page 1 (actuelle) / Samples / Mocky"
+  },
+  {
+    "id": "4DCBE928BA3B2311",
+    "name": "Loose",
+    "category": "Page 1 (actuelle) / Samples / YT Game"
+  },
+  {
+    "id": "2D382C0F734F1935",
+    "name": "M\u0027aider",
+    "category": "Page 1 (actuelle) / Samples / Gordon Ramsay"
+  },
+  {
+    "id": "3FB3920EF4DEF8E9",
+    "name": "Mais putain",
+    "category": "Page 1 (actuelle) / Samples / Hooper"
+  },
+  {
+    "id": "2BBBAB67ED07558A",
+    "name": "Mais quoi ?!",
+    "category": "Page 1 (actuelle) / Samples / Visiteurs"
+  },
+  {
+    "id": "F284EB3C8F869B92",
+    "name": "Malades",
+    "category": "Page 1 (actuelle) / Samples / Visiteurs"
+  },
+  {
+    "id": "33C117A8E4CB293E",
+    "name": "Malhonn\u00EAte",
+    "category": "Page 1 (actuelle) / Samples / Classe Am\u00E9ricaine"
+  },
+  {
+    "id": "70E7AFFE84A00C48",
+    "name": "Manipulation",
+    "category": "Page 1 (actuelle) / Samples / Rollin"
+  },
+  {
+    "id": "22B975863D716DE2",
+    "name": "March\u00E9 \u00E0 fond",
+    "category": "Page 1 (actuelle) / Samples / D\u00EEner de cons / Suite"
+  },
+  {
+    "id": "75542249B19EE489",
+    "name": "Marchera jamais",
+    "category": "Page 1 (actuelle) / Samples / D\u00EEner de cons / Suite"
+  },
+  {
+    "id": "C002ADFF7E40A21E",
+    "name": "Marrant pute",
+    "category": "Page 1 (actuelle) / Samples / Pop Culture"
+  },
+  {
+    "id": "94F866324F043FB2",
+    "name": "Mauvais",
+    "category": "Page 1 (actuelle) / Samples / Pop Culture"
+  },
+  {
+    "id": "3184CEF46E6BC785",
+    "name": "Mauvais hier soir",
+    "category": "Page 1 (actuelle) / Samples / Etche- best"
+  },
+  {
+    "id": "065638D680D78644",
+    "name": "Mauvais travail",
+    "category": "Page 1 (actuelle) / Samples / Hedge"
+  },
+  {
+    "id": "65B11572F1CF492C",
+    "name": "M\u00E9chant",
+    "category": "Page 1 (actuelle) / Samples / Pop Culture"
+  },
+  {
+    "id": "8612E56623EB45A0",
+    "name": "Menaces handicap\u00E9s",
+    "category": "Page 1 (actuelle) / Samples / Soral"
+  },
+  {
+    "id": "A0DF6D950BC81DE1",
+    "name": "M\u00E9n\u00E8s",
+    "category": "Page 1 (actuelle) / Samples / Soral"
+  },
+  {
+    "id": "4142D36ED942BEA2",
+    "name": "Mens",
+    "category": "Page 1 (actuelle) / Samples / Pop Culture"
+  },
+  {
+    "id": "48525353E28D2B3C",
+    "name": "Mercredi prochain",
+    "category": "Page 1 (actuelle) / Samples / D\u00EEner de cons / Suite"
+  },
+  {
+    "id": "1460AB9075D0B987",
+    "name": "Merde",
+    "category": "Page 1 (actuelle) / Samples / Discord / Sicou"
+  },
+  {
+    "id": "F2768C1616755FCF",
+    "name": "Merde",
+    "category": "Page 1 (actuelle) / Samples / P\u00E8re No\u00EBl"
+  },
+  {
+    "id": "B9004FF0551050F6",
+    "name": "Merde",
+    "category": "Page 1 (actuelle) / Samples / Poli- tique"
+  },
+  {
+    "id": "BF5FE13692F9A556",
+    "name": "M\u00E9tier",
+    "category": "Page 1 (actuelle) / Samples / Strip Tease"
+  },
+  {
+    "id": "3D1D542E45090758",
+    "name": "Metroid",
+    "category": "Page 1 (actuelle) / Samples / GT Gabi"
+  },
+  {
+    "id": "3ACED533C79FDBBE",
+    "name": "MGS Alert",
+    "category": "Page 1 (actuelle) / Samples / Jeux vid\u00E9o"
+  },
+  {
+    "id": "A6D78939C5AEDE82",
+    "name": "Mickey",
+    "category": "Page 1 (actuelle) / Samples / Dieudo"
+  },
+  {
+    "id": "B642947622B04187",
+    "name": "Mise en place",
+    "category": "Page 1 (actuelle) / Samples / Dumas"
+  },
+  {
+    "id": "2F2EEC4294041E3A",
+    "name": "Montjoie",
+    "category": "Page 1 (actuelle) / Samples / Visiteurs"
+  },
+  {
+    "id": "DC700C6BC19885AC",
+    "name": "Mort  connard",
+    "category": "Page 1 (actuelle) / Samples / Pop Culture / Kaamelott"
+  },
+  {
+    "id": "247A6F619696CA34",
+    "name": "Moteur",
+    "category": "Page 1 (actuelle) / Samples / Jeux vid\u00E9o"
+  },
+  {
+    "id": "D4F5426C1134B647",
+    "name": "Moto",
+    "category": "Page 1 (actuelle) / Samples / Soral"
+  },
+  {
+    "id": "6FD40198DFFEF024",
+    "name": "Mur de Berlin",
+    "category": "Page 1 (actuelle) / Samples / Gotoh wan"
+  },
+  {
+    "id": "E46E2ACD20FE279B",
+    "name": "Nacelles",
+    "category": "Page 1 (actuelle) / Samples / Strip Tease"
+  },
+  {
+    "id": "A82C7E829873604D",
+    "name": "Nardine",
+    "category": "Page 1 (actuelle) / Samples / Pop Culture"
+  },
+  {
+    "id": "656180BD95F755B2",
+    "name": "Nature",
+    "category": "Page 1 (actuelle) / Samples / Visiteurs"
+  },
+  {
+    "id": "04F4BF174A885F49",
+    "name": "Nazi",
+    "category": "Page 1 (actuelle) / Samples / Poli- tique"
+  },
+  {
+    "id": "3465A9DACE8C29BC",
+    "name": "N\u00E9gation",
+    "category": "Page 1 (actuelle) / Samples / Rollin"
+  },
+  {
+    "id": "C5AFC91BBE8FF76F",
+    "name": "N\u00E8gre",
+    "category": "Page 1 (actuelle) / Samples / Pop Culture"
+  },
+  {
+    "id": "FD5E630B7A5D8879",
+    "name": "Nenni",
+    "category": "Page 1 (actuelle) / Samples / Visiteurs"
+  },
+  {
+    "id": "A4133862A0E3978D",
+    "name": "Nettoies",
+    "category": "Page 1 (actuelle) / Samples / Greg"
+  },
+  {
+    "id": "D8079F6E8F9302C5",
+    "name": "Nid d\u0027amour",
+    "category": "Page 1 (actuelle) / Samples / D\u00EEner de cons / Suite"
+  },
+  {
+    "id": "82D51B40BBAA9059",
+    "name": "Nique",
+    "category": "Page 1 (actuelle) / Samples / Dieudo"
+  },
+  {
+    "id": "27F9377D9F6AC57E",
+    "name": "Niqu\u00E9 sa m\u00E8re",
+    "category": "Page 1 (actuelle) / Samples / Gotoh wan"
+  },
+  {
+    "id": "97D3648DDF277D9B",
+    "name": "Non",
+    "category": "Page 1 (actuelle) / Samples / Discord / Julien"
+  },
+  {
+    "id": "87C84B79BF4C785F",
+    "name": "Oblivion",
+    "category": "Page 1 (actuelle) / Samples / Jeux vid\u00E9o"
+  },
+  {
+    "id": "404C2C7C63A63BA6",
+    "name": "Oh non",
+    "category": "Page 1 (actuelle) / Samples / Discord / Alex"
+  },
+  {
+    "id": "158F6D5CB116310E",
+    "name": "Ohlala",
+    "category": "Page 1 (actuelle) / Samples / Mocky"
+  },
+  {
+    "id": "E9D4F73A2C56F23D",
+    "name": "Olala",
+    "category": "Page 1 (actuelle) / Samples / Hooper"
+  },
+  {
+    "id": "C46E8014FDDF0812",
+    "name": "On rigole",
+    "category": "Page 1 (actuelle) / Samples / Gotoh wan"
+  },
+  {
+    "id": "47C5D0AE061A821B",
+    "name": "Oneiroi",
+    "category": "Page 1 (actuelle) / Samples / Musique"
+  },
+  {
+    "id": "3BCD68BC20B2103C",
+    "name": "Organis\u00E9",
+    "category": "Page 1 (actuelle) / Samples / Mocky"
+  },
+  {
+    "id": "AA1502E47C1AF0BE",
+    "name": "Oui",
+    "category": "Page 1 (actuelle) / Samples / Discord / Julien"
+  },
+  {
+    "id": "3B91B725050F464B",
+    "name": "Oui ta gueule",
+    "category": "Page 1 (actuelle) / Samples / YT Game"
+  },
+  {
+    "id": "E6B945D80A186985",
+    "name": "Oui, peut-\u00EAtre",
+    "category": "Page 1 (actuelle) / Samples / Poli- tique"
+  },
+  {
+    "id": "FA9CC1062374B7D2",
+    "name": "Ours",
+    "category": "Page 1 (actuelle) / Samples / Gotoh wan"
+  },
+  {
+    "id": "97F6E8B946C45270",
+    "name": "Pain",
+    "category": "Page 1 (actuelle) / Samples / Gotoh wan"
+  },
+  {
+    "id": "E7CCDB1FC3594E2C",
+    "name": "Papapa",
+    "category": "Page 1 (actuelle) / Samples / Soral"
+  },
+  {
+    "id": "89B70596E074492C",
+    "name": "Paperasse",
+    "category": "Page 1 (actuelle) / Samples / GT Gabi"
+  },
+  {
+    "id": "D7886BB4E1D164BE",
+    "name": "Par des femmes",
+    "category": "Page 1 (actuelle) / Samples / Rollin"
+  },
+  {
+    "id": "0BA0A69A74E127E8",
+    "name": "Parasite",
+    "category": "Page 1 (actuelle) / Samples / Soral"
+  },
+  {
+    "id": "801B15DA62B8525A",
+    "name": "Pardon pseudos",
+    "category": "Page 1 (actuelle) / Samples / GT Gabi"
+  },
+  {
+    "id": "B4F88FFDDBC3F54B",
+    "name": "Pas anti s\u00E9mite",
+    "category": "Page 1 (actuelle) / Samples / Pop Culture"
+  },
+  {
+    "id": "96C7E4452228CA52",
+    "name": "Pas bon signe",
+    "category": "Page 1 (actuelle) / Samples / D\u00EEner de cons / Suite"
+  },
+  {
+    "id": "99AD6FF46B385722",
+    "name": "Pas de technique",
+    "category": "Page 1 (actuelle) / Samples / Pop Culture / Kaamelott"
+  },
+  {
+    "id": "87FE3DF7F750CC5F",
+    "name": "Pas du tout",
+    "category": "Page 1 (actuelle) / Samples / P\u00E8re No\u00EBl"
+  },
+  {
+    "id": "0F1688FBA01BF417",
+    "name": "Pas envie",
+    "category": "Page 1 (actuelle) / Samples / Etche- best"
+  },
+  {
+    "id": "25726EE49637DFC5",
+    "name": "Pas jouer",
+    "category": "Page 1 (actuelle) / Samples / Discord / Alex"
+  },
+  {
+    "id": "548A32566A73FD39",
+    "name": "Pas le temps",
+    "category": "Page 1 (actuelle) / Samples / Mocky"
+  },
+  {
+    "id": "D24DB5D4FE89035D",
+    "name": "Pas long",
+    "category": "Page 1 (actuelle) / Samples / Rollin"
+  },
+  {
+    "id": "810874FB01912772",
+    "name": "Pas maintenant",
+    "category": "Page 1 (actuelle) / Samples / Pop Culture"
+  },
+  {
+    "id": "C2CD77C2968015FB",
+    "name": "Pas toi qui d\u00E9cide",
+    "category": "Page 1 (actuelle) / Samples / Fanta"
+  },
+  {
+    "id": "C560CAC242CB5B8C",
+    "name": "Pas tr\u00E8s net",
+    "category": "Page 1 (actuelle) / Samples / D\u00EEner de cons / Suite"
+  },
+  {
+    "id": "447BF7EBC6668EFF",
+    "name": "Pas trop",
+    "category": "Page 1 (actuelle) / Samples / Dumas"
+  },
+  {
+    "id": "F55728C302F09B4F",
+    "name": "Patinage",
+    "category": "Page 1 (actuelle) / Samples / D\u00EEner de cons / Suite"
+  },
+  {
+    "id": "682A341E878A1DA7",
+    "name": "Pauvres baiser",
+    "category": "Page 1 (actuelle) / Samples / Gotoh wan"
+  },
+  {
+    "id": "16A51697A54E9A37",
+    "name": "PDF",
+    "category": "Page 1 (actuelle) / Samples / Fanta"
+  },
+  {
+    "id": "BB3361F9117378DC",
+    "name": "P\u00E9d\u00E9",
+    "category": "Page 1 (actuelle) / Samples / Discord / Saphire"
+  },
+  {
+    "id": "954B1A1CA6DE1C19",
+    "name": "P\u00E9d\u00E9 !",
+    "category": "Page 1 (actuelle) / Samples / Poli- tique"
+  },
+  {
+    "id": "B5597868056E326A",
+    "name": "Pens\u00E9",
+    "category": "Page 1 (actuelle) / Samples / Rollin"
+  },
+  {
+    "id": "E0F9F0169F7FD1E2",
+    "name": "Perchman",
+    "category": "Page 1 (actuelle) / Samples / Mocky"
+  },
+  {
+    "id": "A11A9857BA3A0BE1",
+    "name": "Perlim pinpin",
+    "category": "Page 1 (actuelle) / Samples / Poli- tique"
+  },
+  {
+    "id": "EBF73979180A3537",
+    "name": "Perroquet",
+    "category": "Page 1 (actuelle) / Samples / D\u00EEner de cons / Suite"
+  },
+  {
+    "id": "69AE7987A220A0CF",
+    "name": "P\u00E9t\u00E9",
+    "category": "Page 1 (actuelle) / Samples / Soral"
+  },
+  {
+    "id": "7E7D821FD555CA02",
+    "name": "P\u00E9t\u00E9 mon oignon",
+    "category": "Page 1 (actuelle) / Samples / Hooper"
+  },
+  {
+    "id": "4BE09841E16860CD",
+    "name": "Petit couteau",
+    "category": "Page 1 (actuelle) / Samples / Dumas"
+  },
+  {
+    "id": "ED4DDCED40B235CE",
+    "name": "Peut-\u00EAtre",
+    "category": "Page 1 (actuelle) / Samples / Pop Culture"
+  },
+  {
+    "id": "047E7F240D77C2DA",
+    "name": "Pharisien",
+    "category": "Page 1 (actuelle) / Samples / Poli- tique"
+  },
+  {
+    "id": "202626C6697AD200",
+    "name": "Philosophe",
+    "category": "Page 1 (actuelle) / Samples / Strip Tease"
+  },
+  {
+    "id": "1DCF16216C3AD3B9",
+    "name": "Pignon",
+    "category": "Page 1 (actuelle) / Samples / D\u00EEner de cons / Suite"
+  },
+  {
+    "id": "93B7693C5FABE3E7",
+    "name": "Pipes caf\u00E9",
+    "category": "Page 1 (actuelle) / Samples / Soral"
+  },
+  {
+    "id": "E42C54B6B71ED155",
+    "name": "Pipi",
+    "category": "Page 1 (actuelle) / Samples / Visiteurs"
+  },
+  {
+    "id": "CB8E3D6955728602",
+    "name": "Pisse",
+    "category": "Page 1 (actuelle) / Samples / Jeux vid\u00E9o"
+  },
+  {
+    "id": "D17D8814F2AB7145",
+    "name": "Pitance",
+    "category": "Page 1 (actuelle) / Samples / Visiteurs"
+  },
+  {
+    "id": "D8E9451DF9EE931D",
+    "name": "Planche \u00E0 pain",
+    "category": "Page 1 (actuelle) / Samples / Pop Culture"
+  },
+  {
+    "id": "35A67A089A2A2A28",
+    "name": "Planning",
+    "category": "Page 1 (actuelle) / Samples / GT Gabi"
+  },
+  {
+    "id": "E63FD2A2A2A3669D",
+    "name": "Plant\u00E9",
+    "category": "Page 1 (actuelle) / Samples / Pop Culture"
+  },
+  {
+    "id": "10BD554BBF37CAF3",
+    "name": "Plat pays",
+    "category": "Page 1 (actuelle) / Samples / D\u00EEner de cons / Suite"
+  },
+  {
+    "id": "A46D38BD49469005",
+    "name": "Plus m\u00E9tier d\u0027homme",
+    "category": "Page 1 (actuelle) / Samples / Strip Tease"
+  },
+  {
+    "id": "E28F5E39AF9874B8",
+    "name": "Po\u00E8me",
+    "category": "Page 1 (actuelle) / Samples / Fanta"
+  },
+  {
+    "id": "1CA88B355D129436",
+    "name": "Pognon",
+    "category": "Page 1 (actuelle) / Samples / Bigard"
+  },
+  {
+    "id": "5CB34C2F4B2F1FB9",
+    "name": "Ponjour",
+    "category": "Page 1 (actuelle) / Samples / YT Game"
+  },
+  {
+    "id": "3DDFA170AC441686",
+    "name": "Porte- documents",
+    "category": "Page 1 (actuelle) / Samples / D\u00EEner de cons / Suite"
+  },
+  {
+    "id": "0B1B6C88FB85C7AF",
+    "name": "Poulardes",
+    "category": "Page 1 (actuelle) / Samples / Visiteurs"
+  },
+  {
+    "id": "50B52A33142351F3",
+    "name": "Pourquoi",
+    "category": "Page 1 (actuelle) / Samples / Discord / Alex"
+  },
+  {
+    "id": "7677E8327F9E93CD",
+    "name": "Pourquoi",
+    "category": "Page 1 (actuelle) / Samples / Pop Culture"
+  },
+  {
+    "id": "4052B74DD4FA7EF1",
+    "name": "Prendre derri\u00E8re",
+    "category": "Page 1 (actuelle) / Samples / Gotoh wan"
+  },
+  {
+    "id": "B77440C5EFB3BD2E",
+    "name": "Prends-moi",
+    "category": "Page 1 (actuelle) / Samples / Discord / Julien"
+  },
+  {
+    "id": "4F24E622BF9D67EC",
+    "name": "Pr\u00E9pa",
+    "category": "Page 1 (actuelle) / Samples / Mocky"
+  },
+  {
+    "id": "0EC4482639D3D736",
+    "name": "Preuve courage",
+    "category": "Page 1 (actuelle) / Samples / P\u00E8re No\u00EBl"
+  },
+  {
+    "id": "C2B09C7A93019875",
+    "name": "Prime",
+    "category": "Page 1 (actuelle) / Samples / Discord / Yaki"
+  },
+  {
+    "id": "A7337981958E3EA9",
+    "name": "Princesse",
+    "category": "Page 1 (actuelle) / Samples / Soral"
+  },
+  {
+    "id": "37A4FE69029B1FCE",
+    "name": "Prof Chen",
+    "category": "Page 1 (actuelle) / Samples / Gotoh wan"
+  },
+  {
+    "id": "0D3D05EE564CCA2D",
+    "name": "Projet Talmud",
+    "category": "Page 1 (actuelle) / Samples / Soral"
+  },
+  {
+    "id": "E71C367FFF309E10",
+    "name": "Prout",
+    "category": "Page 1 (actuelle) / Samples / Discord / Alex"
+  },
+  {
+    "id": "27B30990375F410F",
+    "name": "Prout 1",
+    "category": "Page 1 (actuelle) / Samples / Discord"
+  },
+  {
+    "id": "FB39C4523FC80A42",
+    "name": "Prout 2",
+    "category": "Page 1 (actuelle) / Samples / Discord"
+  },
+  {
+    "id": "5CAA2C0A402D42EB",
+    "name": "Provocation",
+    "category": "Page 1 (actuelle) / Samples / Poli- tique"
+  },
+  {
+    "id": "3CD3FCE3F6BDC279",
+    "name": "Pseudos d\u00E9biles",
+    "category": "Page 1 (actuelle) / Samples / Soral"
+  },
+  {
+    "id": "AB92AAD9F0BDF76A",
+    "name": "Ptite bite",
+    "category": "Page 1 (actuelle) / Samples / Hooper"
+  },
+  {
+    "id": "ACD7DCAF8D828A9B",
+    "name": "Ptites bites",
+    "category": "Page 1 (actuelle) / Samples / D\u00EEner de cons / Suite"
+  },
+  {
+    "id": "22B62193CF010C72",
+    "name": "Puire",
+    "category": "Page 1 (actuelle) / Samples / Visiteurs"
+  },
+  {
+    "id": "339B99A11D2A8442",
+    "name": "Putain le gars",
+    "category": "Page 1 (actuelle) / Samples / Discord / Alex"
+  },
+  {
+    "id": "C7B18284490F4794",
+    "name": "Pute",
+    "category": "Page 1 (actuelle) / Samples / Gotoh wan"
+  },
+  {
+    "id": "6522B7F11CA778FC",
+    "name": "Pute",
+    "category": "Page 1 (actuelle) / Samples / Pop Culture / Suite"
+  },
+  {
+    "id": "8D62268FE2CD93EC",
+    "name": "Pute suisse",
+    "category": "Page 1 (actuelle) / Samples / Soral"
+  },
+  {
+    "id": "7A907D1A453C35A8",
+    "name": "Puzzle",
+    "category": "Page 1 (actuelle) / Samples / Jeux vid\u00E9o"
+  },
+  {
+    "id": "D4E0C281FA379F90",
+    "name": "Question",
+    "category": "Page 1 (actuelle) / Samples / GT Gabi"
+  },
+  {
+    "id": "F286817E46A81EDD",
+    "name": "Quoi la baise",
+    "category": "Page 1 (actuelle) / Samples / Discord / Alex"
+  },
+  {
+    "id": "44396BCCA630A4B2",
+    "name": "Racaille",
+    "category": "Page 1 (actuelle) / Samples / Jeux vid\u00E9o"
+  },
+  {
+    "id": "CAB136FCB301E7FB",
+    "name": "Racaille",
+    "category": "Page 1 (actuelle) / Samples / Poli- tique"
+  },
+  {
+    "id": "63FF7E6019FD382A",
+    "name": "Raciste",
+    "category": "Page 1 (actuelle) / Samples / Classe Am\u00E9ricaine"
+  },
+  {
+    "id": "1A919C447BE2A517",
+    "name": "Raclettes",
+    "category": "Page 1 (actuelle) / Samples / Strip Tease"
+  },
+  {
+    "id": "8BF967154CF288F1",
+    "name": "Raison",
+    "category": "Page 1 (actuelle) / Samples / Pop Culture / Suite"
+  },
+  {
+    "id": "7DE49B111A84B4A7",
+    "name": "Rajeunit",
+    "category": "Page 1 (actuelle) / Samples / Poli- tique"
+  },
+  {
+    "id": "C7AAC7BF865DDF50",
+    "name": "Ramasse",
+    "category": "Page 1 (actuelle) / Samples / Greg"
+  },
+  {
+    "id": "C0BC4FAA0A54F7E7",
+    "name": "Rappelle",
+    "category": "Page 1 (actuelle) / Samples / Strip Tease"
+  },
+  {
+    "id": "C33591CCB171C131",
+    "name": "Rattraper",
+    "category": "Page 1 (actuelle) / Samples / P\u00E8re No\u00EBl"
+  },
+  {
+    "id": "9744784DEDDDE6BE",
+    "name": "R\u00E9fl\u00E9chissez",
+    "category": "Page 1 (actuelle) / Samples / Poli- tique"
+  },
+  {
+    "id": "5969574EA45C8C90",
+    "name": "Respect",
+    "category": "Page 1 (actuelle) / Samples / YT Game"
+  },
+  {
+    "id": "231D73D91F511319",
+    "name": "Responsable",
+    "category": "Page 1 (actuelle) / Samples / D\u00EEner de cons / Suite"
+  },
+  {
+    "id": "E6D8027AF7C3DA44",
+    "name": "R\u00E9ussissement",
+    "category": "Page 1 (actuelle) / Samples / Visiteurs"
+  },
+  {
+    "id": "964D7933BC8CC324",
+    "name": "Rhabille",
+    "category": "Page 1 (actuelle) / Samples / D\u00EEner de cons / Suite"
+  },
+  {
+    "id": "C03D78EC1AC73F1B",
+    "name": "Rien r\u00E9ussi",
+    "category": "Page 1 (actuelle) / Samples / Gotoh wan"
+  },
+  {
+    "id": "23B31AB8B34D8414",
+    "name": "Rien vu",
+    "category": "Page 1 (actuelle) / Samples / Jeux vid\u00E9o"
+  },
+  {
+    "id": "2610D47B6A44B885",
+    "name": "Rigolo",
+    "category": "Page 1 (actuelle) / Samples / Discord / Alex"
+  },
+  {
+    "id": "2FE2727A616FEDE6",
+    "name": "Rire",
+    "category": "Page 1 (actuelle) / Samples / D\u00EEner de cons / Suite"
+  },
+  {
+    "id": "010650F6AEA12B11",
+    "name": "Rire porte",
+    "category": "Page 1 (actuelle) / Samples / Discord / Alex"
+  },
+  {
+    "id": "4D6D12C142C7229B",
+    "name": "Rondelles",
+    "category": "Page 1 (actuelle) / Samples / Dumas"
+  },
+  {
+    "id": "2BACFB558353447C",
+    "name": "Rot",
+    "category": "Page 1 (actuelle) / Samples / Discord"
+  },
+  {
+    "id": "2FFC7352D38A2A1B",
+    "name": "Rouquin",
+    "category": "Page 1 (actuelle) / Samples / Poli- tique"
+  },
+  {
+    "id": "A8BFB9F4F56274CC",
+    "name": "S\u0027en branle",
+    "category": "Page 1 (actuelle) / Samples / Pop Culture / Kaamelott"
+  },
+  {
+    "id": "1BB5D9E60BF995F4",
+    "name": "S\u0027enculer",
+    "category": "Page 1 (actuelle) / Samples / Soral"
+  },
+  {
+    "id": "E1A05805C084E81F",
+    "name": "Sac",
+    "category": "Page 1 (actuelle) / Samples / Strip Tease"
+  },
+  {
+    "id": "3E3262DF19083107",
+    "name": "Sac",
+    "category": "Page 1 (actuelle) / Samples / Pop Culture / Suite"
+  },
+  {
+    "id": "EED0DE2000BF91A6",
+    "name": "Salope",
+    "category": "Page 1 (actuelle) / Samples / Greg"
+  },
+  {
+    "id": "AF5F6E7ED715A58C",
+    "name": "Salope 1",
+    "category": "Page 1 (actuelle) / Samples / Bigard"
+  },
+  {
+    "id": "F7D6CB792792F3A8",
+    "name": "Salope 2",
+    "category": "Page 1 (actuelle) / Samples / Bigard"
+  },
+  {
+    "id": "7E2D0135B29C0462",
+    "name": "Salope 3",
+    "category": "Page 1 (actuelle) / Samples / Bigard"
+  },
+  {
+    "id": "C538AE5601F568C3",
+    "name": "Salope va",
+    "category": "Page 1 (actuelle) / Samples / Greg"
+  },
+  {
+    "id": "CADF929C3FF73F0A",
+    "name": "Saloperie japonais",
+    "category": "Page 1 (actuelle) / Samples / Pop Culture / Suite"
+  },
+  {
+    "id": "C5D000DB707B2A56",
+    "name": "Salut mon pote",
+    "category": "Page 1 (actuelle) / Samples / Pop Culture / Suite"
+  },
+  {
+    "id": "DAA12DB2546425B3",
+    "name": "Sans rancune",
+    "category": "Page 1 (actuelle) / Samples / Pop Culture / Suite"
+  },
+  {
+    "id": "125E81593107F11F",
+    "name": "Sarrazin",
+    "category": "Page 1 (actuelle) / Samples / Visiteurs"
+  },
+  {
+    "id": "4C0791FCC4DBA2CC",
+    "name": "Sauvage",
+    "category": "Page 1 (actuelle) / Samples / Pop Culture / Suite"
+  },
+  {
+    "id": "57F5ED7D1D932C23",
+    "name": "Scoubidou",
+    "category": "Page 1 (actuelle) / Samples / Discord / Gilles"
+  },
+  {
+    "id": "2D73D49544C30CBA",
+    "name": "Seins",
+    "category": "Page 1 (actuelle) / Samples / Discord / Julien"
+  },
+  {
+    "id": "FD56F0062E5208B7",
+    "name": "Seins yeux",
+    "category": "Page 1 (actuelle) / Samples / Soral"
+  },
+  {
+    "id": "366D416C0386F09F",
+    "name": "Sens figur\u00E9",
+    "category": "Page 1 (actuelle) / Samples / Rollin"
+  },
+  {
+    "id": "510247C3E1129D1A",
+    "name": "Serpi\u00E8re",
+    "category": "Page 1 (actuelle) / Samples / P\u00E8re No\u00EBl"
+  },
+  {
+    "id": "FF4FD60E272D49E7",
+    "name": "Service public",
+    "category": "Page 1 (actuelle) / Samples / Poli- tique"
+  },
+  {
+    "id": "86AB8883BDF7A6EA",
+    "name": "Shred Sathan",
+    "category": "Page 1 (actuelle) / Samples / Musique"
+  },
+  {
+    "id": "B136C988D317B11F",
+    "name": "Silence",
+    "category": "Page 1 (actuelle) / Samples / Visiteurs"
+  },
+  {
+    "id": "A55644DC86ED900A",
+    "name": "Single malt",
+    "category": "Page 1 (actuelle) / Samples / Gotoh wan"
+  },
+  {
+    "id": "419D9BC9A6E94611",
+    "name": "Sole",
+    "category": "Page 1 (actuelle) / Samples / Rollin"
+  },
+  {
+    "id": "60004E7975C598F7",
+    "name": "Soleil",
+    "category": "Page 1 (actuelle) / Samples / Dieudo"
+  },
+  {
+    "id": "52F036441B60265A",
+    "name": "Strat\u00E8ge",
+    "category": "Page 1 (actuelle) / Samples / D\u00EEner de cons / Suite"
+  },
+  {
+    "id": "EDBDCA8E15E72606",
+    "name": "Suce moins cher",
+    "category": "Page 1 (actuelle) / Samples / Soral"
+  },
+  {
+    "id": "4FA76CDB25137D08",
+    "name": "Sucer",
+    "category": "Page 1 (actuelle) / Samples / Hooper"
+  },
+  {
+    "id": "3095E5CEA3DA4373",
+    "name": "Sucer",
+    "category": "Page 1 (actuelle) / Samples / Rollin"
+  },
+  {
+    "id": "643A61CFCDDF34FC",
+    "name": "Sucer ou encule",
+    "category": "Page 1 (actuelle) / Samples / Bigard"
+  },
+  {
+    "id": "6B37C18A3443DADB",
+    "name": "Sulfat\u00E9",
+    "category": "Page 1 (actuelle) / Samples / Gotoh wan / Suite"
+  },
+  {
+    "id": "4B8F1F561CE4E013",
+    "name": "S\u00FBr",
+    "category": "Page 1 (actuelle) / Samples / YT Game"
+  },
+  {
+    "id": "D9CCFB14EB39A062",
+    "name": "Surprise",
+    "category": "Page 1 (actuelle) / Samples / Pop Culture / Suite"
+  },
+  {
+    "id": "1C2E077B675AC4E7",
+    "name": "Tactique",
+    "category": "Page 1 (actuelle) / Samples / D\u00EEner de cons / Suite"
+  },
+  {
+    "id": "F4F0A1921C3ABF52",
+    "name": "Tactique pr\u00E9cis",
+    "category": "Page 1 (actuelle) / Samples / Soral / Suite"
+  },
+  {
+    "id": "6D8719FDB8604573",
+    "name": "Tais-toi",
+    "category": "Page 1 (actuelle) / Samples / Fanta"
+  },
+  {
+    "id": "B22B4FAAD1A76BB2",
+    "name": "Taisez-vous",
+    "category": "Page 1 (actuelle) / Samples / Poli- tique"
+  },
+  {
+    "id": "B3CA1D7C43514913",
+    "name": "Tartarus",
+    "category": "Page 1 (actuelle) / Samples / Musique"
+  },
+  {
+    "id": "D2421F9A511B416E",
+    "name": "Tas de merde",
+    "category": "Page 1 (actuelle) / Samples / Pop Culture / Suite"
+  },
+  {
+    "id": "9862796141B7EFF5",
+    "name": "Techniques de p\u00E9dale",
+    "category": "Page 1 (actuelle) / Samples / Discord / Alex"
+  },
+  {
+    "id": "64BF930CD1296D98",
+    "name": "Termin\u00E9",
+    "category": "Page 1 (actuelle) / Samples / Dumas"
+  },
+  {
+    "id": "D5F0C546847D21B4",
+    "name": "Termin\u00E9 r\u00E9serve",
+    "category": "Page 1 (actuelle) / Samples / Dumas"
+  },
+  {
+    "id": "D0A55B86324C274C",
+    "name": "TF1",
+    "category": "Page 1 (actuelle) / Samples / Musique"
+  },
+  {
+    "id": "929CF724AEC2F2DA",
+    "name": "Thank you",
+    "category": "Page 1 (actuelle) / Samples / Jeux vid\u00E9o"
+  },
+  {
+    "id": "3B15ED07DCB3F222",
+    "name": "Th\u00E9",
+    "category": "Page 1 (actuelle) / Samples / Dieudo"
+  },
+  {
+    "id": "2D0C263B6E21CB1A",
+    "name": "Th\u00E9r\u00E8se",
+    "category": "Page 1 (actuelle) / Samples / P\u00E8re No\u00EBl"
+  },
+  {
+    "id": "4D943413143CE161",
+    "name": "Thu\u0027um",
+    "category": "Page 1 (actuelle) / Samples / Jeux vid\u00E9o"
+  },
+  {
+    "id": "48770E0CB2BC98C3",
+    "name": "Tintintintin",
+    "category": "Page 1 (actuelle) / Samples / Musique"
+  },
+  {
+    "id": "495C9BA0097960EB",
+    "name": "TMDD Basse",
+    "category": "Page 1 (actuelle) / Samples / Musique"
+  },
+  {
+    "id": "B1421A47918FCD6B",
+    "name": "TMDD Choeurs",
+    "category": "Page 1 (actuelle) / Samples / Musique"
+  },
+  {
+    "id": "4EE216C3ACB1A067",
+    "name": "TMDD D\u00E9but",
+    "category": "Page 1 (actuelle) / Samples / Musique"
+  },
+  {
+    "id": "A3B3749F87D3A540",
+    "name": "TMDD Solo",
+    "category": "Page 1 (actuelle) / Samples / Musique"
+  },
+  {
+    "id": "DF949587682F3F8D",
+    "name": "Tol\u00E9rance",
+    "category": "Page 1 (actuelle) / Samples / Classe Am\u00E9ricaine"
+  },
+  {
+    "id": "95CDB5824A520086",
+    "name": "Tous ces cons",
+    "category": "Page 1 (actuelle) / Samples / Pop Culture / Kaamelott"
+  },
+  {
+    "id": "2F0BE88CEF19D87E",
+    "name": "Trag\u00E9die",
+    "category": "Page 1 (actuelle) / Samples / Mocky"
+  },
+  {
+    "id": "641B6906357A0FA6",
+    "name": "Tra\u00EEtre",
+    "category": "Page 1 (actuelle) / Samples / Pop Culture / Suite"
+  },
+  {
+    "id": "FF6E006474E9BE1A",
+    "name": "Tranches",
+    "category": "Page 1 (actuelle) / Samples / Dumas"
+  },
+  {
+    "id": "5D1EB48047D9AB38",
+    "name": "Travail",
+    "category": "Page 1 (actuelle) / Samples / Strip Tease"
+  },
+  {
+    "id": "E704D22CC5B956A1",
+    "name": "Tr\u00E9passe",
+    "category": "Page 1 (actuelle) / Samples / Visiteurs"
+  },
+  {
+    "id": "C2603E48B6C0C54C",
+    "name": "Tr\u00E8s content",
+    "category": "Page 1 (actuelle) / Samples / GT Gabi"
+  },
+  {
+    "id": "BEB65FE5D4435964",
+    "name": "Trou du cul",
+    "category": "Page 1 (actuelle) / Samples / Greg"
+  },
+  {
+    "id": "319983BC67DA80C7",
+    "name": "Troua",
+    "category": "Page 1 (actuelle) / Samples / GT Gabi"
+  },
+  {
+    "id": "B17ED5F3806083D9",
+    "name": "Tudidou",
+    "category": "Page 1 (actuelle) / Samples / Soral / Suite"
+  },
+  {
+    "id": "B91B7D35DDE1C8C3",
+    "name": "Vainqueur",
+    "category": "Page 1 (actuelle) / Samples / D\u00EEner de cons / Suite"
+  },
+  {
+    "id": "3467ACC979F6E5B6",
+    "name": "Vicieux",
+    "category": "Page 1 (actuelle) / Samples / Gotoh wan / Suite"
+  },
+  {
+    "id": "2D62A0A777658660",
+    "name": "Victoire",
+    "category": "Page 1 (actuelle) / Samples / Jeux vid\u00E9o"
+  },
+  {
+    "id": "2B2C873FDE61FA0C",
+    "name": "Viens-l\u00E0",
+    "category": "Page 1 (actuelle) / Samples / Discord / Yaki"
+  },
+  {
+    "id": "4A26F515206188D8",
+    "name": "Vin blanc",
+    "category": "Page 1 (actuelle) / Samples / Dumas"
+  },
+  {
+    "id": "5B7775272FD7EE4E",
+    "name": "Voix fatigu\u00E9e",
+    "category": "Page 1 (actuelle) / Samples / D\u00EEner de cons / Suite"
+  },
+  {
+    "id": "94609F25574BA432",
+    "name": "Vraie salope",
+    "category": "Page 1 (actuelle) / Samples / Gotoh wan / Suite"
+  },
+  {
+    "id": "734175FD7881888A",
+    "name": "Vraiment goudou",
+    "category": "Page 1 (actuelle) / Samples / YT Game"
+  },
+  {
+    "id": "C798694EC7C83C53",
+    "name": "Vraiment p\u00E9d\u00E9",
+    "category": "Page 1 (actuelle) / Samples / YT Game"
+  },
+  {
+    "id": "BB3BA45C9FAD2B31",
+    "name": "Waah",
+    "category": "Page 1 (actuelle) / Samples / Musique"
+  },
+  {
+    "id": "704532EDCDE1396E",
+    "name": "Yoda",
+    "category": "Page 1 (actuelle) / Samples / YT Game"
+  },
+  {
+    "id": "71BBFD8D821F1CC4",
+    "name": "Yu-Gi-Oh",
+    "category": "Page 1 (actuelle) / Samples / Pop Culture / Suite"
+  },
+  {
+    "id": "AEBD16504F51BC07",
+    "name": "Zemmour Hin",
+    "category": "Page 1 (actuelle) / Samples / Poli- tique"
+  },
+  {
+    "id": "46450A42FB980794",
+    "name": "Zemmour Hin Rev",
+    "category": "Page 1 (actuelle) / Samples / Poli- tique"
+  },
+  {
+    "id": "B5DE874FA43F6A87",
+    "name": "Zin\u00E9dine",
+    "category": "Page 1 (actuelle) / Samples / Pop Culture / Suite"
+  }
+];const q=document.getElementById('q'),list=document.getElementById('list'),count=document.getElementById('count');function esc(s){return s.replace(/[&<>\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[c]))}function draw(){const t=q.value.trim().toLocaleLowerCase('fr');const a=SAMPLES.filter(x=>!t||x.name.toLocaleLowerCase('fr').includes(t)||x.category.toLocaleLowerCase('fr').includes(t));count.textContent=a.length+' sample'+(a.length>1?'s':'');list.innerHTML=a.map(x=>`<div class=\"s\"><div class=\"n\">${esc(x.name)}<div class=\"c\">${esc(x.category)}</div></div><button data-name=\"${esc(x.name)}\">Copier</button></div>`).join('');document.querySelectorAll('button[data-name]').forEach(b=>b.onclick=async()=>{await navigator.clipboard.writeText(b.dataset.name);b.textContent='Copié !';setTimeout(()=>b.textContent='Copier',900)})}q.oninput=draw;draw();</script></body></html>
