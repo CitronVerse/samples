@@ -1,2542 +1,3552 @@
 <!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CitronVerse — Catalogue des samples</title><style>
-body{font-family:system-ui;background:#111;color:#eee;margin:0}main{max-width:1180px;margin:auto;padding:32px}h1{color:#ffd84d;margin-bottom:8px}input{width:100%;box-sizing:border-box;padding:14px;border-radius:10px;border:1px solid #444;background:#1d1d1d;color:#fff;font-size:16px}#count,.online{color:#aaa;margin:12px 0}.bar{display:flex;align-items:center;gap:10px;margin:14px 0}.back{background:#2b2b2b;color:#fff}.crumb{color:#bbb;font-weight:650}.folder-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin:14px 0 22px}.folder{display:flex;align-items:center;gap:10px;text-align:left;padding:16px;background:#191919;border:1px solid #333;color:#eee;border-radius:10px;cursor:pointer}.folder:hover{border-color:#ffd84d;background:#202020}.folder-icon{font-size:25px}.folder-name{font-weight:750;overflow:hidden;text-overflow:ellipsis}.folder-count{margin-left:auto;color:#888;font-size:12px}.sample-list{display:grid;gap:7px}.sample{display:flex;gap:10px;align-items:center;padding:11px 12px;border:1px solid #292929;border-radius:9px;background:#171717}.name{flex:1;font-weight:650}.actions{display:flex;gap:7px}button{padding:8px 11px;border:0;border-radius:8px;cursor:pointer}.listen{background:#ffd84d;color:#111}.copy{background:#eee;color:#111}.listen:disabled{opacity:.45;cursor:not-allowed}.empty{color:#888;padding:20px 0}@media(max-width:600px){main{padding:20px 14px}.folder-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.actions{flex-direction:column}}
-</style></head><body><main><h1>🍋 Joue un sample !</h1><p>Parcours les dossiers ou recherche un sample, puis copie exactement son nom dans la récompense Twitch.</p><input id="q" placeholder="Rechercher un sample…" autofocus><div id="count"></div><div id="online" class="online"></div><div class="bar"><button id="back" class="back" hidden>← Retour</button><span id="crumb" class="crumb">Tous les dossiers</span></div><div id="folders" class="folder-grid"></div><div id="samples" class="sample-list"></div></main><script>
+body{font-family:system-ui;background:#111;color:#eee;margin:0}main{max-width:1180px;margin:auto;padding:32px}h1{color:#ffd84d;margin-bottom:8px}input{width:100%;box-sizing:border-box;padding:14px;border-radius:10px;border:1px solid #444;background:#1d1d1d;color:#fff;font-size:16px}#count,.online{color:#aaa;margin:12px 0}.bar{display:flex;align-items:center;gap:10px;margin:14px 0}.back{background:#2b2b2b;color:#fff}.crumb{color:#bbb;font-weight:650}.folder-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin:14px 0 22px}.folder{display:flex;align-items:center;gap:10px;text-align:left;padding:16px;background:#191919;border:1px solid #333;color:#eee;border-radius:10px;cursor:pointer}.folder:hover{border-color:#ffd84d;background:#202020}.folder-icon{font-size:25px}.folder-name{font-weight:750;overflow:hidden;text-overflow:ellipsis}.folder-count{margin-left:auto;color:#888;font-size:12px}.sample-list{display:grid;gap:7px}.sample{display:flex;gap:10px;align-items:center;padding:11px 12px;border:1px solid #292929;border-radius:9px;background:#171717}.name{flex:1;font-weight:650}.dup{display:inline-block;margin-left:8px;padding:2px 7px;border-radius:999px;background:#5b3f00;color:#ffd84d;font-size:11px;font-weight:750}.actions{display:flex;gap:7px}button{padding:8px 11px;border:0;border-radius:8px;cursor:pointer}.listen{background:#ffd84d;color:#111}.copy{background:#eee;color:#111}.listen:disabled{opacity:.45;cursor:not-allowed}.empty{color:#888;padding:20px 0}@media(max-width:600px){main{padding:20px 14px}.folder-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.actions{flex-direction:column}}
+</style></head><body><main><h1>🍋 Joue un sample !</h1><p>Parcours les dossiers ou recherche un sample, puis utilise le bouton Copier pour obtenir le texte exact à saisir dans la récompense Twitch. Les noms en double incluent automatiquement leur dossier.</p><input id="q" placeholder="Rechercher un sample…" autofocus><div id="count"></div><div id="online" class="online"></div><div class="bar"><button id="back" class="back" hidden>← Retour</button><span id="crumb" class="crumb">Tous les dossiers</span></div><div id="folders" class="folder-grid"></div><div id="samples" class="sample-list"></div></main><script>
 const SAMPLES=[
   {
     "id": "4D93D29597E23E40",
     "name": "1 \u20AC",
-    "category": "GT Gabi"
+    "category": "GT Gabi",
+    "duplicate": false,
+    "rewardKey": "1 \u20AC"
   },
   {
     "id": "DE2BD35E103880F0",
     "name": "2 buts",
-    "category": "D\u00EEner de cons"
+    "category": "D\u00EEner de cons",
+    "duplicate": false,
+    "rewardKey": "2 buts"
   },
   {
     "id": "C51BB110EFAD1029",
     "name": "2 cons",
-    "category": "Mocky"
+    "category": "Mocky",
+    "duplicate": false,
+    "rewardKey": "2 cons"
   },
   {
     "id": "C70A4910242E05AA",
     "name": "A",
-    "category": "Jeux vid\u00E9o / Dark Souls"
+    "category": "Jeux vid\u00E9o / Dark Souls",
+    "duplicate": false,
+    "rewardKey": "A"
   },
   {
     "id": "83CE75DE5992C123",
     "name": "Abruti",
-    "category": "Mocky"
+    "category": "Mocky",
+    "duplicate": false,
+    "rewardKey": "Abruti"
   },
   {
     "id": "E25F493D27AF167E",
     "name": "Accord\u00E9on",
-    "category": "Musique"
+    "category": "Musique",
+    "duplicate": false,
+    "rewardKey": "Accord\u00E9on"
   },
   {
     "id": "AE65EF05DCFDE91E",
     "name": "Ah !",
-    "category": "Discord / Alex"
+    "category": "Discord / Alex",
+    "duplicate": true,
+    "rewardKey": "Discord / Alex / Ah !"
   },
   {
     "id": "F3FB1DF00F2C1014",
     "name": "Ah !",
-    "category": "Pop Culture"
+    "category": "Pop Culture",
+    "duplicate": true,
+    "rewardKey": "Pop Culture / Ah !"
   },
   {
     "id": "7B9200AD47F4F4AA",
     "name": "Ah oui !",
-    "category": "P\u00E8re No\u00EBl"
+    "category": "P\u00E8re No\u00EBl",
+    "duplicate": false,
+    "rewardKey": "Ah oui !"
   },
   {
     "id": "A58881F3ECC5139A",
     "name": "Aimez \u00E7a",
-    "category": "Hedge"
+    "category": "Hedge",
+    "duplicate": false,
+    "rewardKey": "Aimez \u00E7a"
   },
   {
     "id": "87F4545F0025895E",
     "name": "Alala",
-    "category": "Discord / Yaki"
+    "category": "Discord / Yaki",
+    "duplicate": false,
+    "rewardKey": "Alala"
   },
   {
     "id": "7DF16DAD16B1F0A8",
     "name": "Allo",
-    "category": "Mocky"
+    "category": "Mocky",
+    "duplicate": false,
+    "rewardKey": "Allo"
   },
   {
     "id": "A39B32542F874DDF",
     "name": "Alors",
-    "category": "P\u00E8re No\u00EBl"
+    "category": "P\u00E8re No\u00EBl",
+    "duplicate": false,
+    "rewardKey": "Alors"
   },
   {
     "id": "220024220DBD3FA4",
     "name": "Ambiance",
-    "category": "Bigard"
+    "category": "Bigard",
+    "duplicate": false,
+    "rewardKey": "Ambiance"
   },
   {
     "id": "82A67197C66A3D12",
     "name": "Am\u00E9ricaine",
-    "category": "Strip Tease"
+    "category": "Strip Tease",
+    "duplicate": false,
+    "rewardKey": "Am\u00E9ricaine"
   },
   {
     "id": "3CF7075B702649D9",
     "name": "Anglais",
-    "category": "GT Gabi"
+    "category": "GT Gabi",
+    "duplicate": false,
+    "rewardKey": "Anglais"
   },
   {
     "id": "A7D044E9DF581767",
     "name": "Animation",
-    "category": "P\u00E8re No\u00EBl"
+    "category": "P\u00E8re No\u00EBl",
+    "duplicate": false,
+    "rewardKey": "Animation"
   },
   {
     "id": "B3AAF9BE3211D855",
     "name": "Antis\u00E9mite",
-    "category": "Dieudo"
+    "category": "Dieudo",
+    "duplicate": false,
+    "rewardKey": "Antis\u00E9mite"
   },
   {
     "id": "87756E85772A5395",
     "name": "App\u00E9tit",
-    "category": "Visiteurs"
+    "category": "Visiteurs",
+    "duplicate": false,
+    "rewardKey": "App\u00E9tit"
   },
   {
     "id": "5CB2A42869C6821F",
     "name": "Arabes",
-    "category": "YT Game"
+    "category": "YT Game",
+    "duplicate": false,
+    "rewardKey": "Arabes"
   },
   {
     "id": "7D04681BD8FE74FD",
     "name": "Argh 1",
-    "category": "Discord / Yaki"
+    "category": "Discord / Yaki",
+    "duplicate": false,
+    "rewardKey": "Argh 1"
   },
   {
     "id": "D13E211F8B7888A1",
     "name": "Argh 2",
-    "category": "Discord / Yaki"
+    "category": "Discord / Yaki",
+    "duplicate": false,
+    "rewardKey": "Argh 2"
   },
   {
     "id": "EA3950A315795E22",
     "name": "Argh 3",
-    "category": "Discord / Yaki"
+    "category": "Discord / Yaki",
+    "duplicate": false,
+    "rewardKey": "Argh 3"
   },
   {
     "id": "3A00731BE8B2018B",
     "name": "Arr\u00EAter",
-    "category": "Politique"
+    "category": "Politique",
+    "duplicate": false,
+    "rewardKey": "Arr\u00EAter"
   },
   {
     "id": "FCC85B7860DE3DB5",
     "name": "Artiste",
-    "category": "P\u00E8re No\u00EBl"
+    "category": "P\u00E8re No\u00EBl",
+    "duplicate": false,
+    "rewardKey": "Artiste"
   },
   {
     "id": "24F044D95CCABCDD",
     "name": "Asperges",
-    "category": "Dumas"
+    "category": "Dumas",
+    "duplicate": false,
+    "rewardKey": "Asperges"
   },
   {
     "id": "0190133ED824C165",
     "name": "Attente",
-    "category": "Strip Tease"
+    "category": "Strip Tease",
+    "duplicate": false,
+    "rewardKey": "Attente"
   },
   {
     "id": "52F3A7370EA25A16",
     "name": "Au revoir",
-    "category": "Mocky"
+    "category": "Mocky",
+    "duplicate": true,
+    "rewardKey": "Mocky / Au revoir"
   },
   {
     "id": "D29A8969B78BCD0A",
     "name": "Au revoir",
-    "category": "Strip Tease"
+    "category": "Strip Tease",
+    "duplicate": true,
+    "rewardKey": "Strip Tease / Au revoir"
   },
   {
     "id": "89F69CDA204511F8",
     "name": "B",
-    "category": "Jeux vid\u00E9o / Dark Souls"
+    "category": "Jeux vid\u00E9o / Dark Souls",
+    "duplicate": false,
+    "rewardKey": "B"
   },
   {
     "id": "541901A86C97E732",
     "name": "Baille",
-    "category": "Dieudo"
+    "category": "Dieudo",
+    "duplicate": false,
+    "rewardKey": "Baille"
   },
   {
     "id": "0C515CF940D2982F",
     "name": "Baisodrome",
-    "category": "D\u00EEner de cons"
+    "category": "D\u00EEner de cons",
+    "duplicate": false,
+    "rewardKey": "Baisodrome"
   },
   {
     "id": "90C0E55D3798171A",
     "name": "Balles",
-    "category": "Classe Am\u00E9ricaine"
+    "category": "Classe Am\u00E9ricaine",
+    "duplicate": false,
+    "rewardKey": "Balles"
   },
   {
     "id": "25F025BD7D201F1D",
     "name": "Bapt\u00EAme du feu",
-    "category": "GT Gabi"
+    "category": "GT Gabi",
+    "duplicate": false,
+    "rewardKey": "Bapt\u00EAme du feu"
   },
   {
     "id": "B11309BBA5F42482",
     "name": "Barbie 0",
-    "category": "Musique"
+    "category": "Musique",
+    "duplicate": false,
+    "rewardKey": "Barbie 0"
   },
   {
     "id": "D2EFBE18541B19FC",
     "name": "Barbie 1",
-    "category": "Musique"
+    "category": "Musique",
+    "duplicate": false,
+    "rewardKey": "Barbie 1"
   },
   {
     "id": "292030656B328E8F",
     "name": "Barbie 2",
-    "category": "Musique"
+    "category": "Musique",
+    "duplicate": false,
+    "rewardKey": "Barbie 2"
   },
   {
     "id": "D3789936B8C5AD0E",
     "name": "Barbie 3",
-    "category": "Musique"
+    "category": "Musique",
+    "duplicate": false,
+    "rewardKey": "Barbie 3"
   },
   {
     "id": "480F41746BA0727B",
     "name": "Barbie End",
-    "category": "Musique"
+    "category": "Musique",
+    "duplicate": false,
+    "rewardKey": "Barbie End"
   },
   {
     "id": "C4783D71F18AAC9E",
     "name": "Bayard",
-    "category": "Soral"
+    "category": "Soral",
+    "duplicate": false,
+    "rewardKey": "Bayard"
   },
   {
     "id": "D874B03257A4D6AC",
     "name": "Besoin de moi",
-    "category": "D\u00EEner de cons"
+    "category": "D\u00EEner de cons",
+    "duplicate": false,
+    "rewardKey": "Besoin de moi"
   },
   {
     "id": "0072D5DE022DB3A8",
     "name": "Bibelot",
-    "category": "D\u00EEner de cons"
+    "category": "D\u00EEner de cons",
+    "duplicate": false,
+    "rewardKey": "Bibelot"
   },
   {
     "id": "9001E258DACB4D83",
     "name": "Bien bien bien",
-    "category": "YT Game"
+    "category": "YT Game",
+    "duplicate": false,
+    "rewardKey": "Bien bien bien"
   },
   {
     "id": "415715755B521C21",
     "name": "Bien s\u0027passer",
-    "category": "YT Game"
+    "category": "YT Game",
+    "duplicate": false,
+    "rewardKey": "Bien s\u0027passer"
   },
   {
     "id": "65ACC2FDD55CAB5F",
     "name": "Bient\u00F4t",
-    "category": "Mocky"
+    "category": "Mocky",
+    "duplicate": false,
+    "rewardKey": "Bient\u00F4t"
   },
   {
     "id": "4F4F368EA58E91DA",
     "name": "Bip bip",
-    "category": "Pop Culture"
+    "category": "Pop Culture",
+    "duplicate": false,
+    "rewardKey": "Bip bip"
   },
   {
     "id": "3BD38C1AFCF69F58",
     "name": "Bite",
-    "category": "Soral"
+    "category": "Soral",
+    "duplicate": true,
+    "rewardKey": "Soral / Bite"
   },
   {
     "id": "518B207789E3FF8A",
     "name": "Bite",
-    "category": "Discord / Julien"
+    "category": "Discord / Julien",
+    "duplicate": true,
+    "rewardKey": "Discord / Julien / Bite"
   },
   {
     "id": "ECDD0BF60C5C4132",
     "name": "Bite",
-    "category": "Pop Culture"
+    "category": "Pop Culture",
+    "duplicate": true,
+    "rewardKey": "Pop Culture / Bite"
   },
   {
     "id": "B558A04666A5554C",
     "name": "Bite taureau",
-    "category": "Gotohwan"
+    "category": "Gotohwan",
+    "duplicate": false,
+    "rewardKey": "Bite taureau"
   },
   {
     "id": "7A02EBAB6EA3A694",
     "name": "Black",
-    "category": "Soral"
+    "category": "Soral",
+    "duplicate": false,
+    "rewardKey": "Black"
   },
   {
     "id": "FEF9DB2E00B71481",
     "name": "Blanchir",
-    "category": "Hooper"
+    "category": "Hooper",
+    "duplicate": false,
+    "rewardKey": "Blanchir"
   },
   {
     "id": "7DF0FDEA41EB903D",
     "name": "Bloquer la ligne",
-    "category": "P\u00E8re No\u00EBl"
+    "category": "P\u00E8re No\u00EBl",
+    "duplicate": false,
+    "rewardKey": "Bloquer la ligne"
   },
   {
     "id": "15717C982949D19B",
     "name": "Bluffeur",
-    "category": "Politique"
+    "category": "Politique",
+    "duplicate": false,
+    "rewardKey": "Bluffeur"
   },
   {
     "id": "CC13A7B66DE9BACE",
     "name": "Bol",
-    "category": "YT Game"
+    "category": "YT Game",
+    "duplicate": false,
+    "rewardKey": "Bol"
   },
   {
     "id": "E13877555D74838F",
     "name": "Bolch\u00E9viks",
-    "category": "Politique"
+    "category": "Politique",
+    "duplicate": false,
+    "rewardKey": "Bolch\u00E9viks"
   },
   {
     "id": "7654972B739860F5",
     "name": "Bon",
-    "category": "Dieudo"
+    "category": "Dieudo",
+    "duplicate": false,
+    "rewardKey": "Bon"
   },
   {
     "id": "3DF06749207DA08F",
     "name": "Bonjour R\u00E9gis",
-    "category": "Gotohwan"
+    "category": "Gotohwan",
+    "duplicate": false,
+    "rewardKey": "Bonjour R\u00E9gis"
   },
   {
     "id": "D219FCE779160D8A",
     "name": "Bonne soir\u00E9e",
-    "category": "D\u00EEner de cons"
+    "category": "D\u00EEner de cons",
+    "duplicate": false,
+    "rewardKey": "Bonne soir\u00E9e"
   },
   {
     "id": "C63CF6F24242D710",
     "name": "Bordel j\u0027ai le droit",
-    "category": "YT Game"
+    "category": "YT Game",
+    "duplicate": false,
+    "rewardKey": "Bordel j\u0027ai le droit"
   },
   {
     "id": "E2F05705015768A9",
     "name": "Botter des culs",
-    "category": "Jeux vid\u00E9o"
+    "category": "Jeux vid\u00E9o",
+    "duplicate": false,
+    "rewardKey": "Botter des culs"
   },
   {
     "id": "2F7180BDA4D3E31C",
     "name": "Bottes",
-    "category": "Mocky"
+    "category": "Mocky",
+    "duplicate": false,
+    "rewardKey": "Bottes"
   },
   {
     "id": "6826D5BE02AA64EB",
     "name": "Boucher",
-    "category": "Dumas"
+    "category": "Dumas",
+    "duplicate": false,
+    "rewardKey": "Boucher"
   },
   {
     "id": "AAF3C9FCE3742D44",
     "name": "Boudin",
-    "category": "Soral"
+    "category": "Soral",
+    "duplicate": false,
+    "rewardKey": "Boudin"
   },
   {
     "id": "8A7F640B88C0554D",
     "name": "Bougnoules",
-    "category": "Dieudo"
+    "category": "Dieudo",
+    "duplicate": false,
+    "rewardKey": "Bougnoules"
   },
   {
     "id": "8A0E8E76C04D2C1A",
     "name": "Boulette 1",
-    "category": "D\u00EEner de cons"
+    "category": "D\u00EEner de cons",
+    "duplicate": false,
+    "rewardKey": "Boulette 1"
   },
   {
     "id": "8B2AD6537D19AF11",
     "name": "Boulette 2",
-    "category": "D\u00EEner de cons"
+    "category": "D\u00EEner de cons",
+    "duplicate": false,
+    "rewardKey": "Boulette 2"
   },
   {
     "id": "821893CC042B8D47",
     "name": "Bouquin mauvais",
-    "category": "D\u00EEner de cons"
+    "category": "D\u00EEner de cons",
+    "duplicate": false,
+    "rewardKey": "Bouquin mauvais"
   },
   {
     "id": "6CB49404D974EA95",
     "name": "Bourr\u00E9e",
-    "category": "Bigard"
+    "category": "Bigard",
+    "duplicate": false,
+    "rewardKey": "Bourr\u00E9e"
   },
   {
     "id": "2073E88EE9F4F794",
     "name": "Bouton 1",
-    "category": "Strip Tease"
+    "category": "Strip Tease",
+    "duplicate": false,
+    "rewardKey": "Bouton 1"
   },
   {
     "id": "1A856D929FDCD7DA",
     "name": "Bouton 2",
-    "category": "Strip Tease"
+    "category": "Strip Tease",
+    "duplicate": false,
+    "rewardKey": "Bouton 2"
   },
   {
     "id": "2AFED1CC3FAF9E34",
     "name": "Bouton 3",
-    "category": "Strip Tease"
+    "category": "Strip Tease",
+    "duplicate": false,
+    "rewardKey": "Bouton 3"
   },
   {
     "id": "5E5E9F8908A5BFE8",
     "name": "Bras",
-    "category": "Hedge"
+    "category": "Hedge",
+    "duplicate": false,
+    "rewardKey": "Bras"
   },
   {
     "id": "31476344296AC39C",
     "name": "Bravo t\u0027es une merde",
-    "category": "Gotohwan"
+    "category": "Gotohwan",
+    "duplicate": false,
+    "rewardKey": "Bravo t\u0027es une merde"
   },
   {
     "id": "0791C0BADBA275D1",
     "name": "Briefing",
-    "category": "Strip Tease"
+    "category": "Strip Tease",
+    "duplicate": false,
+    "rewardKey": "Briefing"
   },
   {
     "id": "4A75B3DC911647B8",
     "name": "Bronzage",
-    "category": "Discord / Anto"
+    "category": "Discord / Anto",
+    "duplicate": false,
+    "rewardKey": "Bronzage"
   },
   {
     "id": "ACDAD1E28EDB55D6",
     "name": "Bruit et odeur",
-    "category": "Politique"
+    "category": "Politique",
+    "duplicate": false,
+    "rewardKey": "Bruit et odeur"
   },
   {
     "id": "9C81E70F2B5201CA",
     "name": "Brute force",
-    "category": "Discord / Alex"
+    "category": "Discord / Alex",
+    "duplicate": false,
+    "rewardKey": "Brute force"
   },
   {
     "id": "866183BA766FCD87",
     "name": "Bye bye",
-    "category": "GT Gabi"
+    "category": "GT Gabi",
+    "duplicate": false,
+    "rewardKey": "Bye bye"
   },
   {
     "id": "73B2CA57CDC803E4",
     "name": "C",
-    "category": "Jeux vid\u00E9o / Dark Souls"
+    "category": "Jeux vid\u00E9o / Dark Souls",
+    "duplicate": false,
+    "rewardKey": "C"
   },
   {
     "id": "0249377C6BF2389D",
     "name": "C\u0027est fini oui !",
-    "category": "D\u00EEner de cons"
+    "category": "D\u00EEner de cons",
+    "duplicate": false,
+    "rewardKey": "C\u0027est fini oui !"
   },
   {
     "id": "4449B676BBBEF990",
     "name": "C\u0027est moi",
-    "category": "Pop Culture"
+    "category": "Pop Culture",
+    "duplicate": false,
+    "rewardKey": "C\u0027est moi"
   },
   {
     "id": "67F538B624932FE2",
     "name": "\u00C7a part",
-    "category": "Bigard"
+    "category": "Bigard",
+    "duplicate": false,
+    "rewardKey": "\u00C7a part"
   },
   {
     "id": "993EC878560C118A",
     "name": "\u00C7a va",
-    "category": "Discord / Alex"
+    "category": "Discord / Alex",
+    "duplicate": false,
+    "rewardKey": "\u00C7a va"
   },
   {
     "id": "D8343972074FE762",
     "name": "\u00C7a vous va",
-    "category": "Discord / Gilles"
+    "category": "Discord / Gilles",
+    "duplicate": false,
+    "rewardKey": "\u00C7a vous va"
   },
   {
     "id": "C67996C135ACBFC8",
     "name": "Caca",
-    "category": "YT Game"
+    "category": "YT Game",
+    "duplicate": true,
+    "rewardKey": "YT Game / Caca"
   },
   {
     "id": "92E160198C68B5F4",
     "name": "Caca",
-    "category": "Gordon Ramsay"
+    "category": "Gordon Ramsay",
+    "duplicate": true,
+    "rewardKey": "Gordon Ramsay / Caca"
   },
   {
     "id": "3CE69E9F7183100F",
     "name": "Caca",
-    "category": "Soral"
+    "category": "Soral",
+    "duplicate": true,
+    "rewardKey": "Soral / Caca"
   },
   {
     "id": "6CBAEB6126D64AE6",
     "name": "Caca partout",
-    "category": "Hooper"
+    "category": "Hooper",
+    "duplicate": false,
+    "rewardKey": "Caca partout"
   },
   {
     "id": "C80447F51CA91477",
     "name": "Cach\u00E9",
-    "category": "Discord / Alex"
+    "category": "Discord / Alex",
+    "duplicate": false,
+    "rewardKey": "Cach\u00E9"
   },
   {
     "id": "C7777F36C4D504C3",
     "name": "Cadavre",
-    "category": "Gotohwan"
+    "category": "Gotohwan",
+    "duplicate": false,
+    "rewardKey": "Cadavre"
   },
   {
     "id": "6C2DFE869BC34070",
     "name": "C\u00E2pres",
-    "category": "Dumas"
+    "category": "Dumas",
+    "duplicate": false,
+    "rewardKey": "C\u00E2pres"
   },
   {
     "id": "2707E8645FEC8BAF",
     "name": "Casse-toi",
-    "category": "Classe Am\u00E9ricaine"
+    "category": "Classe Am\u00E9ricaine",
+    "duplicate": false,
+    "rewardKey": "Casse-toi"
   },
   {
     "id": "36D10635C1466066",
     "name": "Caviar",
-    "category": "Gordon Ramsay"
+    "category": "Gordon Ramsay",
+    "duplicate": false,
+    "rewardKey": "Caviar"
   },
   {
     "id": "29273D61674DEEB0",
     "name": "Cerveau",
-    "category": "Soral"
+    "category": "Soral",
+    "duplicate": false,
+    "rewardKey": "Cerveau"
   },
   {
     "id": "CAB6A0A6EB5B09DF",
     "name": "Champion du monde",
-    "category": "D\u00EEner de cons"
+    "category": "D\u00EEner de cons",
+    "duplicate": false,
+    "rewardKey": "Champion du monde"
   },
   {
     "id": "0DBC0242851D3096",
     "name": "Chat",
-    "category": "Discord / Julien"
+    "category": "Discord / Julien",
+    "duplicate": false,
+    "rewardKey": "Chat"
   },
   {
     "id": "EADE368C23B4B738",
     "name": "Chauffera",
-    "category": "Classe Am\u00E9ricaine"
+    "category": "Classe Am\u00E9ricaine",
+    "duplicate": false,
+    "rewardKey": "Chauffera"
   },
   {
     "id": "7BCD711C86089EED",
     "name": "Checkpoints",
-    "category": "Discord / Julien"
+    "category": "Discord / Julien",
+    "duplicate": false,
+    "rewardKey": "Checkpoints"
   },
   {
     "id": "556FA6652C353EBC",
     "name": "Ch\u00E8vre",
-    "category": "Gordon Ramsay"
+    "category": "Gordon Ramsay",
+    "duplicate": false,
+    "rewardKey": "Ch\u00E8vre"
   },
   {
     "id": "D003C1DE8E04E13D",
     "name": "Chiant",
-    "category": "Mocky"
+    "category": "Mocky",
+    "duplicate": false,
+    "rewardKey": "Chiant"
   },
   {
     "id": "6754DAC5B67E1BED",
     "name": "Chiasse",
-    "category": "Gordon Ramsay"
+    "category": "Gordon Ramsay",
+    "duplicate": false,
+    "rewardKey": "Chiasse"
   },
   {
     "id": "C1796BC1CDD71653",
     "name": "Chier",
-    "category": "Jeux vid\u00E9o"
+    "category": "Jeux vid\u00E9o",
+    "duplicate": false,
+    "rewardKey": "Chier"
   },
   {
     "id": "8CB7636CDD1EF730",
     "name": "Chips 1",
-    "category": "Classe Am\u00E9ricaine"
+    "category": "Classe Am\u00E9ricaine",
+    "duplicate": false,
+    "rewardKey": "Chips 1"
   },
   {
     "id": "9D520121D0BFDEFC",
     "name": "Chips 2",
-    "category": "Classe Am\u00E9ricaine"
+    "category": "Classe Am\u00E9ricaine",
+    "duplicate": false,
+    "rewardKey": "Chips 2"
   },
   {
     "id": "45072724AF19CB15",
     "name": "Chips 3",
-    "category": "Classe Am\u00E9ricaine"
+    "category": "Classe Am\u00E9ricaine",
+    "duplicate": false,
+    "rewardKey": "Chips 3"
   },
   {
     "id": "82755EA05066ACF0",
     "name": "Choses \u00E0 dire",
-    "category": "Rollin"
+    "category": "Rollin",
+    "duplicate": false,
+    "rewardKey": "Choses \u00E0 dire"
   },
   {
     "id": "9D78F136773D7897",
     "name": "Cigarette",
-    "category": "GT Gabi"
+    "category": "GT Gabi",
+    "duplicate": false,
+    "rewardKey": "Cigarette"
   },
   {
     "id": "89E2764E2B690C3B",
     "name": "Citron",
-    "category": "Rollin"
+    "category": "Rollin",
+    "duplicate": false,
+    "rewardKey": "Citron"
   },
   {
     "id": "19862E3AE297BD69",
     "name": "Citrons",
-    "category": "Hooper"
+    "category": "Hooper",
+    "duplicate": false,
+    "rewardKey": "Citrons"
   },
   {
     "id": "2E71A6AF1227DCE7",
     "name": "Clac clac clac",
-    "category": "Dumas"
+    "category": "Dumas",
+    "duplicate": false,
+    "rewardKey": "Clac clac clac"
   },
   {
     "id": "F334CF4D6EE4B102",
     "name": "Clair",
-    "category": "YT Game"
+    "category": "YT Game",
+    "duplicate": false,
+    "rewardKey": "Clair"
   },
   {
     "id": "96B5E28A5A97AB03",
     "name": "Classe mondiale",
-    "category": "D\u00EEner de cons"
+    "category": "D\u00EEner de cons",
+    "duplicate": false,
+    "rewardKey": "Classe mondiale"
   },
   {
     "id": "C8AD2159F2BAD8F9",
     "name": "Cloche",
-    "category": "Dumas"
+    "category": "Dumas",
+    "duplicate": false,
+    "rewardKey": "Cloche"
   },
   {
     "id": "3D682543AA565A65",
     "name": "Clown",
-    "category": "D\u00EEner de cons"
+    "category": "D\u00EEner de cons",
+    "duplicate": false,
+    "rewardKey": "Clown"
   },
   {
     "id": "FACBF76DACA6A852",
     "name": "Cochon",
-    "category": "D\u00EEner de cons"
+    "category": "D\u00EEner de cons",
+    "duplicate": false,
+    "rewardKey": "Cochon"
   },
   {
     "id": "032AC6F7C013ECF0",
     "name": "Coffre",
-    "category": "Jeux vid\u00E9o"
+    "category": "Jeux vid\u00E9o",
+    "duplicate": false,
+    "rewardKey": "Coffre"
   },
   {
     "id": "D18A400950AEF262",
     "name": "Cognac",
-    "category": "Dumas"
+    "category": "Dumas",
+    "duplicate": false,
+    "rewardKey": "Cognac"
   },
   {
     "id": "AEB371909CE9C8D7",
     "name": "Coin",
-    "category": "Discord"
+    "category": "Discord",
+    "duplicate": false,
+    "rewardKey": "Coin"
   },
   {
     "id": "975B051FAA789786",
     "name": "Comme \u00E7a",
-    "category": "Dumas"
+    "category": "Dumas",
+    "duplicate": false,
+    "rewardKey": "Comme \u00E7a"
   },
   {
     "id": "90724A91546ACE70",
     "name": "Comme une grosse merde",
-    "category": "Greg"
+    "category": "Greg",
+    "duplicate": false,
+    "rewardKey": "Comme une grosse merde"
   },
   {
     "id": "C3ECE1C42F1B1BA9",
     "name": "Comment tu le dis",
-    "category": "GT Gabi"
+    "category": "GT Gabi",
+    "duplicate": false,
+    "rewardKey": "Comment tu le dis"
   },
   {
     "id": "A860A60354CB9A84",
     "name": "Comprend rien",
-    "category": "Pop Culture / Kaamelott"
+    "category": "Pop Culture / Kaamelott",
+    "duplicate": false,
+    "rewardKey": "Comprend rien"
   },
   {
     "id": "4FC37EC77B3F3980",
     "name": "Compris",
-    "category": "D\u00EEner de cons"
+    "category": "D\u00EEner de cons",
+    "duplicate": false,
+    "rewardKey": "Compris"
   },
   {
     "id": "BAC09B0FBFEF78A3",
     "name": "Con",
-    "category": "D\u00EEner de cons"
+    "category": "D\u00EEner de cons",
+    "duplicate": true,
+    "rewardKey": "D\u00EEner de cons / Con"
   },
   {
     "id": "B400FBEF01B0F553",
     "name": "Con",
-    "category": "Hooper"
+    "category": "Hooper",
+    "duplicate": true,
+    "rewardKey": "Hooper / Con"
   },
   {
     "id": "8F4F6A87929DDF11",
     "name": "Con lui",
-    "category": "Pop Culture / Kaamelott"
+    "category": "Pop Culture / Kaamelott",
+    "duplicate": false,
+    "rewardKey": "Con lui"
   },
   {
     "id": "4AED0F2A33105537",
     "name": "Concept",
-    "category": "Soral"
+    "category": "Soral",
+    "duplicate": false,
+    "rewardKey": "Concept"
   },
   {
     "id": "FABF6F94035FFAE5",
     "name": "Connard",
-    "category": "Etchebest"
+    "category": "Etchebest",
+    "duplicate": false,
+    "rewardKey": "Connard"
   },
   {
     "id": "CB05F82C53B207C7",
     "name": "Connard 1",
-    "category": "D\u00EEner de cons"
+    "category": "D\u00EEner de cons",
+    "duplicate": false,
+    "rewardKey": "Connard 1"
   },
   {
     "id": "02DB97BBC339E70D",
     "name": "Connard 2",
-    "category": "D\u00EEner de cons"
+    "category": "D\u00EEner de cons",
+    "duplicate": false,
+    "rewardKey": "Connard 2"
   },
   {
     "id": "79CEA46E0C9B655D",
     "name": "Connard chez moi",
-    "category": "Pop Culture"
+    "category": "Pop Culture",
+    "duplicate": false,
+    "rewardKey": "Connard chez moi"
   },
   {
     "id": "2C0D98FDEAA21555",
     "name": "Content",
-    "category": "GT Gabi"
+    "category": "GT Gabi",
+    "duplicate": false,
+    "rewardKey": "Content"
   },
   {
     "id": "4F7D0601FCF52149",
     "name": "Contre son camp",
-    "category": "Pop Culture"
+    "category": "Pop Culture",
+    "duplicate": false,
+    "rewardKey": "Contre son camp"
   },
   {
     "id": "A11EACA0AD57FE81",
     "name": "Cornichons",
-    "category": "Gotohwan"
+    "category": "Gotohwan",
+    "duplicate": false,
+    "rewardKey": "Cornichons"
   },
   {
     "id": "B0E59FB410BCCB03",
     "name": "Coucou",
-    "category": "Pop Culture"
+    "category": "Pop Culture",
+    "duplicate": false,
+    "rewardKey": "Coucou"
   },
   {
     "id": "B818B6355A3FE8CA",
     "name": "Couette",
-    "category": "D\u00EEner de cons"
+    "category": "D\u00EEner de cons",
+    "duplicate": false,
+    "rewardKey": "Couette"
   },
   {
     "id": "5AA4F1939AEB5709",
     "name": "Couille",
-    "category": "Soral"
+    "category": "Soral",
+    "duplicate": false,
+    "rewardKey": "Couille"
   },
   {
     "id": "BC884C34087C5538",
     "name": "Couille ailes",
-    "category": "Gotohwan"
+    "category": "Gotohwan",
+    "duplicate": false,
+    "rewardKey": "Couille ailes"
   },
   {
     "id": "469B8268BA7D51A0",
     "name": "Coup de poing",
-    "category": "Gotohwan"
+    "category": "Gotohwan",
+    "duplicate": false,
+    "rewardKey": "Coup de poing"
   },
   {
     "id": "AED26C348B027173",
     "name": "Coupe 2",
-    "category": "Dumas"
+    "category": "Dumas",
+    "duplicate": false,
+    "rewardKey": "Coupe 2"
   },
   {
     "id": "7651258B2F02E7AB",
     "name": "Coupe 4",
-    "category": "Dumas"
+    "category": "Dumas",
+    "duplicate": false,
+    "rewardKey": "Coupe 4"
   },
   {
     "id": "E5439724CB5C225E",
     "name": "Couteau lent",
-    "category": "Dumas"
+    "category": "Dumas",
+    "duplicate": false,
+    "rewardKey": "Couteau lent"
   },
   {
     "id": "44A191DF89AB03BE",
     "name": "Couteau rapide",
-    "category": "Dumas"
+    "category": "Dumas",
+    "duplicate": false,
+    "rewardKey": "Couteau rapide"
   },
   {
     "id": "1700441CA32309FB",
     "name": "Cracher",
-    "category": "Rollin"
+    "category": "Rollin",
+    "duplicate": false,
+    "rewardKey": "Cracher"
   },
   {
     "id": "93643ECD655E69D4",
     "name": "Crampon",
-    "category": "Gotohwan"
+    "category": "Gotohwan",
+    "duplicate": false,
+    "rewardKey": "Crampon"
   },
   {
     "id": "795000FB1C9A6AE1",
     "name": "Cri",
-    "category": "Gotohwan"
+    "category": "Gotohwan",
+    "duplicate": false,
+    "rewardKey": "Cri"
   },
   {
     "id": "C9316601C837798E",
     "name": "Cri p\u00E9dale",
-    "category": "Discord / Yaki"
+    "category": "Discord / Yaki",
+    "duplicate": false,
+    "rewardKey": "Cri p\u00E9dale"
   },
   {
     "id": "341DE9B93A117C60",
     "name": "Crois pas",
-    "category": "Pop Culture"
+    "category": "Pop Culture",
+    "duplicate": false,
+    "rewardKey": "Crois pas"
   },
   {
     "id": "5982AA136718B443",
     "name": "Cul pute",
-    "category": "Musique"
+    "category": "Musique",
+    "duplicate": false,
+    "rewardKey": "Cul pute"
   },
   {
     "id": "7202F200D9A7D41B",
     "name": "Culottes",
-    "category": "Soral"
+    "category": "Soral",
+    "duplicate": false,
+    "rewardKey": "Culottes"
   },
   {
     "id": "8B250C286031745E",
     "name": "D",
-    "category": "Jeux vid\u00E9o / Dark Souls"
+    "category": "Jeux vid\u00E9o / Dark Souls",
+    "duplicate": false,
+    "rewardKey": "D"
   },
   {
     "id": "3C1E5BB0F03901EA",
     "name": "D\u0027accord",
-    "category": "Politique"
+    "category": "Politique",
+    "duplicate": false,
+    "rewardKey": "D\u0027accord"
   },
   {
     "id": "2E720DF33683EF74",
     "name": "Dans l\u0027cul",
-    "category": "D\u00EEner de cons"
+    "category": "D\u00EEner de cons",
+    "duplicate": false,
+    "rewardKey": "Dans l\u0027cul"
   },
   {
     "id": "EC19FD36E85B6950",
     "name": "De la merde",
-    "category": "Soral"
+    "category": "Soral",
+    "duplicate": false,
+    "rewardKey": "De la merde"
   },
   {
     "id": "9654C513429592F9",
     "name": "D\u00E9boutonne",
-    "category": "Bigard"
+    "category": "Bigard",
+    "duplicate": false,
+    "rewardKey": "D\u00E9boutonne"
   },
   {
     "id": "74946577512DB806",
     "name": "D\u00E9but",
-    "category": "D\u00EEner de cons"
+    "category": "D\u00EEner de cons",
+    "duplicate": false,
+    "rewardKey": "D\u00E9but"
   },
   {
     "id": "87C79D9205193BE2",
     "name": "D\u00E9cide",
-    "category": "Rollin"
+    "category": "Rollin",
+    "duplicate": false,
+    "rewardKey": "D\u00E9cide"
   },
   {
     "id": "9FB13B0F167DD38C",
     "name": "D\u00E9\u00E7u",
-    "category": "Pop Culture"
+    "category": "Pop Culture",
+    "duplicate": false,
+    "rewardKey": "D\u00E9\u00E7u"
   },
   {
     "id": "FB49D38D5D98A0C2",
     "name": "D\u00E9gage",
-    "category": "Fanta"
+    "category": "Fanta",
+    "duplicate": false,
+    "rewardKey": "D\u00E9gage"
   },
   {
     "id": "49603745D7D3042F",
     "name": "D\u00E9g\u00E2ts",
-    "category": "Discord / Julien"
+    "category": "Discord / Julien",
+    "duplicate": true,
+    "rewardKey": "Discord / Julien / D\u00E9g\u00E2ts"
   },
   {
     "id": "CAEEDDC8D2525678",
     "name": "D\u00E9g\u00E2ts",
-    "category": "Discord / Saphire"
+    "category": "Discord / Saphire",
+    "duplicate": true,
+    "rewardKey": "Discord / Saphire / D\u00E9g\u00E2ts"
   },
   {
     "id": "265E6A31CF638AE0",
     "name": "D\u00E9g\u00E9n\u00E9r\u00E9",
-    "category": "Pop Culture"
+    "category": "Pop Culture",
+    "duplicate": false,
+    "rewardKey": "D\u00E9g\u00E9n\u00E9r\u00E9"
   },
   {
     "id": "3A9C52381610433B",
     "name": "Demi-boudins",
-    "category": "Soral"
+    "category": "Soral",
+    "duplicate": false,
+    "rewardKey": "Demi-boudins"
   },
   {
     "id": "0C5733F924C4233F",
     "name": "D\u00E9p\u00EAche",
-    "category": "Greg"
+    "category": "Greg",
+    "duplicate": false,
+    "rewardKey": "D\u00E9p\u00EAche"
   },
   {
     "id": "B3DB2C8BB8344DFE",
     "name": "Descends",
-    "category": "Politique"
+    "category": "Politique",
+    "duplicate": false,
+    "rewardKey": "Descends"
   },
   {
     "id": "DC343E4BA001190B",
     "name": "D\u00E9truire",
-    "category": "Greg"
+    "category": "Greg",
+    "duplicate": false,
+    "rewardKey": "D\u00E9truire"
   },
   {
     "id": "E203A16D7541116E",
     "name": "Deuxi\u00E8me couche",
-    "category": "P\u00E8re No\u00EBl"
+    "category": "P\u00E8re No\u00EBl",
+    "duplicate": false,
+    "rewardKey": "Deuxi\u00E8me couche"
   },
   {
     "id": "82A965DF9BD43C45",
     "name": "Devinette",
-    "category": "Rollin"
+    "category": "Rollin",
+    "duplicate": false,
+    "rewardKey": "Devinette"
   },
   {
     "id": "921CD02E9BD3BB68",
     "name": "Diablerie",
-    "category": "Visiteurs"
+    "category": "Visiteurs",
+    "duplicate": false,
+    "rewardKey": "Diablerie"
   },
   {
     "id": "CF2B1D516A795559",
     "name": "Discrimination",
-    "category": "Classe Am\u00E9ricaine"
+    "category": "Classe Am\u00E9ricaine",
+    "duplicate": false,
+    "rewardKey": "Discrimination"
   },
   {
     "id": "6A8CD106004F0496",
     "name": "Discuter",
-    "category": "Classe Am\u00E9ricaine"
+    "category": "Classe Am\u00E9ricaine",
+    "duplicate": false,
+    "rewardKey": "Discuter"
   },
   {
     "id": "EECB6CE1C9DA5F64",
     "name": "Doigt profond",
-    "category": "Gotohwan"
+    "category": "Gotohwan",
+    "duplicate": false,
+    "rewardKey": "Doigt profond"
   },
   {
     "id": "3CEC71FDE3D0C73E",
     "name": "Double 1",
-    "category": "Jeux vid\u00E9o"
+    "category": "Jeux vid\u00E9o",
+    "duplicate": false,
+    "rewardKey": "Double 1"
   },
   {
     "id": "A36CA07AC69B1B7B",
     "name": "Double 2",
-    "category": "Jeux vid\u00E9o"
+    "category": "Jeux vid\u00E9o",
+    "duplicate": false,
+    "rewardKey": "Double 2"
   },
   {
     "id": "4A8CF6C6E6D67E5C",
     "name": "Dou\u00E9",
-    "category": "D\u00EEner de cons"
+    "category": "D\u00EEner de cons",
+    "duplicate": false,
+    "rewardKey": "Dou\u00E9"
   },
   {
     "id": "2B0FD1F9E614BAAB",
     "name": "Droits",
-    "category": "D\u00EEner de cons"
+    "category": "D\u00EEner de cons",
+    "duplicate": false,
+    "rewardKey": "Droits"
   },
   {
     "id": "9FF3E26E36B84C95",
     "name": "Duel",
-    "category": "Classe Am\u00E9ricaine"
+    "category": "Classe Am\u00E9ricaine",
+    "duplicate": false,
+    "rewardKey": "Duel"
   },
   {
     "id": "960219B6D4A88E43",
     "name": "Dun Dun",
-    "category": "Pop Culture"
+    "category": "Pop Culture",
+    "duplicate": false,
+    "rewardKey": "Dun Dun"
   },
   {
     "id": "C1AA3472B44A12CF",
     "name": "E",
-    "category": "Jeux vid\u00E9o / Dark Souls"
+    "category": "Jeux vid\u00E9o / Dark Souls",
+    "duplicate": false,
+    "rewardKey": "E"
   },
   {
     "id": "0E1EC201443ED121",
     "name": "Eau",
-    "category": "Mocky"
+    "category": "Mocky",
+    "duplicate": false,
+    "rewardKey": "Eau"
   },
   {
     "id": "17A73455501BD047",
     "name": "\u00C9chelle",
-    "category": "Rollin"
+    "category": "Rollin",
+    "duplicate": false,
+    "rewardKey": "\u00C9chelle"
   },
   {
     "id": "8480AEFD185DECC5",
     "name": "\u00C9crit textes",
-    "category": "Soral"
+    "category": "Soral",
+    "duplicate": false,
+    "rewardKey": "\u00C9crit textes"
   },
   {
     "id": "608F05C160B7DBC0",
     "name": "Eh non",
-    "category": "Soral"
+    "category": "Soral",
+    "duplicate": false,
+    "rewardKey": "Eh non"
   },
   {
     "id": "796A1A5DE9653F86",
     "name": "Eh oui",
-    "category": "Gotohwan"
+    "category": "Gotohwan",
+    "duplicate": false,
+    "rewardKey": "Eh oui"
   },
   {
     "id": "C5501CF48F314D7D",
     "name": "Encul\u00E9",
-    "category": "Classe Am\u00E9ricaine"
+    "category": "Classe Am\u00E9ricaine",
+    "duplicate": false,
+    "rewardKey": "Encul\u00E9"
   },
   {
     "id": "5CAA9D5F7DD94E39",
     "name": "Enfoir\u00E9 Namek",
-    "category": "Gotohwan"
+    "category": "Gotohwan",
+    "duplicate": false,
+    "rewardKey": "Enfoir\u00E9 Namek"
   },
   {
     "id": "8C76A21C2B057126",
     "name": "Envie de jouer",
-    "category": "Discord / Alex"
+    "category": "Discord / Alex",
+    "duplicate": false,
+    "rewardKey": "Envie de jouer"
   },
   {
     "id": "A1C45B95E7F886C3",
     "name": "\u00C9vry",
-    "category": "Politique"
+    "category": "Politique",
+    "duplicate": false,
+    "rewardKey": "\u00C9vry"
   },
   {
     "id": "83E3075DC45620CC",
     "name": "Ex Serv",
-    "category": "YT Game"
+    "category": "YT Game",
+    "duplicate": false,
+    "rewardKey": "Ex Serv"
   },
   {
     "id": "FD2889BA276AF5C9",
     "name": "Exploit",
-    "category": "Visiteurs"
+    "category": "Visiteurs",
+    "duplicate": false,
+    "rewardKey": "Exploit"
   },
   {
     "id": "4BF5B6809CB51969",
     "name": "Explosion",
-    "category": "Jeux vid\u00E9o"
+    "category": "Jeux vid\u00E9o",
+    "duplicate": false,
+    "rewardKey": "Explosion"
   },
   {
     "id": "52BBE77035E05AAF",
     "name": "F",
-    "category": "Jeux vid\u00E9o / Dark Souls"
+    "category": "Jeux vid\u00E9o / Dark Souls",
+    "duplicate": false,
+    "rewardKey": "F"
   },
   {
     "id": "3EFDF886B1CB7041",
     "name": "F\u00E2ch\u00E9",
-    "category": "Gotohwan"
+    "category": "Gotohwan",
+    "duplicate": false,
+    "rewardKey": "F\u00E2ch\u00E9"
   },
   {
     "id": "2E3A2120684B8F1D",
     "name": "Facile",
-    "category": "GT Gabi"
+    "category": "GT Gabi",
+    "duplicate": false,
+    "rewardKey": "Facile"
   },
   {
     "id": "0EE9D47DE8FFEC8C",
     "name": "Fat",
-    "category": "Hedge"
+    "category": "Hedge",
+    "duplicate": false,
+    "rewardKey": "Fat"
   },
   {
     "id": "55B7DF533D5C9C83",
     "name": "Fatigant",
-    "category": "Discord / Alex"
+    "category": "Discord / Alex",
+    "duplicate": false,
+    "rewardKey": "Fatigant"
   },
   {
     "id": "E1CB632246B4405B",
     "name": "Fatigant intelligent",
-    "category": "D\u00EEner de cons"
+    "category": "D\u00EEner de cons",
+    "duplicate": false,
+    "rewardKey": "Fatigant intelligent"
   },
   {
     "id": "2096D6ECCC968268",
     "name": "Femme",
-    "category": "Pop Culture"
+    "category": "Pop Culture",
+    "duplicate": false,
+    "rewardKey": "Femme"
   },
   {
     "id": "FC66140BC5B5FBBC",
     "name": "Fils de pute",
-    "category": "Greg"
+    "category": "Greg",
+    "duplicate": false,
+    "rewardKey": "Fils de pute"
   },
   {
     "id": "57DB0D0BF3574551",
     "name": "Fion pute",
-    "category": "Discord / Anto"
+    "category": "Discord / Anto",
+    "duplicate": false,
+    "rewardKey": "Fion pute"
   },
   {
     "id": "4AD7F9F83D1C6313",
     "name": "Foldingo",
-    "category": "Visiteurs"
+    "category": "Visiteurs",
+    "duplicate": false,
+    "rewardKey": "Foldingo"
   },
   {
     "id": "987CA33B78A97A3B",
     "name": "Fonctionne pas",
-    "category": "Hedge"
+    "category": "Hedge",
+    "duplicate": false,
+    "rewardKey": "Fonctionne pas"
   },
   {
     "id": "826A8BB776B28098",
     "name": "Forme",
-    "category": "D\u00EEner de cons"
+    "category": "D\u00EEner de cons",
+    "duplicate": false,
+    "rewardKey": "Forme"
   },
   {
     "id": "CC8C39AF65970EA1",
     "name": "Fort",
-    "category": "Pop Culture / Kaamelott"
+    "category": "Pop Culture / Kaamelott",
+    "duplicate": false,
+    "rewardKey": "Fort"
   },
   {
     "id": "DBE35F28DA638297",
     "name": "Fou",
-    "category": "Politique"
+    "category": "Politique",
+    "duplicate": false,
+    "rewardKey": "Fou"
   },
   {
     "id": "DB0D664FCE768981",
     "name": "Frites",
-    "category": "Dumas"
+    "category": "Dumas",
+    "duplicate": false,
+    "rewardKey": "Frites"
   },
   {
     "id": "BD94FB54A2D6E3D0",
     "name": "Fumez",
-    "category": "Politique"
+    "category": "Politique",
+    "duplicate": false,
+    "rewardKey": "Fumez"
   },
   {
     "id": "B0A47DDCC33344AE",
     "name": "Furonculose",
-    "category": "Rollin"
+    "category": "Rollin",
+    "duplicate": false,
+    "rewardKey": "Furonculose"
   },
   {
     "id": "8D32617FD4809736",
     "name": "Fut\u00E9",
-    "category": "Visiteurs"
+    "category": "Visiteurs",
+    "duplicate": false,
+    "rewardKey": "Fut\u00E9"
   },
   {
     "id": "1D6F2866B038AFB3",
     "name": "Gabi",
-    "category": "Strip Tease"
+    "category": "Strip Tease",
+    "duplicate": false,
+    "rewardKey": "Gabi"
   },
   {
     "id": "CFB75538C6424410",
     "name": "Gar\u00E7onni\u00E8re",
-    "category": "D\u00EEner de cons"
+    "category": "D\u00EEner de cons",
+    "duplicate": false,
+    "rewardKey": "Gar\u00E7onni\u00E8re"
   },
   {
     "id": "07B969DDA70A228F",
     "name": "Gaule",
-    "category": "Discord / Sicou"
+    "category": "Discord / Sicou",
+    "duplicate": false,
+    "rewardKey": "Gaule"
   },
   {
     "id": "ED205431B7090A6B",
     "name": "Gay Bowser",
-    "category": "Jeux vid\u00E9o"
+    "category": "Jeux vid\u00E9o",
+    "duplicate": false,
+    "rewardKey": "Gay Bowser"
   },
   {
     "id": "2DDA742A443D113E",
     "name": "G\u00EAnant",
-    "category": "Gordon Ramsay"
+    "category": "Gordon Ramsay",
+    "duplicate": false,
+    "rewardKey": "G\u00EAnant"
   },
   {
     "id": "28B92132B83E7791",
     "name": "Gilet",
-    "category": "P\u00E8re No\u00EBl"
+    "category": "P\u00E8re No\u00EBl",
+    "duplicate": false,
+    "rewardKey": "Gilet"
   },
   {
     "id": "4A2F9F3460CEB156",
     "name": "Glace 1",
-    "category": "GT Gabi"
+    "category": "GT Gabi",
+    "duplicate": false,
+    "rewardKey": "Glace 1"
   },
   {
     "id": "135314C79803A3F0",
     "name": "Glace 2",
-    "category": "GT Gabi"
+    "category": "GT Gabi",
+    "duplicate": false,
+    "rewardKey": "Glace 2"
   },
   {
     "id": "ECC937AA6B4B11EE",
     "name": "Godasses",
-    "category": "Strip Tease"
+    "category": "Strip Tease",
+    "duplicate": false,
+    "rewardKey": "Godasses"
   },
   {
     "id": "8A13767AA91EC1DE",
     "name": "Gosses",
-    "category": "Gordon Ramsay"
+    "category": "Gordon Ramsay",
+    "duplicate": false,
+    "rewardKey": "Gosses"
   },
   {
     "id": "A6F0A3F2C3E8DCFB",
     "name": "Gourde",
-    "category": "Discord / Yaki"
+    "category": "Discord / Yaki",
+    "duplicate": false,
+    "rewardKey": "Gourde"
   },
   {
     "id": "2715DEA02CD313DE",
     "name": "Go\u00FBts de merde",
-    "category": "Jeux vid\u00E9o"
+    "category": "Jeux vid\u00E9o",
+    "duplicate": false,
+    "rewardKey": "Go\u00FBts de merde"
   },
   {
     "id": "C6275F96A4F88604",
     "name": "Graphiques",
-    "category": "GT Gabi"
+    "category": "GT Gabi",
+    "duplicate": false,
+    "rewardKey": "Graphiques"
   },
   {
     "id": "92513BA558075E22",
     "name": "Grenade",
-    "category": "Dieudo"
+    "category": "Dieudo",
+    "duplicate": false,
+    "rewardKey": "Grenade"
   },
   {
     "id": "9586175D241471C5",
     "name": "Gros",
-    "category": "Hedge"
+    "category": "Hedge",
+    "duplicate": false,
+    "rewardKey": "Gros"
   },
   {
     "id": "BF32D69680A9C725",
     "name": "Grosse b\u00EAte",
-    "category": "Visiteurs"
+    "category": "Visiteurs",
+    "duplicate": false,
+    "rewardKey": "Grosse b\u00EAte"
   },
   {
     "id": "3A35EE1B6AD49910",
     "name": "GTA",
-    "category": "Jeux vid\u00E9o"
+    "category": "Jeux vid\u00E9o",
+    "duplicate": false,
+    "rewardKey": "GTA"
   },
   {
     "id": "53D592828019D099",
     "name": "Guerre",
-    "category": "Pop Culture"
+    "category": "Pop Culture",
+    "duplicate": false,
+    "rewardKey": "Guerre"
   },
   {
     "id": "A3D34C7C0B35F9FA",
     "name": "Gueule",
-    "category": "Pop Culture"
+    "category": "Pop Culture",
+    "duplicate": false,
+    "rewardKey": "Gueule"
   },
   {
     "id": "A6C4CB9BDEDD7FDF",
     "name": "Handisport",
-    "category": "Soral"
+    "category": "Soral",
+    "duplicate": false,
+    "rewardKey": "Handisport"
   },
   {
     "id": "42BA0361355E5E01",
     "name": "Histoire",
-    "category": "GT Gabi"
+    "category": "GT Gabi",
+    "duplicate": false,
+    "rewardKey": "Histoire"
   },
   {
     "id": "70A488C2B153B51D",
     "name": "Historie",
-    "category": "GT Gabi"
+    "category": "GT Gabi",
+    "duplicate": false,
+    "rewardKey": "Historie"
   },
   {
     "id": "F68802782370EFC3",
     "name": "Honteux",
-    "category": "Pop Culture"
+    "category": "Pop Culture",
+    "duplicate": false,
+    "rewardKey": "Honteux"
   },
   {
     "id": "01B5E19460B87875",
     "name": "Horreur",
-    "category": "Politique"
+    "category": "Politique",
+    "duplicate": false,
+    "rewardKey": "Horreur"
   },
   {
     "id": "2C4200CCA8BA6400",
     "name": "Huile",
-    "category": "Soral"
+    "category": "Soral",
+    "duplicate": false,
+    "rewardKey": "Huile"
   },
   {
     "id": "D34F6D24F1D45372",
     "name": "Hu\u00EEtres",
-    "category": "Rollin"
+    "category": "Rollin",
+    "duplicate": false,
+    "rewardKey": "Hu\u00EEtres"
   },
   {
     "id": "AE91605F850EB789",
     "name": "Humili\u00E9s",
-    "category": "YT Game"
+    "category": "YT Game",
+    "duplicate": false,
+    "rewardKey": "Humili\u00E9s"
   },
   {
     "id": "7A17E228F384C940",
     "name": "Il est bon",
-    "category": "Jeux vid\u00E9o"
+    "category": "Jeux vid\u00E9o",
+    "duplicate": false,
+    "rewardKey": "Il est bon"
   },
   {
     "id": "642BE4AF79151F4B",
     "name": "Il faut l\u0027savoir",
-    "category": "Soral"
+    "category": "Soral",
+    "duplicate": false,
+    "rewardKey": "Il faut l\u0027savoir"
   },
   {
     "id": "1778460B9534EFAE",
     "name": "Il m\u0027a encul\u00E9",
-    "category": "Discord / Alex"
+    "category": "Discord / Alex",
+    "duplicate": false,
+    "rewardKey": "Il m\u0027a encul\u00E9"
   },
   {
     "id": "DEE37DDA1EA1DBA9",
     "name": "Il s\u0027amuse",
-    "category": "Gotohwan"
+    "category": "Gotohwan",
+    "duplicate": false,
+    "rewardKey": "Il s\u0027amuse"
   },
   {
     "id": "504488084C136224",
     "name": "Il voit tout",
-    "category": "D\u00EEner de cons"
+    "category": "D\u00EEner de cons",
+    "duplicate": false,
+    "rewardKey": "Il voit tout"
   },
   {
     "id": "59E7E43400D59665",
     "name": "Imaginer",
-    "category": "D\u00EEner de cons"
+    "category": "D\u00EEner de cons",
+    "duplicate": false,
+    "rewardKey": "Imaginer"
   },
   {
     "id": "5D6032D2AE02EEC2",
     "name": "Immonde",
-    "category": "Pop Culture"
+    "category": "Pop Culture",
+    "duplicate": false,
+    "rewardKey": "Immonde"
   },
   {
     "id": "255D698A3EB47C31",
     "name": "Incision",
-    "category": "Dumas"
+    "category": "Dumas",
+    "duplicate": false,
+    "rewardKey": "Incision"
   },
   {
     "id": "D6B19E21B97EA4E5",
     "name": "Indignit\u00E9",
-    "category": "Politique"
+    "category": "Politique",
+    "duplicate": false,
+    "rewardKey": "Indignit\u00E9"
   },
   {
     "id": "DCA09AA75820C8E9",
     "name": "Intelligent",
-    "category": "D\u00EEner de cons"
+    "category": "D\u00EEner de cons",
+    "duplicate": false,
+    "rewardKey": "Intelligent"
   },
   {
     "id": "ED8B9BE0FE319EF5",
     "name": "Int\u00E9resse pas",
-    "category": "P\u00E8re No\u00EBl"
+    "category": "P\u00E8re No\u00EBl",
+    "duplicate": false,
+    "rewardKey": "Int\u00E9resse pas"
   },
   {
     "id": "98A5F6908C912775",
     "name": "Intol\u00E9rable",
-    "category": "Classe Am\u00E9ricaine"
+    "category": "Classe Am\u00E9ricaine",
+    "duplicate": false,
+    "rewardKey": "Intol\u00E9rable"
   },
   {
     "id": "8FB99891C5FC8786",
     "name": "J\u0027en ai vu",
-    "category": "Etchebest"
+    "category": "Etchebest",
+    "duplicate": false,
+    "rewardKey": "J\u0027en ai vu"
   },
   {
     "id": "A5929CD20D345F2F",
     "name": "J\u0027invente",
-    "category": "Rollin"
+    "category": "Rollin",
+    "duplicate": false,
+    "rewardKey": "J\u0027invente"
   },
   {
     "id": "97EA219F3DAD8ECC",
     "name": "J\u0027le connais pas",
-    "category": "D\u00EEner de cons"
+    "category": "D\u00EEner de cons",
+    "duplicate": false,
+    "rewardKey": "J\u0027le connais pas"
   },
   {
     "id": "8EA59338B84F73E9",
     "name": "J\u0027suis une merde",
-    "category": "Discord / Saphire"
+    "category": "Discord / Saphire",
+    "duplicate": false,
+    "rewardKey": "J\u0027suis une merde"
   },
   {
     "id": "56B7933C531F56BF",
     "name": "Japonais",
-    "category": "Gotohwan"
+    "category": "Gotohwan",
+    "duplicate": false,
+    "rewardKey": "Japonais"
   },
   {
     "id": "C6BE5FC88D5858AC",
     "name": "Je m\u0027amuse",
-    "category": "Gotohwan"
+    "category": "Gotohwan",
+    "duplicate": false,
+    "rewardKey": "Je m\u0027amuse"
   },
   {
     "id": "6E0A4CFDB003E759",
     "name": "Je sais pas",
-    "category": "GT Gabi"
+    "category": "GT Gabi",
+    "duplicate": false,
+    "rewardKey": "Je sais pas"
   },
   {
     "id": "43F59B662F998CC6",
     "name": "Je saute",
-    "category": "Gotohwan"
+    "category": "Gotohwan",
+    "duplicate": false,
+    "rewardKey": "Je saute"
   },
   {
     "id": "CF2E8BAEE46D3D8B",
     "name": "Je t\u0027encule",
-    "category": "P\u00E8re No\u00EBl"
+    "category": "P\u00E8re No\u00EBl",
+    "duplicate": false,
+    "rewardKey": "Je t\u0027encule"
   },
   {
     "id": "5AAD4706D2E8408A",
     "name": "Jeanne",
-    "category": "Politique"
+    "category": "Politique",
+    "duplicate": false,
+    "rewardKey": "Jeanne"
   },
   {
     "id": "35BB577973880BC7",
     "name": "Johnny",
-    "category": "Pop Culture"
+    "category": "Pop Culture",
+    "duplicate": false,
+    "rewardKey": "Johnny"
   },
   {
     "id": "E377C017427443CB",
     "name": "Joli",
-    "category": "D\u00EEner de cons"
+    "category": "D\u00EEner de cons",
+    "duplicate": false,
+    "rewardKey": "Joli"
   },
   {
     "id": "79626BA96EEFFA58",
     "name": "Jou\u00E9 ador\u00E9",
-    "category": "GT Gabi"
+    "category": "GT Gabi",
+    "duplicate": false,
+    "rewardKey": "Jou\u00E9 ador\u00E9"
   },
   {
     "id": "47FA31C8D520AD3B",
     "name": "Jou\u00E9 au jeu",
-    "category": "GT Gabi"
+    "category": "GT Gabi",
+    "duplicate": false,
+    "rewardKey": "Jou\u00E9 au jeu"
   },
   {
     "id": "1FE3617A725568D1",
     "name": "Juger",
-    "category": "Classe Am\u00E9ricaine"
+    "category": "Classe Am\u00E9ricaine",
+    "duplicate": false,
+    "rewardKey": "Juger"
   },
   {
     "id": "833532963A8641F9",
     "name": "Julien",
-    "category": "Hooper"
+    "category": "Hooper",
+    "duplicate": false,
+    "rewardKey": "Julien"
   },
   {
     "id": "DB3797695078EED8",
     "name": "Juste 1",
-    "category": "D\u00EEner de cons"
+    "category": "D\u00EEner de cons",
+    "duplicate": false,
+    "rewardKey": "Juste 1"
   },
   {
     "id": "6DD0BCCCF4E44DC4",
     "name": "Juste 2",
-    "category": "D\u00EEner de cons"
+    "category": "D\u00EEner de cons",
+    "duplicate": false,
+    "rewardKey": "Juste 2"
   },
   {
     "id": "97386C728E0F12CB",
     "name": "Juste 3",
-    "category": "D\u00EEner de cons"
+    "category": "D\u00EEner de cons",
+    "duplicate": false,
+    "rewardKey": "Juste 3"
   },
   {
     "id": "394A0D631D5579E2",
     "name": "K\u00E9saveudire",
-    "category": "Strip Tease"
+    "category": "Strip Tease",
+    "duplicate": false,
+    "rewardKey": "K\u00E9saveudire"
   },
   {
     "id": "94D95D045B678710",
     "name": "Ketchup",
-    "category": "Gordon Ramsay"
+    "category": "Gordon Ramsay",
+    "duplicate": false,
+    "rewardKey": "Ketchup"
   },
   {
     "id": "4A868176637BB732",
     "name": "K\u00E9zav\u00E9f\u00E9",
-    "category": "Strip Tease"
+    "category": "Strip Tease",
+    "duplicate": false,
+    "rewardKey": "K\u00E9zav\u00E9f\u00E9"
   },
   {
     "id": "F056D4C54BB44817",
     "name": "Korogu Merki",
-    "category": "Jeux vid\u00E9o"
+    "category": "Jeux vid\u00E9o",
+    "duplicate": false,
+    "rewardKey": "Korogu Merki"
   },
   {
     "id": "274DE4D6F4BF0399",
     "name": "Kritter DKC2",
-    "category": "Jeux vid\u00E9o"
+    "category": "Jeux vid\u00E9o",
+    "duplicate": false,
+    "rewardKey": "Kritter DKC2"
   },
   {
     "id": "6DA9F7A11677EB5C",
     "name": "Krook Chorus",
-    "category": "Musique"
+    "category": "Musique",
+    "duplicate": false,
+    "rewardKey": "Krook Chorus"
   },
   {
     "id": "0571D5DD9380EC12",
     "name": "Laisse passer",
-    "category": "Gotohwan"
+    "category": "Gotohwan",
+    "duplicate": false,
+    "rewardKey": "Laisse passer"
   },
   {
     "id": "F53C7BC474B8EDC5",
     "name": "L\u00E9g\u00E8re onctueuse",
-    "category": "D\u00EEner de cons"
+    "category": "D\u00EEner de cons",
+    "duplicate": false,
+    "rewardKey": "L\u00E9g\u00E8re onctueuse"
   },
   {
     "id": "ECA03B561D47D214",
     "name": "L\u00E8ve-toi",
-    "category": "Gotohwan"
+    "category": "Gotohwan",
+    "duplicate": false,
+    "rewardKey": "L\u00E8ve-toi"
   },
   {
     "id": "AC13D3C42F96FED4",
     "name": "Long",
-    "category": "Mocky"
+    "category": "Mocky",
+    "duplicate": false,
+    "rewardKey": "Long"
   },
   {
     "id": "4DCBE928BA3B2311",
     "name": "Loose",
-    "category": "YT Game"
+    "category": "YT Game",
+    "duplicate": false,
+    "rewardKey": "Loose"
   },
   {
     "id": "2D382C0F734F1935",
     "name": "M\u0027aider",
-    "category": "Gordon Ramsay"
+    "category": "Gordon Ramsay",
+    "duplicate": false,
+    "rewardKey": "M\u0027aider"
   },
   {
     "id": "3FB3920EF4DEF8E9",
     "name": "Mais putain",
-    "category": "Hooper"
+    "category": "Hooper",
+    "duplicate": false,
+    "rewardKey": "Mais putain"
   },
   {
     "id": "2BBBAB67ED07558A",
     "name": "Mais quoi ?!",
-    "category": "Visiteurs"
+    "category": "Visiteurs",
+    "duplicate": false,
+    "rewardKey": "Mais quoi ?!"
   },
   {
     "id": "F284EB3C8F869B92",
     "name": "Malades",
-    "category": "Visiteurs"
+    "category": "Visiteurs",
+    "duplicate": false,
+    "rewardKey": "Malades"
   },
   {
     "id": "33C117A8E4CB293E",
     "name": "Malhonn\u00EAte",
-    "category": "Classe Am\u00E9ricaine"
+    "category": "Classe Am\u00E9ricaine",
+    "duplicate": false,
+    "rewardKey": "Malhonn\u00EAte"
   },
   {
     "id": "70E7AFFE84A00C48",
     "name": "Manipulation",
-    "category": "Rollin"
+    "category": "Rollin",
+    "duplicate": false,
+    "rewardKey": "Manipulation"
   },
   {
     "id": "22B975863D716DE2",
     "name": "March\u00E9 \u00E0 fond",
-    "category": "D\u00EEner de cons"
+    "category": "D\u00EEner de cons",
+    "duplicate": false,
+    "rewardKey": "March\u00E9 \u00E0 fond"
   },
   {
     "id": "75542249B19EE489",
     "name": "Marchera jamais",
-    "category": "D\u00EEner de cons"
+    "category": "D\u00EEner de cons",
+    "duplicate": false,
+    "rewardKey": "Marchera jamais"
   },
   {
     "id": "C002ADFF7E40A21E",
     "name": "Marrant pute",
-    "category": "Pop Culture"
+    "category": "Pop Culture",
+    "duplicate": false,
+    "rewardKey": "Marrant pute"
   },
   {
     "id": "94F866324F043FB2",
     "name": "Mauvais",
-    "category": "Pop Culture"
+    "category": "Pop Culture",
+    "duplicate": false,
+    "rewardKey": "Mauvais"
   },
   {
     "id": "3184CEF46E6BC785",
     "name": "Mauvais hier soir",
-    "category": "Etchebest"
+    "category": "Etchebest",
+    "duplicate": false,
+    "rewardKey": "Mauvais hier soir"
   },
   {
     "id": "065638D680D78644",
     "name": "Mauvais travail",
-    "category": "Hedge"
+    "category": "Hedge",
+    "duplicate": false,
+    "rewardKey": "Mauvais travail"
   },
   {
     "id": "65B11572F1CF492C",
     "name": "M\u00E9chant",
-    "category": "Pop Culture"
+    "category": "Pop Culture",
+    "duplicate": false,
+    "rewardKey": "M\u00E9chant"
   },
   {
     "id": "8612E56623EB45A0",
     "name": "Menaces handicap\u00E9s",
-    "category": "Soral"
+    "category": "Soral",
+    "duplicate": false,
+    "rewardKey": "Menaces handicap\u00E9s"
   },
   {
     "id": "A0DF6D950BC81DE1",
     "name": "M\u00E9n\u00E8s",
-    "category": "Soral"
+    "category": "Soral",
+    "duplicate": false,
+    "rewardKey": "M\u00E9n\u00E8s"
   },
   {
     "id": "4142D36ED942BEA2",
     "name": "Mens",
-    "category": "Pop Culture"
+    "category": "Pop Culture",
+    "duplicate": false,
+    "rewardKey": "Mens"
   },
   {
     "id": "48525353E28D2B3C",
     "name": "Mercredi prochain",
-    "category": "D\u00EEner de cons"
+    "category": "D\u00EEner de cons",
+    "duplicate": false,
+    "rewardKey": "Mercredi prochain"
   },
   {
     "id": "1460AB9075D0B987",
     "name": "Merde",
-    "category": "Discord / Sicou"
+    "category": "Discord / Sicou",
+    "duplicate": true,
+    "rewardKey": "Discord / Sicou / Merde"
   },
   {
     "id": "F2768C1616755FCF",
     "name": "Merde",
-    "category": "P\u00E8re No\u00EBl"
+    "category": "P\u00E8re No\u00EBl",
+    "duplicate": true,
+    "rewardKey": "P\u00E8re No\u00EBl / Merde"
   },
   {
     "id": "B9004FF0551050F6",
     "name": "Merde",
-    "category": "Politique"
+    "category": "Politique",
+    "duplicate": true,
+    "rewardKey": "Politique / Merde"
   },
   {
     "id": "BF5FE13692F9A556",
     "name": "M\u00E9tier",
-    "category": "Strip Tease"
+    "category": "Strip Tease",
+    "duplicate": false,
+    "rewardKey": "M\u00E9tier"
   },
   {
     "id": "3D1D542E45090758",
     "name": "Metroid",
-    "category": "GT Gabi"
+    "category": "GT Gabi",
+    "duplicate": false,
+    "rewardKey": "Metroid"
   },
   {
     "id": "3ACED533C79FDBBE",
     "name": "MGS Alert",
-    "category": "Jeux vid\u00E9o"
+    "category": "Jeux vid\u00E9o",
+    "duplicate": false,
+    "rewardKey": "MGS Alert"
   },
   {
     "id": "A6D78939C5AEDE82",
     "name": "Mickey",
-    "category": "Dieudo"
+    "category": "Dieudo",
+    "duplicate": false,
+    "rewardKey": "Mickey"
   },
   {
     "id": "B642947622B04187",
     "name": "Mise en place",
-    "category": "Dumas"
+    "category": "Dumas",
+    "duplicate": false,
+    "rewardKey": "Mise en place"
   },
   {
     "id": "2F2EEC4294041E3A",
     "name": "Montjoie",
-    "category": "Visiteurs"
+    "category": "Visiteurs",
+    "duplicate": false,
+    "rewardKey": "Montjoie"
   },
   {
     "id": "DC700C6BC19885AC",
     "name": "Mort  connard",
-    "category": "Pop Culture / Kaamelott"
+    "category": "Pop Culture / Kaamelott",
+    "duplicate": false,
+    "rewardKey": "Mort  connard"
   },
   {
     "id": "247A6F619696CA34",
     "name": "Moteur",
-    "category": "Jeux vid\u00E9o"
+    "category": "Jeux vid\u00E9o",
+    "duplicate": false,
+    "rewardKey": "Moteur"
   },
   {
     "id": "D4F5426C1134B647",
     "name": "Moto",
-    "category": "Soral"
+    "category": "Soral",
+    "duplicate": false,
+    "rewardKey": "Moto"
   },
   {
     "id": "6FD40198DFFEF024",
     "name": "Mur de Berlin",
-    "category": "Gotohwan"
+    "category": "Gotohwan",
+    "duplicate": false,
+    "rewardKey": "Mur de Berlin"
   },
   {
     "id": "E46E2ACD20FE279B",
     "name": "Nacelles",
-    "category": "Strip Tease"
+    "category": "Strip Tease",
+    "duplicate": false,
+    "rewardKey": "Nacelles"
   },
   {
     "id": "A82C7E829873604D",
     "name": "Nardine",
-    "category": "Pop Culture"
+    "category": "Pop Culture",
+    "duplicate": false,
+    "rewardKey": "Nardine"
   },
   {
     "id": "656180BD95F755B2",
     "name": "Nature",
-    "category": "Visiteurs"
+    "category": "Visiteurs",
+    "duplicate": false,
+    "rewardKey": "Nature"
   },
   {
     "id": "04F4BF174A885F49",
     "name": "Nazi",
-    "category": "Politique"
+    "category": "Politique",
+    "duplicate": false,
+    "rewardKey": "Nazi"
   },
   {
     "id": "3465A9DACE8C29BC",
     "name": "N\u00E9gation",
-    "category": "Rollin"
+    "category": "Rollin",
+    "duplicate": false,
+    "rewardKey": "N\u00E9gation"
   },
   {
     "id": "C5AFC91BBE8FF76F",
     "name": "N\u00E8gre",
-    "category": "Pop Culture"
+    "category": "Pop Culture",
+    "duplicate": false,
+    "rewardKey": "N\u00E8gre"
   },
   {
     "id": "FD5E630B7A5D8879",
     "name": "Nenni",
-    "category": "Visiteurs"
+    "category": "Visiteurs",
+    "duplicate": false,
+    "rewardKey": "Nenni"
   },
   {
     "id": "A4133862A0E3978D",
     "name": "Nettoies",
-    "category": "Greg"
+    "category": "Greg",
+    "duplicate": false,
+    "rewardKey": "Nettoies"
   },
   {
     "id": "D8079F6E8F9302C5",
     "name": "Nid d\u0027amour",
-    "category": "D\u00EEner de cons"
+    "category": "D\u00EEner de cons",
+    "duplicate": false,
+    "rewardKey": "Nid d\u0027amour"
   },
   {
     "id": "82D51B40BBAA9059",
     "name": "Nique",
-    "category": "Dieudo"
+    "category": "Dieudo",
+    "duplicate": false,
+    "rewardKey": "Nique"
   },
   {
     "id": "27F9377D9F6AC57E",
     "name": "Niqu\u00E9 sa m\u00E8re",
-    "category": "Gotohwan"
+    "category": "Gotohwan",
+    "duplicate": false,
+    "rewardKey": "Niqu\u00E9 sa m\u00E8re"
   },
   {
     "id": "97D3648DDF277D9B",
     "name": "Non",
-    "category": "Discord / Julien"
+    "category": "Discord / Julien",
+    "duplicate": false,
+    "rewardKey": "Non"
   },
   {
     "id": "87C84B79BF4C785F",
     "name": "Oblivion",
-    "category": "Jeux vid\u00E9o"
+    "category": "Jeux vid\u00E9o",
+    "duplicate": false,
+    "rewardKey": "Oblivion"
   },
   {
     "id": "404C2C7C63A63BA6",
     "name": "Oh non",
-    "category": "Discord / Alex"
+    "category": "Discord / Alex",
+    "duplicate": false,
+    "rewardKey": "Oh non"
   },
   {
     "id": "158F6D5CB116310E",
     "name": "Ohlala",
-    "category": "Mocky"
+    "category": "Mocky",
+    "duplicate": false,
+    "rewardKey": "Ohlala"
   },
   {
     "id": "E9D4F73A2C56F23D",
     "name": "Olala",
-    "category": "Hooper"
+    "category": "Hooper",
+    "duplicate": false,
+    "rewardKey": "Olala"
   },
   {
     "id": "C46E8014FDDF0812",
     "name": "On rigole",
-    "category": "Gotohwan"
+    "category": "Gotohwan",
+    "duplicate": false,
+    "rewardKey": "On rigole"
   },
   {
     "id": "47C5D0AE061A821B",
     "name": "Oneiroi",
-    "category": "Musique"
+    "category": "Musique",
+    "duplicate": false,
+    "rewardKey": "Oneiroi"
   },
   {
     "id": "3BCD68BC20B2103C",
     "name": "Organis\u00E9",
-    "category": "Mocky"
+    "category": "Mocky",
+    "duplicate": false,
+    "rewardKey": "Organis\u00E9"
   },
   {
     "id": "AA1502E47C1AF0BE",
     "name": "Oui",
-    "category": "Discord / Julien"
+    "category": "Discord / Julien",
+    "duplicate": false,
+    "rewardKey": "Oui"
   },
   {
     "id": "3B91B725050F464B",
     "name": "Oui ta gueule",
-    "category": "YT Game"
+    "category": "YT Game",
+    "duplicate": false,
+    "rewardKey": "Oui ta gueule"
   },
   {
     "id": "E6B945D80A186985",
     "name": "Oui, peut-\u00EAtre",
-    "category": "Politique"
+    "category": "Politique",
+    "duplicate": false,
+    "rewardKey": "Oui, peut-\u00EAtre"
   },
   {
     "id": "FA9CC1062374B7D2",
     "name": "Ours",
-    "category": "Gotohwan"
+    "category": "Gotohwan",
+    "duplicate": false,
+    "rewardKey": "Ours"
   },
   {
     "id": "97F6E8B946C45270",
     "name": "Pain",
-    "category": "Gotohwan"
+    "category": "Gotohwan",
+    "duplicate": false,
+    "rewardKey": "Pain"
   },
   {
     "id": "E7CCDB1FC3594E2C",
     "name": "Papapa",
-    "category": "Soral"
+    "category": "Soral",
+    "duplicate": false,
+    "rewardKey": "Papapa"
   },
   {
     "id": "89B70596E074492C",
     "name": "Paperasse",
-    "category": "GT Gabi"
+    "category": "GT Gabi",
+    "duplicate": false,
+    "rewardKey": "Paperasse"
   },
   {
     "id": "D7886BB4E1D164BE",
     "name": "Par des femmes",
-    "category": "Rollin"
+    "category": "Rollin",
+    "duplicate": false,
+    "rewardKey": "Par des femmes"
   },
   {
     "id": "0BA0A69A74E127E8",
     "name": "Parasite",
-    "category": "Soral"
+    "category": "Soral",
+    "duplicate": false,
+    "rewardKey": "Parasite"
   },
   {
     "id": "801B15DA62B8525A",
     "name": "Pardon pseudos",
-    "category": "GT Gabi"
+    "category": "GT Gabi",
+    "duplicate": false,
+    "rewardKey": "Pardon pseudos"
   },
   {
     "id": "B4F88FFDDBC3F54B",
     "name": "Pas anti s\u00E9mite",
-    "category": "Pop Culture"
+    "category": "Pop Culture",
+    "duplicate": false,
+    "rewardKey": "Pas anti s\u00E9mite"
   },
   {
     "id": "96C7E4452228CA52",
     "name": "Pas bon signe",
-    "category": "D\u00EEner de cons"
+    "category": "D\u00EEner de cons",
+    "duplicate": false,
+    "rewardKey": "Pas bon signe"
   },
   {
     "id": "99AD6FF46B385722",
     "name": "Pas de technique",
-    "category": "Pop Culture / Kaamelott"
+    "category": "Pop Culture / Kaamelott",
+    "duplicate": false,
+    "rewardKey": "Pas de technique"
   },
   {
     "id": "87FE3DF7F750CC5F",
     "name": "Pas du tout",
-    "category": "P\u00E8re No\u00EBl"
+    "category": "P\u00E8re No\u00EBl",
+    "duplicate": false,
+    "rewardKey": "Pas du tout"
   },
   {
     "id": "0F1688FBA01BF417",
     "name": "Pas envie",
-    "category": "Etchebest"
+    "category": "Etchebest",
+    "duplicate": false,
+    "rewardKey": "Pas envie"
   },
   {
     "id": "25726EE49637DFC5",
     "name": "Pas jouer",
-    "category": "Discord / Alex"
+    "category": "Discord / Alex",
+    "duplicate": false,
+    "rewardKey": "Pas jouer"
   },
   {
     "id": "548A32566A73FD39",
     "name": "Pas le temps",
-    "category": "Mocky"
+    "category": "Mocky",
+    "duplicate": false,
+    "rewardKey": "Pas le temps"
   },
   {
     "id": "D24DB5D4FE89035D",
     "name": "Pas long",
-    "category": "Rollin"
+    "category": "Rollin",
+    "duplicate": false,
+    "rewardKey": "Pas long"
   },
   {
     "id": "810874FB01912772",
     "name": "Pas maintenant",
-    "category": "Pop Culture"
+    "category": "Pop Culture",
+    "duplicate": false,
+    "rewardKey": "Pas maintenant"
   },
   {
     "id": "C2CD77C2968015FB",
     "name": "Pas toi qui d\u00E9cide",
-    "category": "Fanta"
+    "category": "Fanta",
+    "duplicate": false,
+    "rewardKey": "Pas toi qui d\u00E9cide"
   },
   {
     "id": "C560CAC242CB5B8C",
     "name": "Pas tr\u00E8s net",
-    "category": "D\u00EEner de cons"
+    "category": "D\u00EEner de cons",
+    "duplicate": false,
+    "rewardKey": "Pas tr\u00E8s net"
   },
   {
     "id": "447BF7EBC6668EFF",
     "name": "Pas trop",
-    "category": "Dumas"
+    "category": "Dumas",
+    "duplicate": false,
+    "rewardKey": "Pas trop"
   },
   {
     "id": "F55728C302F09B4F",
     "name": "Patinage",
-    "category": "D\u00EEner de cons"
+    "category": "D\u00EEner de cons",
+    "duplicate": false,
+    "rewardKey": "Patinage"
   },
   {
     "id": "682A341E878A1DA7",
     "name": "Pauvres baiser",
-    "category": "Gotohwan"
+    "category": "Gotohwan",
+    "duplicate": false,
+    "rewardKey": "Pauvres baiser"
   },
   {
     "id": "16A51697A54E9A37",
     "name": "PDF",
-    "category": "Fanta"
+    "category": "Fanta",
+    "duplicate": false,
+    "rewardKey": "PDF"
   },
   {
     "id": "BB3361F9117378DC",
     "name": "P\u00E9d\u00E9",
-    "category": "Discord / Saphire"
+    "category": "Discord / Saphire",
+    "duplicate": false,
+    "rewardKey": "P\u00E9d\u00E9"
   },
   {
     "id": "954B1A1CA6DE1C19",
     "name": "P\u00E9d\u00E9 !",
-    "category": "Politique"
+    "category": "Politique",
+    "duplicate": false,
+    "rewardKey": "P\u00E9d\u00E9 !"
   },
   {
     "id": "B5597868056E326A",
     "name": "Pens\u00E9",
-    "category": "Rollin"
+    "category": "Rollin",
+    "duplicate": false,
+    "rewardKey": "Pens\u00E9"
   },
   {
     "id": "E0F9F0169F7FD1E2",
     "name": "Perchman",
-    "category": "Mocky"
+    "category": "Mocky",
+    "duplicate": false,
+    "rewardKey": "Perchman"
   },
   {
     "id": "A11A9857BA3A0BE1",
     "name": "Perlim pinpin",
-    "category": "Politique"
+    "category": "Politique",
+    "duplicate": false,
+    "rewardKey": "Perlim pinpin"
   },
   {
     "id": "EBF73979180A3537",
     "name": "Perroquet",
-    "category": "D\u00EEner de cons"
+    "category": "D\u00EEner de cons",
+    "duplicate": false,
+    "rewardKey": "Perroquet"
   },
   {
     "id": "69AE7987A220A0CF",
     "name": "P\u00E9t\u00E9",
-    "category": "Soral"
+    "category": "Soral",
+    "duplicate": false,
+    "rewardKey": "P\u00E9t\u00E9"
   },
   {
     "id": "7E7D821FD555CA02",
     "name": "P\u00E9t\u00E9 mon oignon",
-    "category": "Hooper"
+    "category": "Hooper",
+    "duplicate": false,
+    "rewardKey": "P\u00E9t\u00E9 mon oignon"
   },
   {
     "id": "4BE09841E16860CD",
     "name": "Petit couteau",
-    "category": "Dumas"
+    "category": "Dumas",
+    "duplicate": false,
+    "rewardKey": "Petit couteau"
   },
   {
     "id": "ED4DDCED40B235CE",
     "name": "Peut-\u00EAtre",
-    "category": "Pop Culture"
+    "category": "Pop Culture",
+    "duplicate": false,
+    "rewardKey": "Peut-\u00EAtre"
   },
   {
     "id": "047E7F240D77C2DA",
     "name": "Pharisien",
-    "category": "Politique"
+    "category": "Politique",
+    "duplicate": false,
+    "rewardKey": "Pharisien"
   },
   {
     "id": "202626C6697AD200",
     "name": "Philosophe",
-    "category": "Strip Tease"
+    "category": "Strip Tease",
+    "duplicate": false,
+    "rewardKey": "Philosophe"
   },
   {
     "id": "1DCF16216C3AD3B9",
     "name": "Pignon",
-    "category": "D\u00EEner de cons"
+    "category": "D\u00EEner de cons",
+    "duplicate": false,
+    "rewardKey": "Pignon"
   },
   {
     "id": "93B7693C5FABE3E7",
     "name": "Pipes caf\u00E9",
-    "category": "Soral"
+    "category": "Soral",
+    "duplicate": false,
+    "rewardKey": "Pipes caf\u00E9"
   },
   {
     "id": "E42C54B6B71ED155",
     "name": "Pipi",
-    "category": "Visiteurs"
+    "category": "Visiteurs",
+    "duplicate": false,
+    "rewardKey": "Pipi"
   },
   {
     "id": "CB8E3D6955728602",
     "name": "Pisse",
-    "category": "Jeux vid\u00E9o"
+    "category": "Jeux vid\u00E9o",
+    "duplicate": false,
+    "rewardKey": "Pisse"
   },
   {
     "id": "D17D8814F2AB7145",
     "name": "Pitance",
-    "category": "Visiteurs"
+    "category": "Visiteurs",
+    "duplicate": false,
+    "rewardKey": "Pitance"
   },
   {
     "id": "D8E9451DF9EE931D",
     "name": "Planche \u00E0 pain",
-    "category": "Pop Culture"
+    "category": "Pop Culture",
+    "duplicate": false,
+    "rewardKey": "Planche \u00E0 pain"
   },
   {
     "id": "35A67A089A2A2A28",
     "name": "Planning",
-    "category": "GT Gabi"
+    "category": "GT Gabi",
+    "duplicate": false,
+    "rewardKey": "Planning"
   },
   {
     "id": "E63FD2A2A2A3669D",
     "name": "Plant\u00E9",
-    "category": "Pop Culture"
+    "category": "Pop Culture",
+    "duplicate": false,
+    "rewardKey": "Plant\u00E9"
   },
   {
     "id": "10BD554BBF37CAF3",
     "name": "Plat pays",
-    "category": "D\u00EEner de cons"
+    "category": "D\u00EEner de cons",
+    "duplicate": false,
+    "rewardKey": "Plat pays"
   },
   {
     "id": "A46D38BD49469005",
     "name": "Plus m\u00E9tier d\u0027homme",
-    "category": "Strip Tease"
+    "category": "Strip Tease",
+    "duplicate": false,
+    "rewardKey": "Plus m\u00E9tier d\u0027homme"
   },
   {
     "id": "E28F5E39AF9874B8",
     "name": "Po\u00E8me",
-    "category": "Fanta"
+    "category": "Fanta",
+    "duplicate": false,
+    "rewardKey": "Po\u00E8me"
   },
   {
     "id": "1CA88B355D129436",
     "name": "Pognon",
-    "category": "Bigard"
+    "category": "Bigard",
+    "duplicate": false,
+    "rewardKey": "Pognon"
   },
   {
     "id": "5CB34C2F4B2F1FB9",
     "name": "Ponjour",
-    "category": "YT Game"
+    "category": "YT Game",
+    "duplicate": false,
+    "rewardKey": "Ponjour"
   },
   {
     "id": "3DDFA170AC441686",
     "name": "Porte- documents",
-    "category": "D\u00EEner de cons"
+    "category": "D\u00EEner de cons",
+    "duplicate": false,
+    "rewardKey": "Porte- documents"
   },
   {
     "id": "0B1B6C88FB85C7AF",
     "name": "Poulardes",
-    "category": "Visiteurs"
+    "category": "Visiteurs",
+    "duplicate": false,
+    "rewardKey": "Poulardes"
   },
   {
     "id": "50B52A33142351F3",
     "name": "Pourquoi",
-    "category": "Discord / Alex"
+    "category": "Discord / Alex",
+    "duplicate": true,
+    "rewardKey": "Discord / Alex / Pourquoi"
   },
   {
     "id": "7677E8327F9E93CD",
     "name": "Pourquoi",
-    "category": "Pop Culture"
+    "category": "Pop Culture",
+    "duplicate": true,
+    "rewardKey": "Pop Culture / Pourquoi"
   },
   {
     "id": "4052B74DD4FA7EF1",
     "name": "Prendre derri\u00E8re",
-    "category": "Gotohwan"
+    "category": "Gotohwan",
+    "duplicate": false,
+    "rewardKey": "Prendre derri\u00E8re"
   },
   {
     "id": "B77440C5EFB3BD2E",
     "name": "Prends-moi",
-    "category": "Discord / Julien"
+    "category": "Discord / Julien",
+    "duplicate": false,
+    "rewardKey": "Prends-moi"
   },
   {
     "id": "4F24E622BF9D67EC",
     "name": "Pr\u00E9pa",
-    "category": "Mocky"
+    "category": "Mocky",
+    "duplicate": false,
+    "rewardKey": "Pr\u00E9pa"
   },
   {
     "id": "0EC4482639D3D736",
     "name": "Preuve courage",
-    "category": "P\u00E8re No\u00EBl"
+    "category": "P\u00E8re No\u00EBl",
+    "duplicate": false,
+    "rewardKey": "Preuve courage"
   },
   {
     "id": "C2B09C7A93019875",
     "name": "Prime",
-    "category": "Discord / Yaki"
+    "category": "Discord / Yaki",
+    "duplicate": false,
+    "rewardKey": "Prime"
   },
   {
     "id": "A7337981958E3EA9",
     "name": "Princesse",
-    "category": "Soral"
+    "category": "Soral",
+    "duplicate": false,
+    "rewardKey": "Princesse"
   },
   {
     "id": "37A4FE69029B1FCE",
     "name": "Prof Chen",
-    "category": "Gotohwan"
+    "category": "Gotohwan",
+    "duplicate": false,
+    "rewardKey": "Prof Chen"
   },
   {
     "id": "0D3D05EE564CCA2D",
     "name": "Projet Talmud",
-    "category": "Soral"
+    "category": "Soral",
+    "duplicate": false,
+    "rewardKey": "Projet Talmud"
   },
   {
     "id": "E71C367FFF309E10",
     "name": "Prout",
-    "category": "Discord / Alex"
+    "category": "Discord / Alex",
+    "duplicate": false,
+    "rewardKey": "Prout"
   },
   {
     "id": "27B30990375F410F",
     "name": "Prout 1",
-    "category": "Discord"
+    "category": "Discord",
+    "duplicate": false,
+    "rewardKey": "Prout 1"
   },
   {
     "id": "FB39C4523FC80A42",
     "name": "Prout 2",
-    "category": "Discord"
+    "category": "Discord",
+    "duplicate": false,
+    "rewardKey": "Prout 2"
   },
   {
     "id": "5CAA2C0A402D42EB",
     "name": "Provocation",
-    "category": "Politique"
+    "category": "Politique",
+    "duplicate": false,
+    "rewardKey": "Provocation"
   },
   {
     "id": "3CD3FCE3F6BDC279",
     "name": "Pseudos d\u00E9biles",
-    "category": "Soral"
+    "category": "Soral",
+    "duplicate": false,
+    "rewardKey": "Pseudos d\u00E9biles"
   },
   {
     "id": "AB92AAD9F0BDF76A",
     "name": "Ptite bite",
-    "category": "Hooper"
+    "category": "Hooper",
+    "duplicate": false,
+    "rewardKey": "Ptite bite"
   },
   {
     "id": "ACD7DCAF8D828A9B",
     "name": "Ptites bites",
-    "category": "D\u00EEner de cons"
+    "category": "D\u00EEner de cons",
+    "duplicate": false,
+    "rewardKey": "Ptites bites"
   },
   {
     "id": "22B62193CF010C72",
     "name": "Puire",
-    "category": "Visiteurs"
+    "category": "Visiteurs",
+    "duplicate": false,
+    "rewardKey": "Puire"
   },
   {
     "id": "339B99A11D2A8442",
     "name": "Putain le gars",
-    "category": "Discord / Alex"
+    "category": "Discord / Alex",
+    "duplicate": false,
+    "rewardKey": "Putain le gars"
   },
   {
     "id": "C7B18284490F4794",
     "name": "Pute",
-    "category": "Gotohwan"
+    "category": "Gotohwan",
+    "duplicate": true,
+    "rewardKey": "Gotohwan / Pute"
   },
   {
     "id": "6522B7F11CA778FC",
     "name": "Pute",
-    "category": "Pop Culture"
+    "category": "Pop Culture",
+    "duplicate": true,
+    "rewardKey": "Pop Culture / Pute"
   },
   {
     "id": "8D62268FE2CD93EC",
     "name": "Pute suisse",
-    "category": "Soral"
+    "category": "Soral",
+    "duplicate": false,
+    "rewardKey": "Pute suisse"
   },
   {
     "id": "7A907D1A453C35A8",
     "name": "Puzzle",
-    "category": "Jeux vid\u00E9o"
+    "category": "Jeux vid\u00E9o",
+    "duplicate": false,
+    "rewardKey": "Puzzle"
   },
   {
     "id": "D4E0C281FA379F90",
     "name": "Question",
-    "category": "GT Gabi"
+    "category": "GT Gabi",
+    "duplicate": false,
+    "rewardKey": "Question"
   },
   {
     "id": "F286817E46A81EDD",
     "name": "Quoi la baise",
-    "category": "Discord / Alex"
+    "category": "Discord / Alex",
+    "duplicate": false,
+    "rewardKey": "Quoi la baise"
   },
   {
     "id": "44396BCCA630A4B2",
     "name": "Racaille",
-    "category": "Jeux vid\u00E9o"
+    "category": "Jeux vid\u00E9o",
+    "duplicate": true,
+    "rewardKey": "Jeux vid\u00E9o / Racaille"
   },
   {
     "id": "CAB136FCB301E7FB",
     "name": "Racaille",
-    "category": "Politique"
+    "category": "Politique",
+    "duplicate": true,
+    "rewardKey": "Politique / Racaille"
   },
   {
     "id": "63FF7E6019FD382A",
     "name": "Raciste",
-    "category": "Classe Am\u00E9ricaine"
+    "category": "Classe Am\u00E9ricaine",
+    "duplicate": false,
+    "rewardKey": "Raciste"
   },
   {
     "id": "1A919C447BE2A517",
     "name": "Raclettes",
-    "category": "Strip Tease"
+    "category": "Strip Tease",
+    "duplicate": false,
+    "rewardKey": "Raclettes"
   },
   {
     "id": "8BF967154CF288F1",
     "name": "Raison",
-    "category": "Pop Culture"
+    "category": "Pop Culture",
+    "duplicate": false,
+    "rewardKey": "Raison"
   },
   {
     "id": "7DE49B111A84B4A7",
     "name": "Rajeunit",
-    "category": "Politique"
+    "category": "Politique",
+    "duplicate": false,
+    "rewardKey": "Rajeunit"
   },
   {
     "id": "C7AAC7BF865DDF50",
     "name": "Ramasse",
-    "category": "Greg"
+    "category": "Greg",
+    "duplicate": false,
+    "rewardKey": "Ramasse"
   },
   {
     "id": "C0BC4FAA0A54F7E7",
     "name": "Rappelle",
-    "category": "Strip Tease"
+    "category": "Strip Tease",
+    "duplicate": false,
+    "rewardKey": "Rappelle"
   },
   {
     "id": "C33591CCB171C131",
     "name": "Rattraper",
-    "category": "P\u00E8re No\u00EBl"
+    "category": "P\u00E8re No\u00EBl",
+    "duplicate": false,
+    "rewardKey": "Rattraper"
   },
   {
     "id": "9744784DEDDDE6BE",
     "name": "R\u00E9fl\u00E9chissez",
-    "category": "Politique"
+    "category": "Politique",
+    "duplicate": false,
+    "rewardKey": "R\u00E9fl\u00E9chissez"
   },
   {
     "id": "5969574EA45C8C90",
     "name": "Respect",
-    "category": "YT Game"
+    "category": "YT Game",
+    "duplicate": false,
+    "rewardKey": "Respect"
   },
   {
     "id": "231D73D91F511319",
     "name": "Responsable",
-    "category": "D\u00EEner de cons"
+    "category": "D\u00EEner de cons",
+    "duplicate": false,
+    "rewardKey": "Responsable"
   },
   {
     "id": "E6D8027AF7C3DA44",
     "name": "R\u00E9ussissement",
-    "category": "Visiteurs"
+    "category": "Visiteurs",
+    "duplicate": false,
+    "rewardKey": "R\u00E9ussissement"
   },
   {
     "id": "964D7933BC8CC324",
     "name": "Rhabille",
-    "category": "D\u00EEner de cons"
+    "category": "D\u00EEner de cons",
+    "duplicate": false,
+    "rewardKey": "Rhabille"
   },
   {
     "id": "C03D78EC1AC73F1B",
     "name": "Rien r\u00E9ussi",
-    "category": "Gotohwan"
+    "category": "Gotohwan",
+    "duplicate": false,
+    "rewardKey": "Rien r\u00E9ussi"
   },
   {
     "id": "23B31AB8B34D8414",
     "name": "Rien vu",
-    "category": "Jeux vid\u00E9o"
+    "category": "Jeux vid\u00E9o",
+    "duplicate": false,
+    "rewardKey": "Rien vu"
   },
   {
     "id": "2610D47B6A44B885",
     "name": "Rigolo",
-    "category": "Discord / Alex"
+    "category": "Discord / Alex",
+    "duplicate": false,
+    "rewardKey": "Rigolo"
   },
   {
     "id": "2FE2727A616FEDE6",
     "name": "Rire",
-    "category": "D\u00EEner de cons"
+    "category": "D\u00EEner de cons",
+    "duplicate": false,
+    "rewardKey": "Rire"
   },
   {
     "id": "010650F6AEA12B11",
     "name": "Rire porte",
-    "category": "Discord / Alex"
+    "category": "Discord / Alex",
+    "duplicate": false,
+    "rewardKey": "Rire porte"
   },
   {
     "id": "4D6D12C142C7229B",
     "name": "Rondelles",
-    "category": "Dumas"
+    "category": "Dumas",
+    "duplicate": false,
+    "rewardKey": "Rondelles"
   },
   {
     "id": "2BACFB558353447C",
     "name": "Rot",
-    "category": "Discord"
+    "category": "Discord",
+    "duplicate": false,
+    "rewardKey": "Rot"
   },
   {
     "id": "2FFC7352D38A2A1B",
     "name": "Rouquin",
-    "category": "Politique"
+    "category": "Politique",
+    "duplicate": false,
+    "rewardKey": "Rouquin"
   },
   {
     "id": "A8BFB9F4F56274CC",
     "name": "S\u0027en branle",
-    "category": "Pop Culture / Kaamelott"
+    "category": "Pop Culture / Kaamelott",
+    "duplicate": false,
+    "rewardKey": "S\u0027en branle"
   },
   {
     "id": "1BB5D9E60BF995F4",
     "name": "S\u0027enculer",
-    "category": "Soral"
+    "category": "Soral",
+    "duplicate": false,
+    "rewardKey": "S\u0027enculer"
   },
   {
     "id": "E1A05805C084E81F",
     "name": "Sac",
-    "category": "Strip Tease"
+    "category": "Strip Tease",
+    "duplicate": true,
+    "rewardKey": "Strip Tease / Sac"
   },
   {
     "id": "3E3262DF19083107",
     "name": "Sac",
-    "category": "Pop Culture"
+    "category": "Pop Culture",
+    "duplicate": true,
+    "rewardKey": "Pop Culture / Sac"
   },
   {
     "id": "EED0DE2000BF91A6",
     "name": "Salope",
-    "category": "Greg"
+    "category": "Greg",
+    "duplicate": false,
+    "rewardKey": "Salope"
   },
   {
     "id": "AF5F6E7ED715A58C",
     "name": "Salope 1",
-    "category": "Bigard"
+    "category": "Bigard",
+    "duplicate": false,
+    "rewardKey": "Salope 1"
   },
   {
     "id": "F7D6CB792792F3A8",
     "name": "Salope 2",
-    "category": "Bigard"
+    "category": "Bigard",
+    "duplicate": false,
+    "rewardKey": "Salope 2"
   },
   {
     "id": "7E2D0135B29C0462",
     "name": "Salope 3",
-    "category": "Bigard"
+    "category": "Bigard",
+    "duplicate": false,
+    "rewardKey": "Salope 3"
   },
   {
     "id": "C538AE5601F568C3",
     "name": "Salope va",
-    "category": "Greg"
+    "category": "Greg",
+    "duplicate": false,
+    "rewardKey": "Salope va"
   },
   {
     "id": "CADF929C3FF73F0A",
     "name": "Saloperie japonais",
-    "category": "Pop Culture"
+    "category": "Pop Culture",
+    "duplicate": false,
+    "rewardKey": "Saloperie japonais"
   },
   {
     "id": "C5D000DB707B2A56",
     "name": "Salut mon pote",
-    "category": "Pop Culture"
+    "category": "Pop Culture",
+    "duplicate": false,
+    "rewardKey": "Salut mon pote"
   },
   {
     "id": "DAA12DB2546425B3",
     "name": "Sans rancune",
-    "category": "Pop Culture"
+    "category": "Pop Culture",
+    "duplicate": false,
+    "rewardKey": "Sans rancune"
   },
   {
     "id": "125E81593107F11F",
     "name": "Sarrazin",
-    "category": "Visiteurs"
+    "category": "Visiteurs",
+    "duplicate": false,
+    "rewardKey": "Sarrazin"
   },
   {
     "id": "4C0791FCC4DBA2CC",
     "name": "Sauvage",
-    "category": "Pop Culture"
+    "category": "Pop Culture",
+    "duplicate": false,
+    "rewardKey": "Sauvage"
   },
   {
     "id": "57F5ED7D1D932C23",
     "name": "Scoubidou",
-    "category": "Discord / Gilles"
+    "category": "Discord / Gilles",
+    "duplicate": false,
+    "rewardKey": "Scoubidou"
   },
   {
     "id": "2D73D49544C30CBA",
     "name": "Seins",
-    "category": "Discord / Julien"
+    "category": "Discord / Julien",
+    "duplicate": false,
+    "rewardKey": "Seins"
   },
   {
     "id": "FD56F0062E5208B7",
     "name": "Seins yeux",
-    "category": "Soral"
+    "category": "Soral",
+    "duplicate": false,
+    "rewardKey": "Seins yeux"
   },
   {
     "id": "366D416C0386F09F",
     "name": "Sens figur\u00E9",
-    "category": "Rollin"
+    "category": "Rollin",
+    "duplicate": false,
+    "rewardKey": "Sens figur\u00E9"
   },
   {
     "id": "510247C3E1129D1A",
     "name": "Serpi\u00E8re",
-    "category": "P\u00E8re No\u00EBl"
+    "category": "P\u00E8re No\u00EBl",
+    "duplicate": false,
+    "rewardKey": "Serpi\u00E8re"
   },
   {
     "id": "FF4FD60E272D49E7",
     "name": "Service public",
-    "category": "Politique"
+    "category": "Politique",
+    "duplicate": false,
+    "rewardKey": "Service public"
   },
   {
     "id": "86AB8883BDF7A6EA",
     "name": "Shred Sathan",
-    "category": "Musique"
+    "category": "Musique",
+    "duplicate": false,
+    "rewardKey": "Shred Sathan"
   },
   {
     "id": "B136C988D317B11F",
     "name": "Silence",
-    "category": "Visiteurs"
+    "category": "Visiteurs",
+    "duplicate": false,
+    "rewardKey": "Silence"
   },
   {
     "id": "A55644DC86ED900A",
     "name": "Single malt",
-    "category": "Gotohwan"
+    "category": "Gotohwan",
+    "duplicate": false,
+    "rewardKey": "Single malt"
   },
   {
     "id": "419D9BC9A6E94611",
     "name": "Sole",
-    "category": "Rollin"
+    "category": "Rollin",
+    "duplicate": false,
+    "rewardKey": "Sole"
   },
   {
     "id": "60004E7975C598F7",
     "name": "Soleil",
-    "category": "Dieudo"
+    "category": "Dieudo",
+    "duplicate": false,
+    "rewardKey": "Soleil"
   },
   {
     "id": "52F036441B60265A",
     "name": "Strat\u00E8ge",
-    "category": "D\u00EEner de cons"
+    "category": "D\u00EEner de cons",
+    "duplicate": false,
+    "rewardKey": "Strat\u00E8ge"
   },
   {
     "id": "EDBDCA8E15E72606",
     "name": "Suce moins cher",
-    "category": "Soral"
+    "category": "Soral",
+    "duplicate": false,
+    "rewardKey": "Suce moins cher"
   },
   {
     "id": "4FA76CDB25137D08",
     "name": "Sucer",
-    "category": "Hooper"
+    "category": "Hooper",
+    "duplicate": true,
+    "rewardKey": "Hooper / Sucer"
   },
   {
     "id": "3095E5CEA3DA4373",
     "name": "Sucer",
-    "category": "Rollin"
+    "category": "Rollin",
+    "duplicate": true,
+    "rewardKey": "Rollin / Sucer"
   },
   {
     "id": "643A61CFCDDF34FC",
     "name": "Sucer ou encule",
-    "category": "Bigard"
+    "category": "Bigard",
+    "duplicate": false,
+    "rewardKey": "Sucer ou encule"
   },
   {
     "id": "6B37C18A3443DADB",
     "name": "Sulfat\u00E9",
-    "category": "Gotohwan"
+    "category": "Gotohwan",
+    "duplicate": false,
+    "rewardKey": "Sulfat\u00E9"
   },
   {
     "id": "4B8F1F561CE4E013",
     "name": "S\u00FBr",
-    "category": "YT Game"
+    "category": "YT Game",
+    "duplicate": false,
+    "rewardKey": "S\u00FBr"
   },
   {
     "id": "D9CCFB14EB39A062",
     "name": "Surprise",
-    "category": "Pop Culture"
+    "category": "Pop Culture",
+    "duplicate": false,
+    "rewardKey": "Surprise"
   },
   {
     "id": "1C2E077B675AC4E7",
     "name": "Tactique",
-    "category": "D\u00EEner de cons"
+    "category": "D\u00EEner de cons",
+    "duplicate": false,
+    "rewardKey": "Tactique"
   },
   {
     "id": "F4F0A1921C3ABF52",
     "name": "Tactique pr\u00E9cis",
-    "category": "Soral"
+    "category": "Soral",
+    "duplicate": false,
+    "rewardKey": "Tactique pr\u00E9cis"
   },
   {
     "id": "6D8719FDB8604573",
     "name": "Tais-toi",
-    "category": "Fanta"
+    "category": "Fanta",
+    "duplicate": false,
+    "rewardKey": "Tais-toi"
   },
   {
     "id": "B22B4FAAD1A76BB2",
     "name": "Taisez-vous",
-    "category": "Politique"
+    "category": "Politique",
+    "duplicate": false,
+    "rewardKey": "Taisez-vous"
   },
   {
     "id": "B3CA1D7C43514913",
     "name": "Tartarus",
-    "category": "Musique"
+    "category": "Musique",
+    "duplicate": false,
+    "rewardKey": "Tartarus"
   },
   {
     "id": "D2421F9A511B416E",
     "name": "Tas de merde",
-    "category": "Pop Culture"
+    "category": "Pop Culture",
+    "duplicate": false,
+    "rewardKey": "Tas de merde"
   },
   {
     "id": "9862796141B7EFF5",
     "name": "Techniques de p\u00E9dale",
-    "category": "Discord / Alex"
+    "category": "Discord / Alex",
+    "duplicate": false,
+    "rewardKey": "Techniques de p\u00E9dale"
   },
   {
     "id": "64BF930CD1296D98",
     "name": "Termin\u00E9",
-    "category": "Dumas"
+    "category": "Dumas",
+    "duplicate": false,
+    "rewardKey": "Termin\u00E9"
   },
   {
     "id": "D5F0C546847D21B4",
     "name": "Termin\u00E9 r\u00E9serve",
-    "category": "Dumas"
+    "category": "Dumas",
+    "duplicate": false,
+    "rewardKey": "Termin\u00E9 r\u00E9serve"
   },
   {
     "id": "D0A55B86324C274C",
     "name": "TF1",
-    "category": "Musique"
+    "category": "Musique",
+    "duplicate": false,
+    "rewardKey": "TF1"
   },
   {
     "id": "929CF724AEC2F2DA",
     "name": "Thank you",
-    "category": "Jeux vid\u00E9o"
+    "category": "Jeux vid\u00E9o",
+    "duplicate": false,
+    "rewardKey": "Thank you"
   },
   {
     "id": "3B15ED07DCB3F222",
     "name": "Th\u00E9",
-    "category": "Dieudo"
+    "category": "Dieudo",
+    "duplicate": false,
+    "rewardKey": "Th\u00E9"
   },
   {
     "id": "2D0C263B6E21CB1A",
     "name": "Th\u00E9r\u00E8se",
-    "category": "P\u00E8re No\u00EBl"
+    "category": "P\u00E8re No\u00EBl",
+    "duplicate": false,
+    "rewardKey": "Th\u00E9r\u00E8se"
   },
   {
     "id": "4D943413143CE161",
     "name": "Thu\u0027um",
-    "category": "Jeux vid\u00E9o"
+    "category": "Jeux vid\u00E9o",
+    "duplicate": false,
+    "rewardKey": "Thu\u0027um"
   },
   {
     "id": "48770E0CB2BC98C3",
     "name": "Tintintintin",
-    "category": "Musique"
+    "category": "Musique",
+    "duplicate": false,
+    "rewardKey": "Tintintintin"
   },
   {
     "id": "495C9BA0097960EB",
     "name": "TMDD Basse",
-    "category": "Musique"
+    "category": "Musique",
+    "duplicate": false,
+    "rewardKey": "TMDD Basse"
   },
   {
     "id": "B1421A47918FCD6B",
     "name": "TMDD Choeurs",
-    "category": "Musique"
+    "category": "Musique",
+    "duplicate": false,
+    "rewardKey": "TMDD Choeurs"
   },
   {
     "id": "4EE216C3ACB1A067",
     "name": "TMDD D\u00E9but",
-    "category": "Musique"
+    "category": "Musique",
+    "duplicate": false,
+    "rewardKey": "TMDD D\u00E9but"
   },
   {
     "id": "A3B3749F87D3A540",
     "name": "TMDD Solo",
-    "category": "Musique"
+    "category": "Musique",
+    "duplicate": false,
+    "rewardKey": "TMDD Solo"
   },
   {
     "id": "DF949587682F3F8D",
     "name": "Tol\u00E9rance",
-    "category": "Classe Am\u00E9ricaine"
+    "category": "Classe Am\u00E9ricaine",
+    "duplicate": false,
+    "rewardKey": "Tol\u00E9rance"
   },
   {
     "id": "95CDB5824A520086",
     "name": "Tous ces cons",
-    "category": "Pop Culture / Kaamelott"
+    "category": "Pop Culture / Kaamelott",
+    "duplicate": false,
+    "rewardKey": "Tous ces cons"
   },
   {
     "id": "2F0BE88CEF19D87E",
     "name": "Trag\u00E9die",
-    "category": "Mocky"
+    "category": "Mocky",
+    "duplicate": false,
+    "rewardKey": "Trag\u00E9die"
   },
   {
     "id": "641B6906357A0FA6",
     "name": "Tra\u00EEtre",
-    "category": "Pop Culture"
+    "category": "Pop Culture",
+    "duplicate": false,
+    "rewardKey": "Tra\u00EEtre"
   },
   {
     "id": "FF6E006474E9BE1A",
     "name": "Tranches",
-    "category": "Dumas"
+    "category": "Dumas",
+    "duplicate": false,
+    "rewardKey": "Tranches"
   },
   {
     "id": "5D1EB48047D9AB38",
     "name": "Travail",
-    "category": "Strip Tease"
+    "category": "Strip Tease",
+    "duplicate": false,
+    "rewardKey": "Travail"
   },
   {
     "id": "E704D22CC5B956A1",
     "name": "Tr\u00E9passe",
-    "category": "Visiteurs"
+    "category": "Visiteurs",
+    "duplicate": false,
+    "rewardKey": "Tr\u00E9passe"
   },
   {
     "id": "C2603E48B6C0C54C",
     "name": "Tr\u00E8s content",
-    "category": "GT Gabi"
+    "category": "GT Gabi",
+    "duplicate": false,
+    "rewardKey": "Tr\u00E8s content"
   },
   {
     "id": "BEB65FE5D4435964",
     "name": "Trou du cul",
-    "category": "Greg"
+    "category": "Greg",
+    "duplicate": false,
+    "rewardKey": "Trou du cul"
   },
   {
     "id": "319983BC67DA80C7",
     "name": "Troua",
-    "category": "GT Gabi"
+    "category": "GT Gabi",
+    "duplicate": false,
+    "rewardKey": "Troua"
   },
   {
     "id": "B17ED5F3806083D9",
     "name": "Tudidou",
-    "category": "Soral"
+    "category": "Soral",
+    "duplicate": false,
+    "rewardKey": "Tudidou"
   },
   {
     "id": "B91B7D35DDE1C8C3",
     "name": "Vainqueur",
-    "category": "D\u00EEner de cons"
+    "category": "D\u00EEner de cons",
+    "duplicate": false,
+    "rewardKey": "Vainqueur"
   },
   {
     "id": "3467ACC979F6E5B6",
     "name": "Vicieux",
-    "category": "Gotohwan"
+    "category": "Gotohwan",
+    "duplicate": false,
+    "rewardKey": "Vicieux"
   },
   {
     "id": "2D62A0A777658660",
     "name": "Victoire",
-    "category": "Jeux vid\u00E9o"
+    "category": "Jeux vid\u00E9o",
+    "duplicate": false,
+    "rewardKey": "Victoire"
   },
   {
     "id": "2B2C873FDE61FA0C",
     "name": "Viens-l\u00E0",
-    "category": "Discord / Yaki"
+    "category": "Discord / Yaki",
+    "duplicate": false,
+    "rewardKey": "Viens-l\u00E0"
   },
   {
     "id": "4A26F515206188D8",
     "name": "Vin blanc",
-    "category": "Dumas"
+    "category": "Dumas",
+    "duplicate": false,
+    "rewardKey": "Vin blanc"
   },
   {
     "id": "5B7775272FD7EE4E",
     "name": "Voix fatigu\u00E9e",
-    "category": "D\u00EEner de cons"
+    "category": "D\u00EEner de cons",
+    "duplicate": false,
+    "rewardKey": "Voix fatigu\u00E9e"
   },
   {
     "id": "94609F25574BA432",
     "name": "Vraie salope",
-    "category": "Gotohwan"
+    "category": "Gotohwan",
+    "duplicate": false,
+    "rewardKey": "Vraie salope"
   },
   {
     "id": "734175FD7881888A",
     "name": "Vraiment goudou",
-    "category": "YT Game"
+    "category": "YT Game",
+    "duplicate": false,
+    "rewardKey": "Vraiment goudou"
   },
   {
     "id": "C798694EC7C83C53",
     "name": "Vraiment p\u00E9d\u00E9",
-    "category": "YT Game"
+    "category": "YT Game",
+    "duplicate": false,
+    "rewardKey": "Vraiment p\u00E9d\u00E9"
   },
   {
     "id": "BB3BA45C9FAD2B31",
     "name": "Waah",
-    "category": "Musique"
+    "category": "Musique",
+    "duplicate": false,
+    "rewardKey": "Waah"
   },
   {
     "id": "704532EDCDE1396E",
     "name": "Yoda",
-    "category": "YT Game"
+    "category": "YT Game",
+    "duplicate": false,
+    "rewardKey": "Yoda"
   },
   {
     "id": "71BBFD8D821F1CC4",
     "name": "Yu-Gi-Oh",
-    "category": "Pop Culture"
+    "category": "Pop Culture",
+    "duplicate": false,
+    "rewardKey": "Yu-Gi-Oh"
   },
   {
     "id": "AEBD16504F51BC07",
     "name": "Zemmour Hin",
-    "category": "Politique"
+    "category": "Politique",
+    "duplicate": false,
+    "rewardKey": "Zemmour Hin"
   },
   {
     "id": "46450A42FB980794",
     "name": "Zemmour Hin Rev",
-    "category": "Politique"
+    "category": "Politique",
+    "duplicate": false,
+    "rewardKey": "Zemmour Hin Rev"
   },
   {
     "id": "B5DE874FA43F6A87",
     "name": "Zin\u00E9dine",
-    "category": "Pop Culture"
+    "category": "Pop Culture",
+    "duplicate": false,
+    "rewardKey": "Zin\u00E9dine"
   }
-];const SDS_URL="https://giving-vocabulary-checked-reasons.trycloudflare.com";
+];const SDS_URL="https://planner-opened-smell-specialties.trycloudflare.com";
 const q=document.getElementById('q'),folders=document.getElementById('folders'),samplesEl=document.getElementById('samples'),count=document.getElementById('count'),online=document.getElementById('online'),back=document.getElementById('back'),crumb=document.getElementById('crumb');let audio=null,playing='',path=[];
 function esc(s){return String(s??'').replace(/[&<>\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[c]))}
 function parts(c){return String(c||'Sans catégorie').split(' / ').map(x=>x.trim()).filter(Boolean)}
 function atPath(x,p){const a=parts(x.category);return p.every((v,i)=>a[i]===v)}
 function directFolders(items,p){const m=new Map();for(const x of items){if(!atPath(x,p))continue;const a=parts(x.category);if(a.length<=p.length)continue;const n=a[p.length];m.set(n,(m.get(n)||0)+1)}return [...m].sort((a,b)=>a[0].localeCompare(b[0],'fr'))}
 function directSamples(items,p){return items.filter(x=>{const a=parts(x.category);return atPath(x,p)&&a.length===p.length}).sort((a,b)=>a.name.localeCompare(b.name,'fr'))}
-function sampleHtml(x){return `<div class="sample"><div class="name">${esc(x.name)}</div><div class="actions"><button class="listen" data-listen="${esc(x.id)}" ${SDS_URL?'':'disabled'}>▶ Écouter</button><button class="copy" data-copy="${esc(x.id)}">Copier</button></div></div>`}
+function sampleHtml(x){return `<div class="sample"><div class="name">${esc(x.name)}${x.duplicate?'<span class="dup">Nom en double</span>':''}</div><div class="actions"><button class="listen" data-listen="${esc(x.id)}" ${SDS_URL?'':'disabled'}>▶ Écouter</button><button class="copy" data-copy="${esc(x.id)}">Copier</button></div></div>`}
 function draw(){const t=q.value.trim().toLocaleLowerCase('fr');const searching=!!t;const a=SAMPLES.filter(x=>!t||String(x.name??'').toLocaleLowerCase('fr').includes(t)||String(x.category??'').toLocaleLowerCase('fr').includes(t));count.textContent=a.length+' sample'+(a.length>1?'s':'');if(searching){folders.innerHTML='';samplesEl.innerHTML=a.length?a.map(sampleHtml).join(''):'<div class="empty">Aucun sample trouvé.</div>';crumb.textContent='Résultats de recherche';back.hidden=true}else{const fs=directFolders(SAMPLES,path);const ss=directSamples(SAMPLES,path);folders.innerHTML=fs.map(([n,c])=>`<button class="folder" data-folder="${esc(n)}"><span class="folder-icon">📁</span><span class="folder-name">${esc(n)}</span><span class="folder-count">${c}</span></button>`).join('');samplesEl.innerHTML=ss.map(sampleHtml).join('')||(!fs.length?'<div class="empty">Ce dossier est vide.</div>':'');crumb.textContent=path.length?path.join('  ›  '):'Tous les dossiers';back.hidden=path.length===0}bind()}
-function bind(){document.querySelectorAll('[data-folder]').forEach(b=>b.onclick=()=>{path.push(b.dataset.folder);draw()});document.querySelectorAll('[data-copy]').forEach(b=>b.onclick=async()=>{const x=SAMPLES.find(x=>String(x.id)===b.dataset.copy);if(!x)return;await navigator.clipboard.writeText(x.name);b.textContent='Copié !';setTimeout(()=>b.textContent='Copier',900)});document.querySelectorAll('[data-listen]').forEach(b=>b.onclick=()=>listen(b.dataset.listen,b))}
+function bind(){document.querySelectorAll('[data-folder]').forEach(b=>b.onclick=()=>{path.push(b.dataset.folder);draw()});document.querySelectorAll('[data-copy]').forEach(b=>b.onclick=async()=>{const x=SAMPLES.find(x=>String(x.id)===b.dataset.copy);if(!x)return;await navigator.clipboard.writeText(x.rewardKey||x.name);b.textContent='Copié !';setTimeout(()=>b.textContent='Copier',900)});document.querySelectorAll('[data-listen]').forEach(b=>b.onclick=()=>listen(b.dataset.listen,b))}
 function stop(){if(audio){const a=audio;audio=null;a.onended=null;a.onerror=null;a.pause();a.removeAttribute('src');a.load()}playing='';document.querySelectorAll('[data-listen]').forEach(b=>b.textContent='▶ Écouter')}
 function listen(id,b){if(!SDS_URL)return;if(playing===id){stop();return}stop();playing=id;b.textContent='■ Stop';const a=new Audio(SDS_URL+'/api/preview/'+encodeURIComponent(id)+'?_='+Date.now());audio=a;a.volume=.18;a.onended=()=>{if(audio===a){audio=null;playing='';document.querySelectorAll('[data-listen]').forEach(x=>x.textContent='▶ Écouter')}};a.onerror=()=>{if(audio!==a)return;audio=null;playing='';document.querySelectorAll('[data-listen]').forEach(x=>x.textContent='▶ Écouter');alert('Préécoute indisponible. Vérifie que Stream Deck Share et le tunnel Internet sont ouverts.')};a.play().catch(()=>{if(audio===a&&a.onerror)a.onerror()})}
 back.onclick=()=>{path.pop();draw()};q.oninput=draw;online.textContent=SDS_URL?'🎧 Préécoute disponible lorsque Stream Deck Share est en ligne.':'🎧 Préécoute indisponible : démarre SDS avec le partage Internet.';draw();
